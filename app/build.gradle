@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -19,10 +20,6 @@ android {
             useSupportLibrary true
         }
     }
-
-    buildFeatures {
-        viewBinding true
-    }
     buildTypes {
         release {
             minifyEnabled false
@@ -37,6 +34,7 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
+        viewBinding true
         compose true
     }
     composeOptions {
@@ -56,7 +54,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
     implementation 'androidx.activity:activity-compose:1.5.1'
     implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
     implementation platform('androidx.compose:compose-bom:2022.10.00')
@@ -64,6 +61,8 @@ dependencies {
     implementation 'androidx.compose.ui:ui-graphics'
     implementation 'androidx.compose.ui:ui-tooling-preview'
     implementation 'androidx.compose.material3:material3'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
