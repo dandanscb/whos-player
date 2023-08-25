@@ -40,8 +40,7 @@ object WhosPlayerMock {
                         TeamModel(
                             name = "Al-Hilal",
                             crest = "https://logodetimes.com/times/al-hilal/al-hilal-2023-4096.png",
-                            year = "2023",
-                            lastTeam = true
+                            year = "2023"
                         )
                     )
                 ),
@@ -77,8 +76,7 @@ object WhosPlayerMock {
                         TeamModel(
                             name = "Inter Miami",
                             crest = "https://content.sportslogos.net/logos/9/6621/full/7559_inter_miami_cf-primary-20201.png",
-                            year = "2023",
-                            lastTeam = true
+                            year = "2023"
                         )
                     )
                 ),
@@ -124,8 +122,7 @@ object WhosPlayerMock {
                         TeamModel(
                             name = "Al-Nassr",
                             crest = "https://logodownload.org/wp-content/uploads/2023/07/al-nassr-fc-logo-0.png",
-                            year = "2023",
-                            lastTeam = true
+                            year = "2023"
                         )
                     )
                 ),
@@ -135,6 +132,7 @@ object WhosPlayerMock {
     )
 
     private fun getListWithFourTeams(model: List<TeamModel>): List<List<TeamModel>> {
+        model.last().lastTeam = true
         val list = mutableListOf<List<TeamModel>>()
         val subListSize = WhosPlayerActivity.spanCount
         var currentIndex = FIRST_INDEX
