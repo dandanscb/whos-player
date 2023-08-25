@@ -14,7 +14,8 @@ object WhosPlayerMock {
         StageModel(
             level = 0,
             soccerPlayer = SoccerPlayerModel(
-                name = "Neymar",
+                name = "Neymar Junior",
+                nameLetterByLetter = getLettersFromName("Neymar Junior"),
                 tips = TipsModel(
                     position = "Atacante",
                     nationality = "Brasileiro",
@@ -51,6 +52,7 @@ object WhosPlayerMock {
             level = 1,
             soccerPlayer = SoccerPlayerModel(
                 name = "Messi",
+                nameLetterByLetter = getLettersFromName("Messi"),
                 tips = TipsModel(
                     position = "Atacante",
                     nationality = "Argentino",
@@ -87,6 +89,7 @@ object WhosPlayerMock {
             level = 2,
             soccerPlayer = SoccerPlayerModel(
                 name = "Cristiano Ronaldo",
+                nameLetterByLetter = getLettersFromName("Cristiano Ronaldo"),
                 tips = TipsModel(
                     position = "Atacante",
                     nationality = "Portugues",
@@ -147,6 +150,21 @@ object WhosPlayerMock {
             val sublist = model.subList(currentIndex, endIndex)
             list.add(sublist)
             currentIndex += subListSize
+        }
+
+        return list
+    }
+
+    private fun getLettersFromName(soccerPlayerFullName: String) : List<List<Char>> {
+        val names = soccerPlayerFullName.split(" ")
+        val list = mutableListOf<List<Char>>()
+
+        for (item in names) {
+            val nameLetterByLetter = mutableListOf<Char>()
+            for (letter in item) {
+                nameLetterByLetter.add(letter)
+            }
+            list.add(nameLetterByLetter)
         }
 
         return list
