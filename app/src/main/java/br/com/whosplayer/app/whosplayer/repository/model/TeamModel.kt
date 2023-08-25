@@ -4,5 +4,5 @@ data class TeamModel(
     val name: String,
     val crest: String,
     val year: String,
-    val lastTeam: Boolean = false
+    var lastTeam: Boolean = false
 )
