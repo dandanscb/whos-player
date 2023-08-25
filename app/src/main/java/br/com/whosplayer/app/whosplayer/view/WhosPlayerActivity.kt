@@ -1,12 +1,7 @@
 package br.com.whosplayer.app.whosplayer.view
 
 import android.os.Bundle
-import android.view.Gravity
-import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.whosplayer.R
 import br.com.whosplayer.app.whosplayer.repository.mock.WhosPlayerMock
@@ -28,10 +23,13 @@ class WhosPlayerActivity : AppCompatActivity() {
         binding = ActivityWhosPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val items = WhosPlayerMock.getStageModelMock()[1].soccerPlayer.teams
+        displayCrests()
+    }
+
+    private fun displayCrests() {
+        val items = WhosPlayerMock.getStageModelMock()[2].soccerPlayer.teams
         items.forEach {
             val recyclerView = RecyclerView(this)
-
 
             val layoutManager = NonScrollableGridLayoutManager(this, spanCount)
             val screenWidth = resources.displayMetrics.widthPixels

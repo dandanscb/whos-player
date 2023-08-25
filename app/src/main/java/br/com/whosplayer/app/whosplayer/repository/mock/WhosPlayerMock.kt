@@ -76,7 +76,7 @@ object WhosPlayerMock {
                         ),
                         TeamModel(
                             name = "Inter Miami",
-                            crest = "https://logodetimes.com/times/alemanha/selecao-alema-de-futebol-4096.png",
+                            crest = "https://content.sportslogos.net/logos/9/6621/full/7559_inter_miami_cf-primary-20201.png",
                             year = "2023",
                             lastTeam = true
                         )
@@ -123,7 +123,7 @@ object WhosPlayerMock {
                         ),
                         TeamModel(
                             name = "Al-Nassr",
-                            crest = "https://logodetimes.com/times/arabia-saudita/selecao-saudita-de-futebol-4096.png",
+                            crest = "https://logodownload.org/wp-content/uploads/2023/07/al-nassr-fc-logo-0.png",
                             year = "2023",
                             lastTeam = true
                         )
