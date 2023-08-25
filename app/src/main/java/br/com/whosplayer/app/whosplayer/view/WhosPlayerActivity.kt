@@ -42,7 +42,7 @@ class WhosPlayerActivity : AppCompatActivity() {
             val adapter = TeamCrestAdapter(this, it)
             recyclerView.adapter = adapter
 
-            binding.container.addView(recyclerView)
+            binding.cardViewContainer.addView(recyclerView)
             recyclerView.layoutParams.width = RecyclerView.LayoutParams.WRAP_CONTENT
         }
     }
