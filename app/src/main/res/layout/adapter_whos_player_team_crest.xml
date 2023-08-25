@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/crestTeam"
+        android:layout_width="@dimen/whos_player_52dp"
+        android:layout_height="@dimen/whos_player_52dp"
+        android:layout_marginTop="@dimen/whos_player_20dp"
+        android:layout_marginStart="@dimen/whos_player_8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/yearsPlayed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/whos_player_4dp"
+        app:layout_constraintStart_toStartOf="@+id/crestTeam"
+        app:layout_constraintEnd_toEndOf="@+id/crestTeam"
+        app:layout_constraintTop_toBottomOf="@+id/crestTeam"
+        android:textSize="@dimen/whos_player_12sp"
+        android:textStyle="bold"
+        tools:text="1996-2023"/>
+
+    <ImageView
+        android:id="@+id/arrowRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/whos_player_12dp"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintStart_toEndOf="@+id/crestTeam"
+        app:layout_constraintTop_toTopOf="@+id/crestTeam"
+        app:layout_constraintBottom_toBottomOf="@+id/crestTeam" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
