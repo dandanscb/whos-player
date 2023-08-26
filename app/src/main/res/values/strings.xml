@@ -2,4 +2,7 @@
     <string name="app_name">WhosPlayer</string>
 
     <string name="menu_action_help">help</string>
+    <string name="whos_player_help_text">O objetivo do jogo consiste em descobrir o jogador através dos emblemas dos clubes por onde o jogador passou, por exemplo:</string>
+    <string name="whos_player_help_second_text">Ao observar toda a carreira do jogador e você quiser optar por um palpite, basta digitar o nome do jogador que você acredita ser no espaço destinado para o nome exato do jogador</string>
+    <string name="whos_player_help_third_text">Mas se mesmo ao ver os times pelos quais o jogador passou, ainda assim você ainda não desvendou o jogador, fica tranquilo, preparamos algumas dicas para te auxiliar nesta descoberta</string>
 </resources>

@@ -18,6 +18,5 @@
         android:background="@android:color/transparent"
         android:textSize="24sp"
         android:textStyle="bold"
-        style="@style/CustomEditTextStyle"
-        tools:text="A" />
+        style="@style/CustomEditTextStyle" />
 </LinearLayout>

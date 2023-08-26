@@ -11,6 +11,7 @@ import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.whosplayer.R
+import br.com.whosplayer.app.help.view.HelpActivity
 import br.com.whosplayer.app.whosplayer.repository.mock.WhosPlayerMock
 import br.com.whosplayer.app.whosplayer.view.adapter.NameLetterByLetterAdapter
 import br.com.whosplayer.app.whosplayer.view.adapter.TeamCrestAdapter
@@ -96,7 +97,8 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_help -> {
-                // Lidar com o clique no ícone aqui
+                val intent = HelpActivity.newInstance(this)
+                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)

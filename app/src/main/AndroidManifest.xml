@@ -24,6 +24,10 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".app.help.view.HelpActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>
