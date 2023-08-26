@@ -2,6 +2,8 @@ package br.com.whosplayer.app.whosplayer.view
 
 import android.os.Bundle
 import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +31,8 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     private fun init() {
         binding = ActivityWhosPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
 
         displayCrests()
         showFieldForLetters()
@@ -81,6 +85,21 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
             recyclerViewReference.add(recyclerView)
             nameLetterByLetterAdapter.add(adapter)
             index++
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_toolbar, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_help -> {
+                // Lidar com o clique no ícone aqui
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
