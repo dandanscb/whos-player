@@ -2,18 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/whos_player_gray">
 
     <TextView
         android:id="@+id/help_title"
         android:layout_width="@dimen/whos_player_0dp"
         android:layout_height="wrap_content"
-        android:text="@string/whos_player_help_text"
         android:layout_margin="@dimen/whos_player_24dp"
-        android:textSize="@dimen/whos_player_16sp"
+        android:text="@string/whos_player_help_text"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/whos_player_16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
@@ -22,20 +23,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/whos_player_16dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/help_title" />
 
     <TextView
         android:id="@+id/help_second_text"
         android:layout_width="@dimen/whos_player_0dp"
         android:layout_height="wrap_content"
-        android:text="@string/whos_player_help_second_text"
         android:layout_margin="@dimen/whos_player_24dp"
-        android:textSize="@dimen/whos_player_16sp"
+        android:text="@string/whos_player_help_second_text"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/whos_player_16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/help_cardView" />
 
     <include
@@ -44,20 +45,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/whos_player_16dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/help_second_text" />
 
     <TextView
         android:id="@+id/help_third_text"
         android:layout_width="@dimen/whos_player_0dp"
         android:layout_height="wrap_content"
-        android:text="@string/whos_player_help_third_text"
         android:layout_margin="@dimen/whos_player_24dp"
-        android:textSize="@dimen/whos_player_16sp"
+        android:text="@string/whos_player_help_third_text"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/whos_player_16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/help_letter_by_letter" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

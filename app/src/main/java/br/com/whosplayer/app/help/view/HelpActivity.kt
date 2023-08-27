@@ -23,6 +23,7 @@ class HelpActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         configureCardView()
+        configureLetterByLetters()
     }
 
     private fun configureCardView() {
@@ -54,6 +55,15 @@ class HelpActivity : AppCompatActivity() {
             )
         )
         binding.helpCardView.fourthTeam.arrowRight.visibility = View.INVISIBLE
+    }
+
+    private fun configureLetterByLetters() {
+        binding.helpLetterByLetter.firstLetter.letterEditText.visibility = View.GONE
+        binding.helpLetterByLetter.secondLetter.letterEditText.visibility = View.GONE
+        binding.helpLetterByLetter.thirdLetter.letterEditText.visibility = View.GONE
+        binding.helpLetterByLetter.fourthLetter.letterEditText.visibility = View.GONE
+        binding.helpLetterByLetter.fifthLetter.letterEditText.visibility = View.GONE
+        binding.helpLetterByLetter.sixthLetter.letterEditText.visibility = View.GONE
     }
 
     companion object {

@@ -15,40 +15,39 @@
         <include
             android:id="@+id/first_letter"
             layout="@layout/adapter_whos_player_name_letters"
-            android:background="@drawable/rounded_black_border"
-            android:layout_marginTop="@dimen/whos_player_12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="@dimen/whos_player_32dp"
+            android:layout_margin="@dimen/whos_player_0dp"
+            android:layout_height="@dimen/whos_player_48dp" />
 
         <include
             android:id="@+id/second_letter"
             layout="@layout/adapter_whos_player_name_letters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="@dimen/whos_player_32dp"
+            android:layout_height="@dimen/whos_player_48dp" />
 
         <include
             android:id="@+id/third_letter"
             layout="@layout/adapter_whos_player_name_letters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="@dimen/whos_player_32dp"
+            android:layout_height="@dimen/whos_player_48dp" />
 
         <include
             android:id="@+id/fourth_letter"
             layout="@layout/adapter_whos_player_name_letters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="@dimen/whos_player_32dp"
+            android:layout_height="@dimen/whos_player_48dp" />
 
         <include
             android:id="@+id/fifth_letter"
             layout="@layout/adapter_whos_player_name_letters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="@dimen/whos_player_32dp"
+            android:layout_height="@dimen/whos_player_48dp" />
 
         <include
             android:id="@+id/sixth_letter"
             layout="@layout/adapter_whos_player_name_letters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="@dimen/whos_player_32dp"
+            android:layout_height="@dimen/whos_player_48dp" />
 
     </LinearLayout>
 

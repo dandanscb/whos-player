@@ -90,7 +90,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_toolbar, menu)
+        menuInflater.inflate(R.menu.menu_whos_player, menu)
         return true
     }
 
