@@ -11,6 +11,7 @@
         android:background="@color/whos_player_gray">
 
         <ImageButton
+            android:id="@+id/close_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_close"
@@ -32,7 +33,7 @@
             android:textSize="@dimen/whos_player_16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/close_button" />
 
         <include
             android:id="@+id/help_cardView"
