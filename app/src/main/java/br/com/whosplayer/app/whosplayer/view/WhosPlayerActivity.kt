@@ -6,8 +6,10 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.LinearLayout
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.size
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.whosplayer.R
@@ -16,17 +18,21 @@ import br.com.whosplayer.app.whosplayer.repository.mock.WhosPlayerMock
 import br.com.whosplayer.app.whosplayer.view.adapter.NameLetterByLetterAdapter
 import br.com.whosplayer.app.whosplayer.view.adapter.TeamCrestAdapter
 import br.com.whosplayer.app.whosplayer.view.utils.NonScrollableGridLayoutManager
+import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
 import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
 
 class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTextFocusListener {
 
     private lateinit var binding: ActivityWhosPlayerBinding
+    val viewModel: WhosPlayerViewModel by viewModels()
+
     private var nameLetterByLetterAdapter = mutableListOf<NameLetterByLetterAdapter>()
     private var recyclerViewReference = mutableListOf<RecyclerView>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
+        initViewModel()
     }
 
     private fun init() {
@@ -37,6 +43,16 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
         displayCrests()
         showFieldForLetters()
+    }
+
+    private fun initViewModel() {
+        viewModel.getStages()
+
+        viewModel.stage.observe(this, Observer {
+            when (it) {
+
+            }
+        })
     }
 
     private fun displayCrests() {
