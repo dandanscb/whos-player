@@ -52,6 +52,16 @@
 
             </androidx.cardview.widget.CardView>
 
+            <ImageButton
+                android:id="@+id/tips_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_light_tips"
+                android:background="@color/whos_player_gray"
+                android:layout_margin="@dimen/whos_player_24dp"
+                app:layout_constraintTop_toBottomOf="@id/cardView"
+                app:layout_constraintRight_toRightOf="parent"/>
+
             <LinearLayout
                 android:id="@+id/field_letters_container"
                 android:layout_width="match_parent"
@@ -62,7 +72,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView">
+                app:layout_constraintTop_toBottomOf="@+id/tips_button">
 
             </LinearLayout>
 
