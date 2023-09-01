@@ -24,7 +24,7 @@ import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
 class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTextFocusListener {
 
     private lateinit var binding: ActivityWhosPlayerBinding
-    val viewModel: WhosPlayerViewModel by viewModels()
+//    val viewModel: WhosPlayerViewModel by viewModels()
 
     private var nameLetterByLetterAdapter = mutableListOf<NameLetterByLetterAdapter>()
     private var recyclerViewReference = mutableListOf<RecyclerView>()
@@ -46,13 +46,13 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     }
 
     private fun initViewModel() {
-        viewModel.getStages()
-
-        viewModel.stage.observe(this, Observer {
-            when (it) {
-
-            }
-        })
+//        viewModel.getStages()
+//
+//        viewModel.stage.observe(this, Observer {
+//            when (it) {
+//
+//            }
+//        })
     }
 
     private fun displayCrests() {
