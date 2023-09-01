@@ -24,9 +24,13 @@ class HelpActivity : AppCompatActivity() {
 
         configureCardView()
         configureLetterByLetters()
+
+        binding.closeButton.setOnClickListener {
+            finish()
+        }
     }
 
-    private fun configureCardView() {
+        private fun configureCardView() {
         binding.helpCardView.firstTeam.crestTeam.setImageDrawable(
             ContextCompat.getDrawable(
                 this,
