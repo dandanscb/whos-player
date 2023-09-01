@@ -31,33 +31,33 @@ class HelpActivity : AppCompatActivity() {
     }
 
     private fun configureCardView() {
-//        binding.helpCardView.firstTeam.crestTeam.setImageDrawable(
-//            ContextCompat.getDrawable(
-//                this,
-//                R.drawable.img_santos
-//            )
-//        )
-//
-//        binding.helpCardView.secondTeam.crestTeam.setImageDrawable(
-//            ContextCompat.getDrawable(
-//                this,
-//                R.drawable.img_barcelona
-//            )
-//        )
-//
-//        binding.helpCardView.thirdTeam.crestTeam.setImageDrawable(
-//            ContextCompat.getDrawable(
-//                this,
-//                R.drawable.img_paris_saint_germain
-//            )
-//        )
-//
-//        binding.helpCardView.fourthTeam.crestTeam.setImageDrawable(
-//            ContextCompat.getDrawable(
-//                this,
-//                R.drawable.img_al_hilal
-//            )
-//        )
+        binding.helpCardView.firstTeam.crestTeam.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.img_santos
+            )
+        )
+
+        binding.helpCardView.secondTeam.crestTeam.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.img_barcelona
+            )
+        )
+
+        binding.helpCardView.thirdTeam.crestTeam.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.img_paris_saint_germain
+            )
+        )
+
+        binding.helpCardView.fourthTeam.crestTeam.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.img_al_hilal
+            )
+        )
         binding.helpCardView.fourthTeam.arrowRight.visibility = View.INVISIBLE
     }
 
