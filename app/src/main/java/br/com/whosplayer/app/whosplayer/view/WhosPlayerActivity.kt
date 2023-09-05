@@ -45,6 +45,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
         displayCrests()
         showFieldForLetters()
+        configTipsButtons()
         alertDialog()
     }
 
@@ -153,17 +154,20 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         }
     }
 
-    private fun alertDialog() {
+    private fun configTipsButtons() {
+        binding.remainingHintNumbers.text = "3"
 
-       AlertDialog.Builder(this)
-           .setMessage("Nacionalidade:")
-           .setTitle("Dicas")
-           .setNeutralButton("X")
-           .create()
-           .show()
-
+        //TODO: click do botão
     }
 
+    private fun alertDialog() {
+        AlertDialog.Builder(this)
+            .setMessage("Nacionalidade:")
+            .setTitle("Dicas")
+            .setNeutralButton("X")
+            .create()
+            .show()
+    }
 
     companion object {
         const val spanCount = 3
