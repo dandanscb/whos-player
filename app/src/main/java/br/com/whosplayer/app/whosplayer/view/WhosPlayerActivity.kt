@@ -20,6 +20,8 @@ import br.com.whosplayer.app.whosplayer.view.adapter.TeamCrestAdapter
 import br.com.whosplayer.app.whosplayer.view.utils.NonScrollableGridLayoutManager
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
 import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
+import android.app.AlertDialog
+import androidx.compose.material3.AlertDialog
 
 class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTextFocusListener {
 
@@ -43,6 +45,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
         displayCrests()
         showFieldForLetters()
+        alertDialog()
     }
 
     private fun initViewModel() {
@@ -117,6 +120,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                 startActivity(intent)
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -148,6 +152,18 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
             }
         }
     }
+
+    private fun alertDialog() {
+
+       AlertDialog.Builder(this)
+           .setMessage("Nacionalidade:")
+           .setTitle("Dicas")
+           .setNeutralButton("X")
+           .create()
+           .show()
+
+    }
+
 
     companion object {
         const val spanCount = 3
