@@ -59,7 +59,7 @@
                 android:layout_width="@dimen/whos_player_60dp"
                 android:layout_height="@dimen/whos_player_60dp"
                 android:layout_marginTop="@dimen/whos_player_24dp"
-                android:background="@drawable/gray_rounded_black_border"
+                android:background="@drawable/gray_rounded_black_border_right"
                 android:scaleType="fitCenter"
                 android:src="@drawable/img_light_tips"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +70,7 @@
                 android:layout_width="@dimen/whos_player_60dp"
                 android:layout_height="@dimen/whos_player_60dp"
                 android:layout_marginTop="@dimen/whos_player_24dp"
-                android:background="@drawable/gray_rounded_black_border"
+                android:background="@drawable/gray_rounded_black_border_left"
                 android:scaleType="fitCenter"
                 android:src="@drawable/img_date_tips"
                 app:layout_constraintTop_toBottomOf="@id/cardView" />
