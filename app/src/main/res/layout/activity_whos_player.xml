@@ -23,7 +23,8 @@
         android:layout_height="@dimen/whos_player_0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -64,13 +65,23 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardView" />
 
+            <ImageButton
+                android:id="@id/date_button"
+                android:layout_width="@dimen/whos_player_60dp"
+                android:layout_height="@dimen/whos_player_60dp"
+                android:layout_marginTop="@dimen/whos_player_24dp"
+                android:background="@drawable/gray_rounded_black_border"
+                android:scaleType="fitCenter"
+                android:src="@drawable/img_date_tips"
+                app:layout_constraintTop_toBottomOf="@id/cardView" />
+
             <TextView
                 android:id="@+id/remaining_hint_numbers"
                 android:layout_width="@dimen/whos_player_16dp"
                 android:layout_height="@dimen/whos_player_16dp"
-                android:background="@drawable/circle_blue_background"
-                android:layout_marginBottom="@dimen/whos_player_8dp"
                 android:layout_marginStart="@dimen/whos_player_20dp"
+                android:layout_marginBottom="@dimen/whos_player_8dp"
+                android:background="@drawable/circle_blue_background"
                 android:gravity="center"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/whos_player_12sp"

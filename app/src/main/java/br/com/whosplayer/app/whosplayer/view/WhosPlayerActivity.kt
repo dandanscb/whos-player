@@ -21,6 +21,8 @@ import br.com.whosplayer.app.whosplayer.view.utils.NonScrollableGridLayoutManage
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
 import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
 import android.app.AlertDialog
+import android.content.DialogInterface
+import android.widget.Toast
 import androidx.compose.material3.AlertDialog
 
 class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTextFocusListener {
@@ -46,7 +48,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         displayCrests()
         showFieldForLetters()
         configTipsButtons()
-        alertDialog()
+        configDateButtons()
     }
 
     private fun initViewModel() {
@@ -158,13 +160,22 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         binding.remainingHintNumbers.text = "3"
 
         //TODO: click do botão
+
+        binding.tipsButton.setOnClickListener {
+            alertDialog()
+        }
+    }
+
+    private fun configDateButtons() {
+        binding.remainingHintNumbers.text = "3"
+
+
     }
 
     private fun alertDialog() {
         AlertDialog.Builder(this)
-            .setMessage("Nacionalidade:")
+            .setMessage("Nacionalidade: Português")
             .setTitle("Dicas")
-            .setNeutralButton("X")
             .create()
             .show()
     }
