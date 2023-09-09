@@ -3,8 +3,8 @@
     <item android:drawable="@color/whos_player_gray" />
     <item
         android:bottom="@dimen/whos_player_2dp"
-        android:left="@dimen/whos_player_2dp"
-        android:right="@dimen/whos_player_0dp"
+        android:left="@dimen/whos_player_0dp"
+        android:right="@dimen/whos_player_2dp"
         android:top="@dimen/whos_player_2dp">
         <shape android:shape="rectangle">
             <corners

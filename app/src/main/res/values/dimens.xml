@@ -32,6 +32,7 @@
     <dimen name="whos_player_4sp">4sp</dimen>
     <dimen name="whos_player_8sp">8sp</dimen>
     <dimen name="whos_player_12sp">12sp</dimen>
+    <dimen name="whos_player_14sp">14sp</dimen>
     <dimen name="whos_player_16sp">16sp</dimen>
     <dimen name="whos_player_20sp">20sp</dimen>
     <dimen name="whos_player_24sp">24sp</dimen>

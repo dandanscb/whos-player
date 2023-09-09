@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/whos_player_24dp"
+    android:background="@drawable/rounded_white_border">
+
+    <TextView
+        android:id="@+id/tipsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/whos_player_16dp"
+        android:text="@string/whos_player_custom_tips_text_title"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/whos_player_16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tipsValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/whos_player_16dp"
+        android:layout_marginBottom="@dimen/whos_player_8dp"
+        android:text="@string/whos_player_custom_tips_text_value_tools"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/whos_player_14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tipsTitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

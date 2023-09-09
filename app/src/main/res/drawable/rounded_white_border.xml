@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/whos_player_gray" />
+    <stroke
+        android:width="@dimen/whos_player_2dp"
+        android:color="@android:color/white" />
+    <corners android:radius="@dimen/whos_player_16dp" />
+</shape>

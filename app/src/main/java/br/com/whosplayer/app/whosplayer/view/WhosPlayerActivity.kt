@@ -17,7 +17,11 @@ import br.com.whosplayer.app.whosplayer.view.adapter.NameLetterByLetterAdapter
 import br.com.whosplayer.app.whosplayer.view.adapter.TeamCrestAdapter
 import br.com.whosplayer.app.whosplayer.view.utils.NonScrollableGridLayoutManager
 import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
-import android.app.AlertDialog
+import android.app.Dialog
+import android.content.Context
+import android.view.Window
+import android.view.WindowManager
+import android.widget.ImageButton
 
 class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTextFocusListener {
 
@@ -157,7 +161,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         binding.remainingHintNumbers.text = "3"
 
         binding.tipsButton.setOnClickListener {
-            alertDialog()
+            showCustomDialog()
         }
     }
 
@@ -169,12 +173,24 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         }
     }
 
-    private fun alertDialog() {
-        AlertDialog.Builder(this)
-            .setMessage("Nacionalidade: Português")
-            .setTitle("Dicas")
-            .create()
-            .show()
+    private fun showCustomDialog() {
+        val dialog = Dialog(this, R.style.CustomDialog)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.alert_dialog_whos_player_tips)
+        dialog.setCancelable(true)
+
+        val closeButton = dialog.findViewById<ImageButton>(R.id.dialog_close_button)
+        closeButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        val layoutParams = WindowManager.LayoutParams()
+        layoutParams.copyFrom(dialog.window?.attributes)
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog.window?.attributes = layoutParams
+
+        dialog.show()
     }
 
     companion object {
