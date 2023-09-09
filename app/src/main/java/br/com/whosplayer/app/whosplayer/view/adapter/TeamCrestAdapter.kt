@@ -1,5 +1,6 @@
 package br.com.whosplayer.app.whosplayer.view.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -31,6 +32,14 @@ class TeamCrestAdapter(private val context: Context, private val items: List<Tea
         return items.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun changeYearsPlayedVisibility() {
+        items.forEach {
+            it.yearVisibility = !it.yearVisibility
+        }
+        notifyDataSetChanged()
+    }
+
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val crestTeam: ImageView = itemView.findViewById(R.id.crestTeam)
         private val yearsPlayed: TextView = itemView.findViewById(R.id.yearsPlayed)
@@ -41,6 +50,12 @@ class TeamCrestAdapter(private val context: Context, private val items: List<Tea
             yearsPlayed.text = model.year
             if (model.lastTeam) {
                 arrowRight.visibility = View.INVISIBLE
+            }
+
+            if (model.yearVisibility) {
+                yearsPlayed.visibility = View.VISIBLE
+            } else {
+                yearsPlayed.visibility = View.INVISIBLE
             }
         }
     }

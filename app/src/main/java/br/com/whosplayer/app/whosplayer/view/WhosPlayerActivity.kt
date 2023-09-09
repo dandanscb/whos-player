@@ -6,10 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.LinearLayout
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.size
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.whosplayer.R
@@ -18,17 +16,15 @@ import br.com.whosplayer.app.whosplayer.repository.mock.WhosPlayerMock
 import br.com.whosplayer.app.whosplayer.view.adapter.NameLetterByLetterAdapter
 import br.com.whosplayer.app.whosplayer.view.adapter.TeamCrestAdapter
 import br.com.whosplayer.app.whosplayer.view.utils.NonScrollableGridLayoutManager
-import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
 import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
 import android.app.AlertDialog
-import android.content.DialogInterface
-import android.widget.Toast
-import androidx.compose.material3.AlertDialog
 
 class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTextFocusListener {
 
     private lateinit var binding: ActivityWhosPlayerBinding
 //    val viewModel: WhosPlayerViewModel by viewModels()
+
+    private var teamCrestAdapter = mutableListOf<TeamCrestAdapter>()
 
     private var nameLetterByLetterAdapter = mutableListOf<NameLetterByLetterAdapter>()
     private var recyclerViewReference = mutableListOf<RecyclerView>()
@@ -79,6 +75,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
             binding.cardViewContainer.addView(recyclerView)
             recyclerView.layoutParams.width = RecyclerView.LayoutParams.WRAP_CONTENT
+            teamCrestAdapter.add(adapter)
         }
     }
 
@@ -159,17 +156,17 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     private fun configTipsButtons() {
         binding.remainingHintNumbers.text = "3"
 
-        //TODO: click do botão
-
         binding.tipsButton.setOnClickListener {
             alertDialog()
         }
     }
 
     private fun configDateButtons() {
-        binding.remainingHintNumbers.text = "3"
-
-
+        binding.dateButton.setOnClickListener {
+            teamCrestAdapter.forEach {
+                it.changeYearsPlayedVisibility()
+            }
+        }
     }
 
     private fun alertDialog() {
