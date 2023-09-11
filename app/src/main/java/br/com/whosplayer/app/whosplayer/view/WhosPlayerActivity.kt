@@ -19,6 +19,7 @@ import br.com.whosplayer.app.whosplayer.view.utils.NonScrollableGridLayoutManage
 import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
 import android.app.Dialog
 import android.content.Context
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageButton
@@ -182,6 +183,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
     private fun configDateButtons() {
         binding.dateButton.setOnClickListener {
+            binding.dateButton.visibility = View.GONE
             teamCrestAdapter.forEach {
                 it.changeYearsPlayedVisibility()
             }
