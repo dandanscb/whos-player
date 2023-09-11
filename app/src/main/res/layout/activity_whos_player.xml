@@ -54,6 +54,16 @@
 
             </androidx.cardview.widget.CardView>
 
+            <TextView
+
+                android:id="@id/number_tips"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/_1"
+                android:textSize="@dimen/whos_player_12dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardView" />
+
             <ImageButton
                 android:id="@+id/tips_button"
                 android:layout_width="@dimen/whos_player_60dp"

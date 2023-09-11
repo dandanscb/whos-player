@@ -10,4 +10,5 @@
     <string name="whos_player_alert_dialog_title">Dicas</string>
     <string name="whos_player_custom_tips_text_title">Dica %s:</string>
     <string name="whos_player_custom_tips_text_value_tools">O país do Jogador é %s.</string>
+    <string name="_1">-1</string>
 </resources>

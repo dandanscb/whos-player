@@ -170,6 +170,8 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
         binding.remainingHintNumbers.text = remainingTips.toString()
 
+        binding.numberTips.animate().translationY(1000F)
+
         binding.tipsButton.setOnClickListener {
             showCustomDialog(remainingTips, tipsMessage)
             if (remainingTips != 1) {
@@ -178,7 +180,12 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
             } else {
                 binding.remainingHintNumbers.text = (remainingTips - 1).toString()
             }
+            binding.numberTips.visibility = View.VISIBLE
+            binding.numberTips.animate().translationY(0F).setDuration(
+                resources.getInteger(android.R.integer.config_shortAnimTime).toLong()
+            )
         }
+
     }
 
     private fun configDateButtons() {
