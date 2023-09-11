@@ -209,7 +209,20 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
         dialog.window?.attributes = layoutParams
 
-        for (position in tipsNumber..tipsMessage.size) {
+        val messages = mutableListOf<Pair<String, String>>()
+        for (position in tipsMessage.size downTo tipsNumber) {
+            messages.add(
+                Pair(
+                    this.getString(
+                        R.string.whos_player_custom_tips_text_title,
+                        messages.size + NUMBER_ONE
+                    ),
+                    tipsMessage[messages.size]
+                )
+            )
+        }
+
+        for (tip in messages) {
             val firstTip = CustomTipsTextView(this)
             firstTip.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -221,11 +234,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                 resources.getDimension(R.dimen.whos_player_0dp).toInt(),
                 resources.getDimension(R.dimen.whos_player_0dp).toInt()
             )
-            firstTip.setTexts(
-                this.getString(R.string.whos_player_custom_tips_text_title, position),
-                tipsMessage[tipsMessage.size - position]
-            )
-
+            firstTip.setTexts(tip.first, tip.second)
             tipsContainer.addView(firstTip)
         }
 
