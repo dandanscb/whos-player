@@ -22,6 +22,10 @@ import android.content.Context
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageButton
+import androidx.core.view.marginTop
+import br.com.whosplayer.app.whosplayer.repository.mock.WhosPlayerMock.getTipsMessages
+import br.com.whosplayer.app.whosplayer.repository.model.StageModel
+import br.com.whosplayer.commons.view.CustomTipsTextView
 
 class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTextFocusListener {
 
@@ -32,6 +36,9 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
     private var nameLetterByLetterAdapter = mutableListOf<NameLetterByLetterAdapter>()
     private var recyclerViewReference = mutableListOf<RecyclerView>()
+
+    private var player: StageModel = WhosPlayerMock.getStageModelMock()[soccerPlayerValue]
+    private var remainingTips: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +69,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     }
 
     private fun displayCrests() {
-        val items = WhosPlayerMock.getStageModelMock()[soccerPlayerValue].soccerPlayer.teams
+        val items = player.soccerPlayer.teams
         items.forEach {
             val recyclerView = RecyclerView(this)
 
@@ -85,8 +92,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
     private fun showFieldForLetters() {
         var index = FIRST_INDEX
-        val items =
-            WhosPlayerMock.getStageModelMock()[soccerPlayerValue].soccerPlayer.nameLetterByLetter
+        val items = player.soccerPlayer.nameLetterByLetter
         items.forEach {
             val recyclerView = RecyclerView(this)
             val layoutParams = LinearLayout.LayoutParams(
@@ -158,10 +164,19 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     }
 
     private fun configTipsButtons() {
-        binding.remainingHintNumbers.text = "3"
+        val tipsMessage = getTipsMessages(player.soccerPlayer.tips)
+        remainingTips = tipsMessage.size
+
+        binding.remainingHintNumbers.text = remainingTips.toString()
 
         binding.tipsButton.setOnClickListener {
-            showCustomDialog()
+            showCustomDialog(remainingTips, tipsMessage)
+            if (remainingTips != 1) {
+                remainingTips--
+                binding.remainingHintNumbers.text = remainingTips.toString()
+            } else {
+                binding.remainingHintNumbers.text = (remainingTips - 1).toString()
+            }
         }
     }
 
@@ -173,7 +188,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         }
     }
 
-    private fun showCustomDialog() {
+    private fun showCustomDialog(tipsNumber: Int, tipsMessage: List<String>) {
         val dialog = Dialog(this, R.style.CustomDialog)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.alert_dialog_whos_player_tips)
@@ -184,11 +199,33 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
             dialog.dismiss()
         }
 
+        val tipsContainer = dialog.findViewById<LinearLayout>(R.id.tipsContainer)
+
         val layoutParams = WindowManager.LayoutParams()
         layoutParams.copyFrom(dialog.window?.attributes)
         layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
         dialog.window?.attributes = layoutParams
+
+        for (position in tipsNumber..tipsMessage.size) {
+            val firstTip = CustomTipsTextView(this)
+            firstTip.layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            (firstTip.layoutParams as LinearLayout.LayoutParams).setMargins(
+                resources.getDimension(R.dimen.whos_player_0dp).toInt(),
+                resources.getDimension(R.dimen.whos_player_12dp).toInt(),
+                resources.getDimension(R.dimen.whos_player_0dp).toInt(),
+                resources.getDimension(R.dimen.whos_player_0dp).toInt()
+            )
+            firstTip.setTexts(
+                this.getString(R.string.whos_player_custom_tips_text_title, position),
+                tipsMessage[tipsMessage.size - position]
+            )
+
+            tipsContainer.addView(firstTip)
+        }
 
         dialog.show()
     }

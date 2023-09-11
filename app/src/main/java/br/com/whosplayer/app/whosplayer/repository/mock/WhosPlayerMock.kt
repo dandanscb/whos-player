@@ -134,6 +134,24 @@ object WhosPlayerMock {
         )
     )
 
+    fun getTipsMessages(tips: TipsModel) : List<String> {
+        val messages = mutableListOf<String>()
+
+        if (!tips.dateOfBirth.isNullOrEmpty()) {
+            messages.add("A data de nascimento do Jogador é ${tips.dateOfBirth}.")
+        }
+
+        if (!tips.position.isNullOrEmpty()) {
+            messages.add("O Jogador joga como ${tips.position}.")
+        }
+
+        if (!tips.nationality.isNullOrEmpty()) {
+            messages.add("Este jogador é da nacionalidade: ${tips.nationality}.")
+        }
+
+        return messages
+    }
+
     private fun getListWithFourTeams(model: List<TeamModel>): List<List<TeamModel>> {
         model.last().lastTeam = true
         val list = mutableListOf<List<TeamModel>>()

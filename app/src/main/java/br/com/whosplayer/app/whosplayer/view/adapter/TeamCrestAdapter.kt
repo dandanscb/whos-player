@@ -17,6 +17,8 @@ import com.bumptech.glide.request.RequestOptions
 class TeamCrestAdapter(private val context: Context, private val items: List<TeamModel>) :
     RecyclerView.Adapter<TeamCrestAdapter.ItemViewHolder>() {
 
+    private var yearVisibility: Boolean = false
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.adapter_whos_player_team_crest, parent, false)
@@ -34,9 +36,7 @@ class TeamCrestAdapter(private val context: Context, private val items: List<Tea
 
     @SuppressLint("NotifyDataSetChanged")
     fun changeYearsPlayedVisibility() {
-        items.forEach {
-            it.yearVisibility = !it.yearVisibility
-        }
+        yearVisibility = true
         notifyDataSetChanged()
     }
 
@@ -52,7 +52,7 @@ class TeamCrestAdapter(private val context: Context, private val items: List<Tea
                 arrowRight.visibility = View.INVISIBLE
             }
 
-            if (model.yearVisibility) {
+            if (yearVisibility) {
                 yearsPlayed.visibility = View.VISIBLE
             } else {
                 yearsPlayed.visibility = View.INVISIBLE
