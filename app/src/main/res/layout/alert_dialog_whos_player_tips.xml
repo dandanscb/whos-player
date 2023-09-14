@@ -15,40 +15,48 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/whos_player_16dp"
-            android:background="@color/whos_player_gray"
+            android:background="@drawable/gray_rounded_black_border_top"
             android:paddingBottom="@dimen/whos_player_8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageButton
-                android:id="@+id/tipsIcon"
-                android:layout_width="@dimen/whos_player_40dp"
-                android:layout_height="@dimen/whos_player_40dp"
-                android:background="@color/whos_player_gray"
-                android:scaleType="fitCenter"
-                android:src="@drawable/img_light_tips"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/customDialogTitle"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/whos_player_8dp"
-                android:text="@string/whos_player_alert_dialog_title"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/whos_player_24sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tipsIcon"
-                app:layout_constraintStart_toEndOf="@+id/tipsIcon"
-                app:layout_constraintTop_toTopOf="@+id/tipsIcon" />
+                android:layout_marginEnd="@dimen/whos_player_16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/tipsIcon"
+                    android:layout_width="@dimen/whos_player_40dp"
+                    android:layout_height="@dimen/whos_player_40dp"
+                    android:layout_marginTop="@dimen/whos_player_2dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/img_light_tips" />
+
+                <TextView
+                    android:id="@+id/customDialogTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/whos_player_8dp"
+                    android:text="@string/whos_player_alert_dialog_title"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/whos_player_24sp" />
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
             android:id="@+id/titleDividerNoCustom"
-            android:layout_width="@dimen/whos_player_0dp"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/whos_player_1dp"
+            android:layout_marginHorizontal="@dimen/whos_player_2dp"
             android:background="@android:color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleContainer" />
@@ -57,9 +65,9 @@
             android:id="@+id/tipsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
+            android:background="@drawable/white_rounded_border_bottom"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/whos_player_16dp"
+            android:paddingBottom="@dimen/whos_player_24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleDividerNoCustom">

@@ -1,5 +1,7 @@
 package br.com.whosplayer.app.whosplayer.view
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.Gravity
 import android.view.Menu
@@ -23,6 +25,7 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.core.view.marginTop
 import br.com.whosplayer.app.whosplayer.repository.mock.WhosPlayerMock.getTipsMessages
 import br.com.whosplayer.app.whosplayer.repository.model.StageModel
@@ -39,7 +42,6 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     private var recyclerViewReference = mutableListOf<RecyclerView>()
 
     private var player: StageModel = WhosPlayerMock.getStageModelMock()[soccerPlayerValue]
-    private var remainingTips: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +54,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.title = "QUAL JOGADOR ?"
 
         displayCrests()
         showFieldForLetters()
@@ -166,19 +169,56 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
     private fun configTipsButtons() {
         val tipsMessage = getTipsMessages(player.soccerPlayer.tips)
-        remainingTips = tipsMessage.size
+        var remainingTips = tipsMessage.size
 
         binding.remainingHintNumbers.text = remainingTips.toString()
 
         binding.tipsButton.setOnClickListener {
-            showCustomDialog(remainingTips, tipsMessage)
-            if (remainingTips != 1) {
+            if (remainingTips != FIRST_INDEX) {
+                showCustomDialog(remainingTips, tipsMessage)
                 remainingTips--
+                configAnimationNumberTips()
                 binding.remainingHintNumbers.text = remainingTips.toString()
             } else {
-                binding.remainingHintNumbers.text = (remainingTips - 1).toString()
+                showCustomDialog(NUMBER_ONE, tipsMessage)
+                binding.remainingHintNumbers.text = remainingTips.toString()
             }
         }
+    }
+
+    private fun configAnimationNumberTips() {
+        val scaleXAnimator = ObjectAnimator.ofFloat(
+            binding.tipsNumberAnimation,
+            "scaleX",
+            1.0f,
+            2.0f
+        )
+        val scaleYAnimator =
+            ObjectAnimator.ofFloat(
+                binding.tipsNumberAnimation,
+                "scaleY",
+                1.0f,
+                2.0f
+            )
+
+        // Crie uma animação de transparência
+        val alphaAnimator = ObjectAnimator.ofFloat(
+            binding.tipsNumberAnimation,
+            "alpha",
+            1.0f,
+            0.0f
+        )
+
+        scaleXAnimator.duration = 1500
+        scaleYAnimator.duration = 1500
+        alphaAnimator.duration = 1500
+
+        val animatorSet = AnimatorSet()
+        animatorSet.playTogether(scaleXAnimator, scaleYAnimator, alphaAnimator)
+
+        binding.tipsNumberAnimation.visibility = TextView.VISIBLE
+
+        animatorSet.start()
     }
 
     private fun configDateButtons() {
