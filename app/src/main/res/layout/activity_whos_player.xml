@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/whos_player_24dp"
-                android:layout_marginTop="@dimen/whos_player_60dp"
+                android:layout_marginTop="@dimen/whos_player_40dp"
                 app:cardCornerRadius="@dimen/whos_player_16dp"
                 app:cardElevation="@dimen/whos_player_8dp"
                 app:cardUseCompatPadding="true"
@@ -63,8 +63,8 @@
                 android:textSize="@dimen/whos_player_32sp"
                 android:textStyle="bold"
                 android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/tips_button"  />
+                app:layout_constraintBottom_toTopOf="@id/tips_button"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <ImageButton
                 android:id="@+id/tips_button"
@@ -81,13 +81,13 @@
                 android:id="@id/date_button"
                 android:layout_width="@dimen/whos_player_60dp"
                 android:layout_height="@dimen/whos_player_60dp"
-                android:padding="@dimen/whos_player_8dp"
                 android:layout_marginTop="@dimen/whos_player_24dp"
                 android:background="@drawable/gray_rounded_black_border_left"
+                android:padding="@dimen/whos_player_8dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/img_calendar_tips"
-                app:layout_constraintTop_toBottomOf="@id/cardView"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardView" />
 
             <TextView
                 android:id="@+id/remaining_hint_numbers"
@@ -105,6 +105,16 @@
                 app:layout_constraintStart_toStartOf="@+id/tips_button"
                 tools:text="3" />
 
+            <Button
+                android:id="@+id/confirmation_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/whos_player_8dp"
+                android:text="Ok"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/field_letters_container" />
+
             <LinearLayout
                 android:id="@+id/field_letters_container"
                 android:layout_width="match_parent"
@@ -113,7 +123,6 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:padding="@dimen/whos_player_16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tips_button">
