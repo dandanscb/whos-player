@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">WhosPlayer</string>
 
-
     <string name="menu_action_help">help</string>
     <string name="whos_player_help_text">O objetivo do jogo consiste em descobrir o jogador através dos emblemas dos clubes no qual ele jogou, por exemplo:</string>
     <string name="whos_player_help_second_text">Ao observar toda a carreira do jogador, ou seja, os clubes nos quais este jogador atuou e/ou atua e quiser optar por um palpite, basta digitar o nome do jogador que você acredita ser no espaço em branco destinado ao texto.</string>
-    <string name="whos_player_help_third_text">Mas mesmo ao ver os times pelos quais o jogador passou e ainda não descobriu quem ele é, fique tranquilo, preparamos algumas dicas para te auxiliar nesta descoberta.\nTemos duas opções de dicas para te ajudar, a primeira consta em uma lampada, que ao solicita-lá, te dará até 3 dicas, em segundo sua posição, por exemplo:Atacante e por fim, a sua nacionalidade.</string>
+    <string name="whos_player_help_third_text">Mas mesmo ao ver os times pelos quais o jogador passou e ainda não descobriu quem ele é, fique tranquilo, preparamos algumas dicas para te auxiliar nesta descoberta.\nTemos duas opções de dicas para te ajudar, a primeira consta em uma lampada, que ao solicita-lá, te dará até 3 dicas, sendo a primeira a data de nascimento do jogador, a segunda sua posição, por exemplo:Atacante e por fim, a sua nacionalidade.</string>
     <string name="whos_player_help_fourth_text">A segunda opção de dica que preparamos para você é um calendário, que ao clica-lo você saberá a data na qual o jogador atuou em cada clube, depois disso ele desaparecerá de sua tela.</string>
 
     <string name="whos_player_alert_dialog_title">Dicas</string>

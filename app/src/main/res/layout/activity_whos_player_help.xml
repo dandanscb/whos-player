@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/whos_player_0dp"
-        android:background="@color/whos_player_gray">
+        android:background="@color/whos_player_gray" >
 
         <ImageButton
             android:id="@+id/close_button"
@@ -103,6 +103,8 @@
             android:id="@+id/date_tips"
             android:layout_width="@dimen/whos_player_60dp"
             android:layout_height="@dimen/whos_player_60dp"
+            android:padding="@dimen/whos_player_8dp"
+            android:layout_marginTop="@dimen/whos_player_8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/img_calendar_tips"
             app:layout_constraintEnd_toEndOf="parent"

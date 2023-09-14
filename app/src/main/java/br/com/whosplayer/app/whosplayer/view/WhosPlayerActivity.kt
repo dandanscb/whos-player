@@ -184,6 +184,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                 binding.remainingHintNumbers.text = remainingTips.toString()
             }
         }
+
     }
 
     private fun configAnimationNumberTips() {
