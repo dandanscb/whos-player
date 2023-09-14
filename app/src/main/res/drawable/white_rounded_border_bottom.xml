@@ -7,10 +7,13 @@
         android:right="@dimen/whos_player_2dp"
         android:top="@dimen/whos_player_0dp">
         <shape android:shape="rectangle">
+            <stroke
+                android:width="@dimen/whos_player_2dp"
+                android:color="@android:color/white" />
             <corners
+                android:bottomLeftRadius="@dimen/whos_player_24dp"
                 android:bottomRightRadius="@dimen/whos_player_24dp"
                 android:topLeftRadius="@dimen/whos_player_0dp"
-                android:bottomLeftRadius="@dimen/whos_player_24dp"
                 android:topRightRadius="@dimen/whos_player_0dp" />
             <solid android:color="@color/whos_player_gray" />
         </shape>
