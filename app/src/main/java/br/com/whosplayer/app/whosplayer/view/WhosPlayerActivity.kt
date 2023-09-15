@@ -60,6 +60,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         showFieldForLetters()
         configTipsButtons()
         configDateButtons()
+        configConfirmationButton()
     }
 
     private fun initViewModel() {
@@ -228,6 +229,12 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
             teamCrestAdapter.forEach {
                 it.changeYearsPlayedVisibility()
             }
+        }
+    }
+
+    private fun configConfirmationButton() {
+        binding.confirmationButton.setOnClickListener {
+            // TODO
         }
     }
 
