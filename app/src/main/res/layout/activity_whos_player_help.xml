@@ -178,17 +178,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tips_example_container" />
 
-        <ImageView
-            android:id="@+id/date_tips"
-            android:layout_width="@dimen/whos_player_60dp"
-            android:layout_height="@dimen/whos_player_60dp"
-            android:padding="@dimen/whos_player_8dp"
-            android:layout_marginTop="@dimen/whos_player_8dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/img_calendar_tips"
+        <include
+            android:id="@+id/help_cardViewDates"
+            layout="@layout/card_view_whos_player_help_example"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/whos_player_16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/help_fourth_text" />
+
+        <TextView
+            android:id="@+id/help_fifth_text"
+            android:layout_width="@dimen/whos_player_0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/whos_player_24dp"
+            android:text="@string/whos_player_help_fifth_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/whos_player_16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/help_cardViewDates" />
+
+        <Button
+            android:id="@+id/confirmation_button_exemple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/whos_player_8dp"
+            android:text="Ok"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/help_fifth_text"/>
         
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -24,6 +24,7 @@ class HelpActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         configureCardView()
+        configureCardViewDates()
         configureLetterByLetters()
         configureTips()
 
@@ -63,6 +64,45 @@ class HelpActivity : AppCompatActivity() {
         binding.helpCardView.fourthTeam.arrowRight.visibility = View.INVISIBLE
     }
 
+    private fun configureCardViewDates() {
+        binding.helpCardViewDates.firstTeam.crestTeam.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.img_santos
+            )
+        )
+        binding.helpCardViewDates.firstTeam.yearsPlayed.text = "2009-2013"
+
+
+        binding.helpCardViewDates.secondTeam.crestTeam.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.img_barcelona
+            )
+        )
+        binding.helpCardViewDates.secondTeam.yearsPlayed.text = "2013-2017"
+
+        binding.helpCardViewDates.thirdTeam.crestTeam.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.img_paris_saint_germain
+            )
+        )
+        binding.helpCardViewDates.thirdTeam.yearsPlayed.text = "2017-2023"
+
+        binding.helpCardViewDates.fourthTeam.crestTeam.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.img_al_hilal
+            )
+        )
+        binding.helpCardViewDates.fourthTeam.yearsPlayed.text = "2023"
+
+        binding.helpCardViewDates.fourthTeam.arrowRight.visibility = View.INVISIBLE
+
+
+    }
+
     private fun configureLetterByLetters() {
         binding.helpLetterByLetter.firstLetter.letterEditText.visibility = View.GONE
         binding.helpLetterByLetter.secondLetter.letterEditText.visibility = View.GONE
@@ -74,7 +114,8 @@ class HelpActivity : AppCompatActivity() {
 
     private fun configureTips() {
         binding.firstTip.tipsTitle.text = "Dica 1"
-        binding.firstTip.tipsValue.text = "A data de nascimento do Jogador é 5 de fevereiro de 1992."
+        binding.firstTip.tipsValue.text =
+            "A data de nascimento do Jogador é 5 de fevereiro de 1992."
         binding.secondTip.tipsTitle.text = "Dica 2"
         binding.secondTip.tipsValue.text = "O Jogador joga como Atacante."
         binding.thirdTip.tipsTitle.text = "Dica 3"
