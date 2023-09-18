@@ -76,16 +76,95 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_letter_by_letter" />
 
-
-        <ImageView
-            android:id="@+id/light_tips"
-            android:layout_width="@dimen/whos_player_60dp"
-            android:layout_height="@dimen/whos_player_60dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/img_light_tips"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tips_example_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/whos_player_40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/help_third_text" />
+            app:layout_constraintTop_toBottomOf="@id/help_third_text">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tips_example_title_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/whos_player_16dp"
+                android:background="@drawable/gray_rounded_black_border_top"
+                android:paddingBottom="@dimen/whos_player_8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/whos_player_16dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageButton
+                        android:id="@+id/tips_icon_example"
+                        android:layout_width="@dimen/whos_player_40dp"
+                        android:layout_height="@dimen/whos_player_40dp"
+                        android:layout_marginTop="@dimen/whos_player_2dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/img_light_tips" />
+
+                    <TextView
+                        android:id="@+id/tips_title_example"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/whos_player_8dp"
+                        android:text="@string/whos_player_alert_dialog_title"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/whos_player_24sp" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/tipsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_rounded_border_bottom"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/whos_player_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tips_example_title_container">
+
+                <include
+                    android:id="@+id/firstTip"
+                    layout="@layout/custom_tips_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/whos_player_16dp"
+                    android:layout_marginTop="@dimen/whos_player_16dp" />
+
+                <include
+                    android:id="@+id/secondTip"
+                    layout="@layout/custom_tips_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/whos_player_16dp"
+                    android:layout_marginTop="@dimen/whos_player_16dp" />
+
+                <include
+                    android:id="@+id/thirdTip"
+                    layout="@layout/custom_tips_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/whos_player_16dp"
+                    android:layout_marginTop="@dimen/whos_player_16dp" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/help_fourth_text"
@@ -97,7 +176,7 @@
             android:textSize="@dimen/whos_player_16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/light_tips" />
+            app:layout_constraintTop_toBottomOf="@+id/tips_example_container" />
 
         <ImageView
             android:id="@+id/date_tips"

@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import br.com.whosplayer.R
+import br.com.whosplayer.commons.view.CustomTipsTextView
 import br.com.whosplayer.databinding.ActivityWhosPlayerHelpBinding
 
 class HelpActivity : AppCompatActivity() {
@@ -24,6 +25,7 @@ class HelpActivity : AppCompatActivity() {
 
         configureCardView()
         configureLetterByLetters()
+        configureTips()
 
         binding.closeButton.setOnClickListener {
             finish()
@@ -68,6 +70,15 @@ class HelpActivity : AppCompatActivity() {
         binding.helpLetterByLetter.fourthLetter.letterEditText.visibility = View.GONE
         binding.helpLetterByLetter.fifthLetter.letterEditText.visibility = View.GONE
         binding.helpLetterByLetter.sixthLetter.letterEditText.visibility = View.GONE
+    }
+
+    private fun configureTips() {
+        binding.firstTip.tipsTitle.text = "Dica 1"
+        binding.firstTip.tipsValue.text = "A data de nascimento do Jogador é 5 de fevereiro de 1992."
+        binding.secondTip.tipsTitle.text = "Dica 2"
+        binding.secondTip.tipsValue.text = "O Jogador joga como Atacante."
+        binding.thirdTip.tipsTitle.text = "Dica 3"
+        binding.thirdTip.tipsValue.text = "Este jogador é da nacionalidade: Brasileiro."
     }
 
     companion object {
