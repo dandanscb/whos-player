@@ -14,39 +14,41 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.whosplayer.R
 import br.com.whosplayer.app.help.view.HelpActivity
-import br.com.whosplayer.app.whosplayer.repository.mock.WhosPlayerMock
 import br.com.whosplayer.app.whosplayer.view.adapter.NameLetterByLetterAdapter
 import br.com.whosplayer.app.whosplayer.view.adapter.TeamCrestAdapter
 import br.com.whosplayer.app.whosplayer.view.utils.NonScrollableGridLayoutManager
 import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
 import android.app.Dialog
-import android.content.Context
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.core.view.marginTop
+import androidx.lifecycle.ViewModelProvider
 import br.com.whosplayer.app.whosplayer.repository.mock.WhosPlayerMock.getTipsMessages
-import br.com.whosplayer.app.whosplayer.repository.model.StageModel
+import br.com.whosplayer.app.whosplayer.repository.model.TeamModel
+import br.com.whosplayer.app.whosplayer.repository.model.TipsModel
+import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
+import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModelFactory
+import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewState
 import br.com.whosplayer.commons.view.CustomTipsTextView
 
 class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTextFocusListener {
 
     private lateinit var binding: ActivityWhosPlayerBinding
-//    val viewModel: WhosPlayerViewModel by viewModels()
 
     private var teamCrestAdapter = mutableListOf<TeamCrestAdapter>()
 
     private var nameLetterByLetterAdapter = mutableListOf<NameLetterByLetterAdapter>()
     private var recyclerViewReference = mutableListOf<RecyclerView>()
 
-    private var player: StageModel = WhosPlayerMock.getStageModelMock()[soccerPlayerValue]
+    private var viewModel: WhosPlayerViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
         initViewModel()
+        initObservable()
     }
 
     private fun init() {
@@ -56,26 +58,35 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         setSupportActionBar(binding.toolbar)
         supportActionBar?.title = "QUAL JOGADOR ?"
 
-        displayCrests()
-        showFieldForLetters()
-        configTipsButtons()
         configDateButtons()
         configConfirmationButton()
     }
 
     private fun initViewModel() {
-//        viewModel.getStages()
-//
-//        viewModel.stage.observe(this, Observer {
-//            when (it) {
-//
-//            }
-//        })
+        val factory = WhosPlayerViewModelFactory()
+        viewModel = ViewModelProvider(this, factory)[WhosPlayerViewModel::class.java]
+
+        viewModel?.getSoccerPlayer(soccerPlayerValue)
     }
 
-    private fun displayCrests() {
-        val items = player.soccerPlayer.teams
-        items.forEach {
+    private fun initObservable() {
+        viewModel?.viewState?.observe(this) {
+            when (it) {
+                is WhosPlayerViewState.GetSoccerPlayer -> {
+                    displayCrests(it.soccerPlayer.teams)
+                    showFieldForLetters(it.soccerPlayer.nameLetterByLetter)
+                    configTipsButtons(it.soccerPlayer.tips)
+                }
+
+                is WhosPlayerViewState.GenericError -> {
+                    // not used yet
+                }
+            }
+        }
+    }
+
+    private fun displayCrests(teams: List<List<TeamModel>>) {
+        teams.forEach {
             val recyclerView = RecyclerView(this)
 
             val layoutManager = NonScrollableGridLayoutManager(this, spanCount)
@@ -95,10 +106,9 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         }
     }
 
-    private fun showFieldForLetters() {
+    private fun showFieldForLetters(nameLetterByLetter: List<List<Char>>) {
         var index = FIRST_INDEX
-        val items = player.soccerPlayer.nameLetterByLetter
-        items.forEach {
+        nameLetterByLetter.forEach {
             val recyclerView = RecyclerView(this)
             val layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -168,8 +178,8 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         }
     }
 
-    private fun configTipsButtons() {
-        val tipsMessage = getTipsMessages(player.soccerPlayer.tips)
+    private fun configTipsButtons(tips: TipsModel) {
+        val tipsMessage = getTipsMessages(tips)
         var remainingTips = tipsMessage.size
 
         binding.remainingHintNumbers.text = remainingTips.toString()
@@ -263,7 +273,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                 Pair(
                     this.getString(
                         R.string.whos_player_custom_tips_text_title,
-                        messages.size + NUMBER_ONE
+                        (messages.size + NUMBER_ONE).toString()
                     ),
                     tipsMessage[messages.size]
                 )

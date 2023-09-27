@@ -1,11 +1,24 @@
 package br.com.whosplayer.app.whosplayer.repository
 
-import br.com.whosplayer.app.whosplayer.repository.mock.WhosPlayerMock
-import br.com.whosplayer.app.whosplayer.repository.model.StageModel
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.tasks.await
 
-class WhosPlayerRepositoryImpl : WhosPlayerRepository {
+class WhosPlayerRepositoryImpl(private val db: FirebaseFirestore) : WhosPlayerRepository {
 
-    override fun getStages(): List<StageModel> {
-        return WhosPlayerMock.getStageModelMock()
+    override suspend fun getSoccerPlayer(level: Int): WhosPlayerRepositoryState {
+        val collectionName = "stages"
+        val documentId = "2XjwTv9NtfKRF1BNSGIW"
+        val documentRef = db.collection(collectionName).document(documentId)
+        return try {
+            val document = documentRef.get().await()
+            if (document.exists()) {
+                val data = document.data
+                WhosPlayerRepositoryState.GetSoccerPlayer(data)
+            } else {
+                WhosPlayerRepositoryState.NotFound
+            }
+        } catch (e: Exception) {
+            WhosPlayerRepositoryState.Exception
+        }
     }
 }
