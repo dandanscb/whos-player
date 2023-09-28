@@ -1,4 +1,4 @@
-package br.com.whosplayer.app.whosplayer.repository.mock
+package br.com.whosplayer.commons.database.mock
 
 import br.com.whosplayer.app.whosplayer.repository.model.SoccerPlayerModel
 import br.com.whosplayer.app.whosplayer.repository.model.StageModel
@@ -258,24 +258,6 @@ object WhosPlayerMock {
             )
         )
     )
-
-    fun getTipsMessages(tips: TipsModel) : List<String> {
-        val messages = mutableListOf<String>()
-
-        if (!tips.dateOfBirth.isNullOrEmpty()) {
-            messages.add("A data de nascimento do Jogador é ${tips.dateOfBirth}.")
-        }
-
-        if (!tips.position.isNullOrEmpty()) {
-            messages.add("O Jogador joga como ${tips.position}.")
-        }
-
-        if (!tips.nationality.isNullOrEmpty()) {
-            messages.add("Este jogador é da nacionalidade: ${tips.nationality}.")
-        }
-
-        return messages
-    }
 
     private fun getListWithFourTeamsResponse(response: List<TeamResponse>): List<List<TeamResponse>> {
         response.last().lastTeam = true

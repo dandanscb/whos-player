@@ -25,7 +25,6 @@ import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import br.com.whosplayer.app.whosplayer.repository.mock.WhosPlayerMock.getTipsMessages
 import br.com.whosplayer.app.whosplayer.repository.model.TeamModel
 import br.com.whosplayer.app.whosplayer.repository.model.TipsModel
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
@@ -198,6 +197,24 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
     }
 
+    private fun getTipsMessages(tips: TipsModel) : List<String> {
+        val messages = mutableListOf<String>()
+
+        if (!tips.dateOfBirth.isNullOrEmpty()) {
+            messages.add("A data de nascimento do Jogador é ${tips.dateOfBirth}.")
+        }
+
+        if (!tips.position.isNullOrEmpty()) {
+            messages.add("O Jogador joga como ${tips.position}.")
+        }
+
+        if (!tips.nationality.isNullOrEmpty()) {
+            messages.add("Este jogador é da nacionalidade: ${tips.nationality}.")
+        }
+
+        return messages
+    }
+
     private fun configAnimationNumberTips() {
         val scaleXAnimator = ObjectAnimator.ofFloat(
             binding.tipsNumberAnimation,
@@ -301,7 +318,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
     companion object {
         const val spanCount = 3
-        private const val soccerPlayerValue = 2
+        private const val soccerPlayerValue = 3
 
         private const val FIRST_INDEX = 0
         private const val NUMBER_ONE = 1

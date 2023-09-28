@@ -7,7 +7,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import br.com.whosplayer.R
-import br.com.whosplayer.commons.view.CustomTipsTextView
 import br.com.whosplayer.databinding.ActivityWhosPlayerHelpBinding
 
 class HelpActivity : AppCompatActivity() {

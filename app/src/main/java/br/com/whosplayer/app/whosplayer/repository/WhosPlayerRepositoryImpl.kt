@@ -7,7 +7,7 @@ class WhosPlayerRepositoryImpl(private val db: FirebaseFirestore) : WhosPlayerRe
 
     override suspend fun getSoccerPlayer(level: Int): WhosPlayerRepositoryState {
         val collectionName = "stages"
-        val documentId = "2XjwTv9NtfKRF1BNSGIW"
+        val documentId = "level $level"
         val documentRef = db.collection(collectionName).document(documentId)
         return try {
             val document = documentRef.get().await()

@@ -4,7 +4,6 @@ import br.com.whosplayer.app.whosplayer.repository.WhosPlayerRepository
 import br.com.whosplayer.app.whosplayer.repository.WhosPlayerRepositoryState
 import br.com.whosplayer.app.whosplayer.repository.mapper.WhosPlayerMapper
 import br.com.whosplayer.app.whosplayer.repository.response.SoccerPlayerResponse
-import br.com.whosplayer.app.whosplayer.repository.response.StageResponse
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
@@ -15,15 +14,15 @@ class WhosPlayerUseCaseImpl(
 
     override suspend fun getSoccerPlayer(level: Int) =
         try {
-            handleRepositoryState(level, repository.getSoccerPlayer(level))
+            handleRepositoryState(repository.getSoccerPlayer(level))
         } catch (e: Exception) {
             WhosPlayerUseCaseState.Error
         }
 
-    private fun handleRepositoryState(level: Int, result: WhosPlayerRepositoryState) =
+    private fun handleRepositoryState(result: WhosPlayerRepositoryState) =
         when (result) {
             is WhosPlayerRepositoryState.GetSoccerPlayer -> {
-                handleDatabaseResponse(level, result.soccerPlayerModel)
+                handleDatabaseResponse(result.soccerPlayerModel)
             }
 
             else -> {
@@ -31,26 +30,15 @@ class WhosPlayerUseCaseImpl(
             }
         }
 
-    private fun handleDatabaseResponse(level: Int, data: Map<String, Any>?) =
+    private fun handleDatabaseResponse(data: Map<String, Any>?) =
         data?.let {
             val firestoreDataJson = it["stages"]
-
-            val stages = Json.decodeFromString<List<StageResponse>>(firestoreDataJson as String)
-
-            var soccerPlayerResponse: SoccerPlayerResponse? = null
-            for (stage in stages) {
-                if (stage.level == level) {
-                    soccerPlayerResponse = stage.soccerPlayer
-                    break
-                }
-            }
-
-            soccerPlayerResponse?.let { response ->
+            val soccerPlayerResponse =
+                Json.decodeFromString<SoccerPlayerResponse>(firestoreDataJson as String)
+            soccerPlayerResponse.let { response ->
                 WhosPlayerUseCaseState.GetSoccerPlayer(
                     mapper.convertSoccerPlayerResponseToModel(response)
                 )
-            } ?: run {
-                WhosPlayerUseCaseState.Error
             }
         } ?: run {
             WhosPlayerUseCaseState.Error
