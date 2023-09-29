@@ -200,8 +200,57 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_cardViewDates" />
 
+        <TextView
+            android:id="@+id/Neymar_exemple"
+            android:layout_width="@dimen/whos_player_0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/whos_player_24dp"
+            android:gravity="center"
+            android:text="NEYMAR"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/help_fifth_text" />
+
+        <TextView
+            android:id="@+id/help_sixth_text"
+            android:layout_width="@dimen/whos_player_0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/whos_player_24dp"
+            android:text="@string/whos_player_help_sixth_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/whos_player_16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Neymar_exemple" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/help_confirmation_button_example"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/whos_player_8dp"
+            android:background="@drawable/confirmation_button"
+            android:enabled="false"
+            android:text="@string/whos_player_confirmation_button"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/help_sixth_text" />
+
+        <TextView
+            android:id="@+id/help_seventh_text"
+            android:layout_width="@dimen/whos_player_0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/whos_player_24dp"
+            android:gravity="center"
+            android:text="@string/whos_player_help_seventh_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/whos_player_16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/help_confirmation_button_example" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/help_confirmation_button_example2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/whos_player_8dp"
@@ -210,7 +259,21 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/help_fifth_text" />
+            app:layout_constraintTop_toBottomOf="@+id/help_seventh_text" />
+
+        <TextView
+            android:id="@+id/help_eighth_text"
+            android:layout_width="@dimen/whos_player_0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/whos_player_24dp"
+            android:gravity="center"
+            android:text="@string/whos_player_help_eighth_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/whos_player_16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/help_confirmation_button_example2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
