@@ -13,5 +13,5 @@
     <string name="whos_player_custom_tips_text_value_tools">O país do Jogador é %s.</string>
 
     <string name="whos_player_tips_number_animation">-1</string>
-    <string name="whos_player_confirmation_button">Ok</string>
+    <string name="whos_player_confirmation_button">OK</string>
 </resources>
