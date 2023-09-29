@@ -18,6 +18,7 @@ class WhosPlayerViewModel(
         mutableViewState
 
     fun getSoccerPlayer(level: Int) {
+        mutableViewState.value = WhosPlayerViewState.ShowLoading
         viewModelScope.launch {
             handleGetSoccerState(useCase.getSoccerPlayer(level))
         }
@@ -27,6 +28,7 @@ class WhosPlayerViewModel(
         when (result) {
             is WhosPlayerUseCaseState.GetSoccerPlayer -> {
                 mutableViewState.value = WhosPlayerViewState.GetSoccerPlayer(result.soccerPlayer)
+                mutableViewState.value = WhosPlayerViewState.HideLoading
             }
 
             is WhosPlayerUseCaseState.Error -> {

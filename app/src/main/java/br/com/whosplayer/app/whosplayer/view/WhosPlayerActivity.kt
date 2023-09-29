@@ -77,6 +77,14 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                     configTipsButtons(it.soccerPlayer.tips)
                 }
 
+                is WhosPlayerViewState.ShowLoading -> {
+                    showLoading()
+                }
+
+                is WhosPlayerViewState.HideLoading -> {
+                    hideLoading()
+                }
+
                 is WhosPlayerViewState.GenericError -> {
                     // not used yet
                 }
@@ -197,7 +205,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
     }
 
-    private fun getTipsMessages(tips: TipsModel) : List<String> {
+    private fun getTipsMessages(tips: TipsModel): List<String> {
         val messages = mutableListOf<String>()
 
         if (!tips.dateOfBirth.isNullOrEmpty()) {
@@ -213,6 +221,14 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         }
 
         return messages
+    }
+
+    private fun showLoading() {
+        // not used yet
+    }
+
+    private fun hideLoading() {
+        // not used yet
     }
 
     private fun configAnimationNumberTips() {
