@@ -14,12 +14,15 @@ import br.com.whosplayer.R
 
 class NameLetterByLetterAdapter(private val recyclerViewPosition: Int, private val items: List<Char>) :
     RecyclerView.Adapter<NameLetterByLetterAdapter.ItemViewHolder>() {
+    private val itemHolders: MutableList<ItemViewHolder> = mutableListOf()
     var editTextFocusListener: EditTextFocusListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.adapter_whos_player_name_letters, parent, false)
-        return ItemViewHolder(view)
+        val itemViewHolder = ItemViewHolder(view)
+        itemHolders.add(itemViewHolder)
+        return itemViewHolder
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
@@ -30,8 +33,28 @@ class NameLetterByLetterAdapter(private val recyclerViewPosition: Int, private v
         return items.size
     }
 
+    fun getItem() : String {
+        var value = ""
+        for (itemHolder in itemHolders) {
+            val inputText = itemHolder.editText
+            value += inputText.text
+        }
+        return value
+    }
+
+    fun getIfLettersAreFilledIn(): Boolean {
+        for (itemHolder in itemHolders) {
+            val inputText = itemHolder.editText
+
+            if (inputText.text.toString().matches(Regex(".*[a-zA-Z].*")).not()) {
+                return false
+            }
+        }
+        return true
+    }
+
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val editText: EditText = itemView.findViewById(R.id.letterEditText)
+        val editText: EditText = itemView.findViewById(R.id.letterEditText)
 
         init {
             editText.filters = arrayOf<InputFilter>(AllCaps())
@@ -52,6 +75,7 @@ class NameLetterByLetterAdapter(private val recyclerViewPosition: Int, private v
                 }
 
                 override fun afterTextChanged(s: Editable?) {
+                    editTextFocusListener?.checkIfAllLettersAreFilledIn()
                     s?.let {
                         if (it.length > 1) {
                             it.delete(1, it.length)
@@ -73,5 +97,6 @@ class NameLetterByLetterAdapter(private val recyclerViewPosition: Int, private v
 
     interface EditTextFocusListener {
         fun onLetterTyped(recyclerViewPosition: Int, position: Int)
+        fun checkIfAllLettersAreFilledIn()
     }
 }

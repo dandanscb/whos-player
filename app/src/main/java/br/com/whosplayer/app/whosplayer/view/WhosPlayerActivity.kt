@@ -24,7 +24,9 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import br.com.whosplayer.app.whosplayer.repository.model.SoccerPlayerModel
 import br.com.whosplayer.app.whosplayer.repository.model.TeamModel
 import br.com.whosplayer.app.whosplayer.repository.model.TipsModel
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
@@ -42,6 +44,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     private var recyclerViewReference = mutableListOf<RecyclerView>()
 
     private var viewModel: WhosPlayerViewModel? = null
+    private lateinit var soccerPlayerName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,9 +75,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         viewModel?.viewState?.observe(this) {
             when (it) {
                 is WhosPlayerViewState.GetSoccerPlayer -> {
-                    displayCrests(it.soccerPlayer.teams)
-                    showFieldForLetters(it.soccerPlayer.nameLetterByLetter)
-                    configTipsButtons(it.soccerPlayer.tips)
+                    showSoccerPlayerInformation(it.soccerPlayer)
                 }
 
                 is WhosPlayerViewState.ShowLoading -> {
@@ -90,6 +91,14 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                 }
             }
         }
+    }
+
+    private fun showSoccerPlayerInformation(soccerPlayer: SoccerPlayerModel) {
+        soccerPlayerName = soccerPlayer.name
+        soccerPlayer.name
+        displayCrests(soccerPlayer.teams)
+        showFieldForLetters(soccerPlayer.nameLetterByLetter)
+        configTipsButtons(soccerPlayer.tips)
     }
 
     private fun displayCrests(teams: List<List<TeamModel>>) {
@@ -185,6 +194,19 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         }
     }
 
+    override fun checkIfAllLettersAreFilledIn() {
+        binding.confirmationButton.isEnabled = returnIfAllLettersAreFilledIn()
+    }
+
+    private fun returnIfAllLettersAreFilledIn() : Boolean {
+        nameLetterByLetterAdapter.map {
+            if (!it.getIfLettersAreFilledIn()) {
+                return false
+            }
+        }
+        return true
+    }
+
     private fun configTipsButtons(tips: TipsModel) {
         val tipsMessage = getTipsMessages(tips)
         var remainingTips = tipsMessage.size
@@ -277,7 +299,18 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
     private fun configConfirmationButton() {
         binding.confirmationButton.setOnClickListener {
-            // TODO
+            var result = ""
+            nameLetterByLetterAdapter.map {
+                result += it.getItem()
+            }
+
+            val answer = soccerPlayerName.uppercase().trim().replace(" ", "")
+
+            if (result.uppercase() == answer) {
+                Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Falha", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
