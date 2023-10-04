@@ -2,5 +2,10 @@ package br.com.whosplayer.app.whosplayer.usecase
 
 interface WhosPlayerUseCase {
 
-    suspend fun getSoccerPlayer(level: Int): WhosPlayerUseCaseState
+    suspend fun getSoccerPlayer(level: Int): WhosPlayerUseCaseState.GetSoccerPlayerUseCaseState
+    suspend fun getPlayerLevel(androidId: String): WhosPlayerUseCaseState.GetPlayerLevelUseCaseState
+    suspend fun savePlayerLevel(
+        androidId: String,
+        level: Int
+    ): WhosPlayerUseCaseState.SavePlayerLevelUseCaseState
 }

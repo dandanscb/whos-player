@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.size
@@ -22,6 +21,7 @@ import android.app.Dialog
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -32,6 +32,7 @@ import br.com.whosplayer.app.whosplayer.repository.model.TipsModel
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModelFactory
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewState
+import br.com.whosplayer.commons.database.getAndroidID
 import br.com.whosplayer.commons.view.CustomTipsTextView
 
 class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTextFocusListener {
@@ -44,7 +45,9 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     private var recyclerViewReference = mutableListOf<RecyclerView>()
 
     private var viewModel: WhosPlayerViewModel? = null
+//    private val androidId: String = getAndroidID(this)
     private lateinit var soccerPlayerName: String
+    private var currentLevel: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,32 +71,53 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         val factory = WhosPlayerViewModelFactory()
         viewModel = ViewModelProvider(this, factory)[WhosPlayerViewModel::class.java]
 
-        viewModel?.getSoccerPlayer(soccerPlayerValue)
+        viewModel?.getSoccerPlayer(getAndroidID(this))
     }
 
     private fun initObservable() {
         viewModel?.viewState?.observe(this) {
             when (it) {
-                is WhosPlayerViewState.GetSoccerPlayer -> {
-                    showSoccerPlayerInformation(it.soccerPlayer)
+                is WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.GetSoccerPlayer -> {
+                    showSoccerPlayerInformation(it.level, it.soccerPlayer)
                 }
 
-                is WhosPlayerViewState.ShowLoading -> {
+                is WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.ShowLoading -> {
                     showLoading()
                 }
 
-                is WhosPlayerViewState.HideLoading -> {
+                is WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.HideLoading -> {
                     hideLoading()
                 }
 
-                is WhosPlayerViewState.GenericError -> {
+                is WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.GenericError -> {
                     // not used yet
+                }
+            }
+        }
+        viewModel?.saveLevelViewState?.observe(this) {
+            when (it) {
+                is WhosPlayerViewState.WhosPlayerSaveLevelViewState.Success -> {
+                    Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                }
+
+                is WhosPlayerViewState.WhosPlayerSaveLevelViewState.ShowLoading -> {
+                    Toast.makeText(this, "ShowLoading", Toast.LENGTH_SHORT).show()
+                }
+
+                is WhosPlayerViewState.WhosPlayerSaveLevelViewState.HideLoading -> {
+                    Toast.makeText(this, "HideLoading", Toast.LENGTH_SHORT).show()
+                }
+
+                is WhosPlayerViewState.WhosPlayerSaveLevelViewState.GenericError -> {
+                    Toast.makeText(this, "GenericError", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
-    private fun showSoccerPlayerInformation(soccerPlayer: SoccerPlayerModel) {
+    private fun showSoccerPlayerInformation(level: Int, soccerPlayer: SoccerPlayerModel) {
+        currentLevel = level
+
         soccerPlayerName = soccerPlayer.name
         soccerPlayer.name
         displayCrests(soccerPlayer.teams)
@@ -198,7 +222,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         binding.confirmationButton.isEnabled = returnIfAllLettersAreFilledIn()
     }
 
-    private fun returnIfAllLettersAreFilledIn() : Boolean {
+    private fun returnIfAllLettersAreFilledIn(): Boolean {
         nameLetterByLetterAdapter.map {
             if (!it.getIfLettersAreFilledIn()) {
                 return false
@@ -230,15 +254,15 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     private fun getTipsMessages(tips: TipsModel): List<String> {
         val messages = mutableListOf<String>()
 
-        if (!tips.dateOfBirth.isNullOrEmpty()) {
+        if (tips.dateOfBirth.isNotEmpty()) {
             messages.add("A data de nascimento do Jogador é ${tips.dateOfBirth}.")
         }
 
-        if (!tips.position.isNullOrEmpty()) {
+        if (tips.position.isNotEmpty()) {
             messages.add("O Jogador joga como ${tips.position}.")
         }
 
-        if (!tips.nationality.isNullOrEmpty()) {
+        if (tips.nationality.isNotEmpty()) {
             messages.add("Este jogador é da nacionalidade: ${tips.nationality}.")
         }
 
@@ -307,7 +331,11 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
             val answer = soccerPlayerName.uppercase().trim().replace(" ", "")
 
             if (result.uppercase() == answer) {
-                Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT).show()
+                currentLevel?.let {
+                    val nextLevel = it + 1
+
+                    viewModel?.saveLevel(getAndroidID(this), nextLevel)
+                }
             } else {
                 Toast.makeText(this, "Falha", Toast.LENGTH_SHORT).show()
             }
@@ -367,7 +395,6 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
     companion object {
         const val spanCount = 3
-        private const val soccerPlayerValue = 3
 
         private const val FIRST_INDEX = 0
         private const val NUMBER_ONE = 1

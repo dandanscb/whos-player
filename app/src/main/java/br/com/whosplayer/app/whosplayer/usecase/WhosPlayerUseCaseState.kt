@@ -4,6 +4,19 @@ import br.com.whosplayer.app.whosplayer.repository.model.SoccerPlayerModel
 
 sealed class WhosPlayerUseCaseState {
 
-    data class GetSoccerPlayer(val soccerPlayer: SoccerPlayerModel) : WhosPlayerUseCaseState()
-    object Error : WhosPlayerUseCaseState()
+    sealed class GetSoccerPlayerUseCaseState {
+        data class GetSoccerPlayer(val soccerPlayer: SoccerPlayerModel) : GetSoccerPlayerUseCaseState()
+        object Error : GetSoccerPlayerUseCaseState()
+    }
+
+    sealed class GetPlayerLevelUseCaseState {
+        data class GetPlayerLevel(val level: Long) : GetPlayerLevelUseCaseState()
+        object EmptyState : GetPlayerLevelUseCaseState()
+        object Error : GetPlayerLevelUseCaseState()
+    }
+
+    sealed class SavePlayerLevelUseCaseState {
+        object Success : SavePlayerLevelUseCaseState()
+        object Error : SavePlayerLevelUseCaseState()
+    }
 }

@@ -1,5 +1,8 @@
 package br.com.whosplayer.commons.database
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.provider.Settings
 import br.com.whosplayer.app.whosplayer.repository.response.SoccerPlayerResponse
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.serialization.encodeToString
@@ -25,4 +28,9 @@ fun importDataFromJson(documentId: String, soccerPlayer: SoccerPlayerResponse) {
         .addOnFailureListener { e ->
             println("Erro ao adicionar item: $e")
         }
+}
+
+@SuppressLint("HardwareIds")
+fun getAndroidID(context: Context): String {
+    return Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
 }

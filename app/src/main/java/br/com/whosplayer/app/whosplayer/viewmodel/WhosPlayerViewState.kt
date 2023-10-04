@@ -4,9 +4,22 @@ import br.com.whosplayer.app.whosplayer.repository.model.SoccerPlayerModel
 
 sealed class WhosPlayerViewState {
 
-    object ShowLoading : WhosPlayerViewState()
-    data class GetSoccerPlayer(val soccerPlayer: SoccerPlayerModel) : WhosPlayerViewState()
-    object GenericError : WhosPlayerViewState()
+    sealed class WhosPlayerSoccerPlayerViewState {
 
-    object HideLoading : WhosPlayerViewState()
+        object ShowLoading : WhosPlayerSoccerPlayerViewState()
+        data class GetSoccerPlayer(val level: Int, val soccerPlayer: SoccerPlayerModel) :
+            WhosPlayerSoccerPlayerViewState()
+
+        object GenericError : WhosPlayerSoccerPlayerViewState()
+        object HideLoading : WhosPlayerSoccerPlayerViewState()
+    }
+
+    sealed class WhosPlayerSaveLevelViewState {
+
+        object ShowLoading : WhosPlayerSaveLevelViewState()
+        object Success : WhosPlayerSaveLevelViewState()
+        object GenericError : WhosPlayerSaveLevelViewState()
+        object HideLoading : WhosPlayerSaveLevelViewState()
+    }
+
 }
