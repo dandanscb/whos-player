@@ -18,4 +18,11 @@
 
     <string name="whos_player_tips_number_animation">-1</string>
     <string name="whos_player_confirmation_button">OK</string>
+
+    <string name="whos_player_error_screen_img">imagem de uma bola na trave</string>
+    <string name="whos_player_error_screen_text">Ops, bola na trave não altera o placar.</string>
+    <string name="whos_player_error_screen_second_text">Desculpe, tente novamente mais tarde.</string>
+
+    <string name="whos_player_finish_screen_text">Que Goleada!</string>
+    <string name="whos_player_finish_screen_second_text">Parabéns, você terminou todos os jogadores, neste momento estamos trabalhando para adicionar cada vez mais, para que você possa continuar jogando.</string>
 </resources>

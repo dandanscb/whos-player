@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/custom_splash_screen_logo"
+        android:layout_width="@dimen/whos_player_200dp"
+        android:layout_height="@dimen/whos_player_200dp"
+        android:src='@drawable/gol' />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/whos_player_finish_screen_text"
+        android:textAlignment="center"
+        android:textSize="@dimen/whos_player_14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/whos_player_40dp"
+        android:layout_marginEnd="@dimen/whos_player_40dp"
+        android:text="@string/whos_player_finish_screen_second_text"
+        android:textAlignment="center"
+        android:textSize="@dimen/whos_player_12sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
