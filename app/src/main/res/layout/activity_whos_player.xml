@@ -18,7 +18,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScroll"
         android:layout_width="match_parent"
         android:layout_height="@dimen/whos_player_0dp"
         app:layout_constraintBottom_toBottomOf="parent"

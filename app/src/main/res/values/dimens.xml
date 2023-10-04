@@ -28,6 +28,7 @@
     <dimen name="whos_player_88dp">88dp</dimen>
     <dimen name="whos_player_120dp">120dp</dimen>
     <dimen name="whos_player_132dp">132dp</dimen>
+    <dimen name="whos_player_200dp">200dp</dimen>
 
     <dimen name="whos_player_4sp">4sp</dimen>
     <dimen name="whos_player_8sp">8sp</dimen>

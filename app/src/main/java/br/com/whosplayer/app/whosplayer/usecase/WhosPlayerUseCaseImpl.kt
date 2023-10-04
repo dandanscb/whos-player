@@ -1,5 +1,6 @@
 package br.com.whosplayer.app.whosplayer.usecase
 
+import android.os.Handler
 import br.com.whosplayer.app.whosplayer.repository.WhosPlayerRepository
 import br.com.whosplayer.app.whosplayer.repository.WhosPlayerRepositoryState
 import br.com.whosplayer.app.whosplayer.repository.mapper.WhosPlayerMapper

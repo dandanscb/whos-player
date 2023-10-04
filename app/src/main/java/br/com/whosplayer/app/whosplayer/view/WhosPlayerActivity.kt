@@ -2,6 +2,7 @@ package br.com.whosplayer.app.whosplayer.view
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.app.ActionBar.LayoutParams
 import android.os.Bundle
 import android.view.Gravity
 import android.view.Menu
@@ -18,7 +19,9 @@ import br.com.whosplayer.app.whosplayer.view.adapter.TeamCrestAdapter
 import br.com.whosplayer.app.whosplayer.view.utils.NonScrollableGridLayoutManager
 import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
 import android.app.Dialog
+import android.os.Handler
 import android.view.View
+import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
 import android.widget.EditText
@@ -33,6 +36,7 @@ import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModelFactory
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewState
 import br.com.whosplayer.commons.database.getAndroidID
+import br.com.whosplayer.commons.view.CustomSplashScreen
 import br.com.whosplayer.commons.view.CustomTipsTextView
 
 class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTextFocusListener {
@@ -45,7 +49,6 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     private var recyclerViewReference = mutableListOf<RecyclerView>()
 
     private var viewModel: WhosPlayerViewModel? = null
-//    private val androidId: String = getAndroidID(this)
     private lateinit var soccerPlayerName: String
     private var currentLevel: Int? = null
 
@@ -270,11 +273,23 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     }
 
     private fun showLoading() {
-        // not used yet
+        val splashScreen = CustomSplashScreen(this)
+        val layoutParams = ViewGroup.LayoutParams(
+            LayoutParams.MATCH_PARENT,
+            LayoutParams.MATCH_PARENT
+        )
+        binding.frameLayout.addView(splashScreen, layoutParams)
+        binding.toolbar.visibility = View.GONE
+        binding.nestedScroll.visibility = View.GONE
+        binding.frameLayout.visibility = View.VISIBLE
     }
 
     private fun hideLoading() {
-        // not used yet
+        Handler().postDelayed({
+            binding.toolbar.visibility = View.VISIBLE
+            binding.nestedScroll.visibility = View.VISIBLE
+            binding.frameLayout.visibility = View.GONE
+        }, 5000)
     }
 
     private fun configAnimationNumberTips() {
