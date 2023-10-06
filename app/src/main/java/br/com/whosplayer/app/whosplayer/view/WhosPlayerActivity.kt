@@ -19,7 +19,6 @@ import br.com.whosplayer.app.whosplayer.view.adapter.TeamCrestAdapter
 import br.com.whosplayer.app.whosplayer.view.utils.NonScrollableGridLayoutManager
 import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
 import android.app.Dialog
-import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
@@ -93,14 +92,24 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                 }
 
                 is WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.GenericError -> {
-                    // not used yet
+                    binding.errorScreen.visibility = View.VISIBLE
+                    binding.errorScreen.closeClickListener {
+                        finish()
+                    }
+                    binding.frameLayout.visibility = View.GONE
                 }
             }
         }
         viewModel?.saveLevelViewState?.observe(this) {
             when (it) {
                 is WhosPlayerViewState.WhosPlayerSaveLevelViewState.Success -> {
-                    Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                    teamCrestAdapter.clear()
+                    nameLetterByLetterAdapter.clear()
+                    recyclerViewReference.clear()
+
+                    binding.cardViewContainer.removeAllViews()
+                    binding.fieldLettersContainer.removeAllViews()
+                    viewModel?.getSoccerPlayer(getAndroidID(this))
                 }
 
                 is WhosPlayerViewState.WhosPlayerSaveLevelViewState.ShowLoading -> {
@@ -285,11 +294,9 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     }
 
     private fun hideLoading() {
-        Handler().postDelayed({
-            binding.toolbar.visibility = View.VISIBLE
-            binding.nestedScroll.visibility = View.VISIBLE
-            binding.frameLayout.visibility = View.GONE
-        }, 5000)
+        binding.toolbar.visibility = View.VISIBLE
+        binding.nestedScroll.visibility = View.VISIBLE
+        binding.frameLayout.visibility = View.GONE
     }
 
     private fun configAnimationNumberTips() {
