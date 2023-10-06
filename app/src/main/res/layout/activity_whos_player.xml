@@ -118,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/whos_player_8dp"
-                android:background="@drawable/confirmation_button"
+                android:background="@drawable/confirmation_button_background"
                 android:text="@string/whos_player_confirmation_button"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
