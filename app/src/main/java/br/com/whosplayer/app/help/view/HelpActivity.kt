@@ -26,6 +26,7 @@ class HelpActivity : AppCompatActivity() {
         configureCardViewDates()
         configureLetterByLetters()
         configureTips()
+        configureLetterByFilledLetters()
 
         binding.closeButton.setOnClickListener {
             finish()
@@ -70,7 +71,8 @@ class HelpActivity : AppCompatActivity() {
                 R.drawable.img_santos
             )
         )
-        binding.helpCardViewDates.firstTeam.yearsPlayed.text = "2009-2013"
+        binding.helpCardViewDates.firstTeam.yearsPlayed.text =
+            this.getString(R.string.whos_player_help_first_team_years_played)
 
 
         binding.helpCardViewDates.secondTeam.crestTeam.setImageDrawable(
@@ -119,6 +121,21 @@ class HelpActivity : AppCompatActivity() {
         binding.secondTip.tipsValue.text = "O Jogador joga como Atacante."
         binding.thirdTip.tipsTitle.text = "Dica 3"
         binding.thirdTip.tipsValue.text = "Este jogador é da nacionalidade: Brasileiro."
+    }
+
+    private fun configureLetterByFilledLetters() {
+        binding.helpLetterByFilledLetter.firstLetter.letterEditText.setText("N")
+        binding.helpLetterByFilledLetter.firstLetter.letterEditText.isEnabled = false
+        binding.helpLetterByFilledLetter.secondLetter.letterEditText.setText("E")
+        binding.helpLetterByFilledLetter.secondLetter.letterEditText.isEnabled = false
+        binding.helpLetterByFilledLetter.thirdLetter.letterEditText.setText("Y")
+        binding.helpLetterByFilledLetter.thirdLetter.letterEditText.isEnabled = false
+        binding.helpLetterByFilledLetter.fourthLetter.letterEditText.setText("M")
+        binding.helpLetterByFilledLetter.fourthLetter.letterEditText.isEnabled = false
+        binding.helpLetterByFilledLetter.fifthLetter.letterEditText.setText("A")
+        binding.helpLetterByFilledLetter.fifthLetter.letterEditText.isEnabled = false
+        binding.helpLetterByFilledLetter.sixthLetter.letterEditText.setText("R")
+        binding.helpLetterByFilledLetter.sixthLetter.letterEditText.isEnabled = false
     }
 
     companion object {

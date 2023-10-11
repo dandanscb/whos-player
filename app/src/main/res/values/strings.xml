@@ -12,6 +12,9 @@
     <string name="whos_player_help_seventh_text">Para isto</string>
     <string name="whos_player_help_eighth_text">Então você irá poder confirmar o jogador na qual você acredita ser clicando no botão "OK", caso seu palpite esteja errado, a tela do seu celular irá "chacoalhar" alertando que você errou o palpite</string>
 
+    <string name="whos_player_help_first_team_years_played">2009-2013</string>
+
+
     <!-- Whos Player -->
     <string name="whos_player_confirmation_button">OK</string>
 
