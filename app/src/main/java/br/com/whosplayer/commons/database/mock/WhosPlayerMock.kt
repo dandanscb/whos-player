@@ -259,6 +259,30 @@ object WhosPlayerMock {
         )
     )
 
+    fun getSoccerPlayerResponse() : Pair<String, SoccerPlayerResponse> {
+        return Pair(
+            "",
+            SoccerPlayerResponse(
+                name = "",
+                tips = TipsResponse(
+                    position = "",
+                    nationality = "",
+                    dateOfBirth = ""
+                ),
+                teams = getListWithFourTeamsResponse(
+                    listOf(
+                        TeamResponse(
+                            name = "NOME DO TIME",
+                            crest = "https://logodetimes.com/times/sporting-portugal/logo-sporting-portugal.png",
+                            year = "2001-2003"
+                        )
+                    )
+                ),
+                picture = ""
+            )
+        )
+    }
+
     private fun getListWithFourTeamsResponse(response: List<TeamResponse>): List<List<TeamResponse>> {
         response.last().lastTeam = true
         val list = mutableListOf<List<TeamResponse>>()
@@ -301,7 +325,7 @@ object WhosPlayerMock {
         return list
     }
 
-    private fun getLettersFromName(soccerPlayerFullName: String) : List<List<Char>> {
+    private fun getLettersFromName(soccerPlayerFullName: String): List<List<Char>> {
         val names = soccerPlayerFullName.split(" ")
         val list = mutableListOf<List<Char>>()
 

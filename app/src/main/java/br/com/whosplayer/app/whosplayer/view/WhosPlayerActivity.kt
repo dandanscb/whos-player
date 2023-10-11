@@ -19,6 +19,7 @@ import br.com.whosplayer.app.whosplayer.view.adapter.TeamCrestAdapter
 import br.com.whosplayer.app.whosplayer.view.utils.NonScrollableGridLayoutManager
 import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
 import android.app.Dialog
+import android.provider.ContactsContract.Data
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
@@ -35,6 +36,8 @@ import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModelFactory
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewState
 import br.com.whosplayer.commons.database.getAndroidID
+import br.com.whosplayer.commons.database.importDataFromJson
+import br.com.whosplayer.commons.database.mock.WhosPlayerMock
 import br.com.whosplayer.commons.view.CustomSplashScreen
 import br.com.whosplayer.commons.view.CustomTipsTextView
 
@@ -67,13 +70,16 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
         configDateButtons()
         configConfirmationButton()
+
+        val pair = WhosPlayerMock.getSoccerPlayerResponse()
+        importDataFromJson(pair.first, pair.second)
     }
 
     private fun initViewModel() {
         val factory = WhosPlayerViewModelFactory()
         viewModel = ViewModelProvider(this, factory)[WhosPlayerViewModel::class.java]
 
-        viewModel?.getSoccerPlayer(getAndroidID(this))
+        // viewModel?.getSoccerPlayer(getAndroidID(this))
     }
 
     private fun initObservable() {
