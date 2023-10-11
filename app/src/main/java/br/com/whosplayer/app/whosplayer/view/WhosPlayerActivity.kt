@@ -72,7 +72,9 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         configConfirmationButton()
 
         val pair = WhosPlayerMock.getSoccerPlayerResponse()
-        importDataFromJson(pair.first, pair.second)
+        if (!pair.first.isNullOrEmpty()) {
+            importDataFromJson(pair.first, pair.second)
+        }
     }
 
     private fun initViewModel() {
