@@ -29,8 +29,6 @@ import android.view.WindowManager
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import br.com.whosplayer.app.whosplayer.repository.model.SoccerPlayerModel
 import br.com.whosplayer.app.whosplayer.repository.model.TeamModel
@@ -39,6 +37,8 @@ import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModelFactory
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewState
 import br.com.whosplayer.commons.database.getAndroidID
+import br.com.whosplayer.commons.database.importDataFromJson
+import br.com.whosplayer.commons.database.mock.WhosPlayerMock
 import br.com.whosplayer.commons.view.CustomSplashScreen
 import br.com.whosplayer.commons.view.CustomTipsTextView
 import nl.dionsegijn.konfetti.core.Party
@@ -81,17 +81,17 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         configDateButtons()
         configConfirmationButton()
 
-//        val pair = WhosPlayerMock.getSoccerPlayerResponse()
-//        if (!pair.first.isNullOrEmpty()) {
-//            importDataFromJson(pair.first, pair.second)
-//        }
+        val pair = WhosPlayerMock.getSoccerPlayerResponse()
+        if (pair.first.isNotEmpty()) {
+            importDataFromJson(pair.first, pair.second)
+        }
     }
 
     private fun initViewModel() {
         val factory = WhosPlayerViewModelFactory()
         viewModel = ViewModelProvider(this, factory)[WhosPlayerViewModel::class.java]
 
-        viewModel?.getSoccerPlayer(getAndroidID(this))
+        //viewModel?.getSoccerPlayer(getAndroidID(this))
     }
 
     private fun initObservable() {
@@ -349,7 +349,6 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                 2.0f
             )
 
-        // Crie uma animação de transparência
         val alphaAnimator = ObjectAnimator.ofFloat(
             binding.tipsNumberAnimation,
             "alpha",
