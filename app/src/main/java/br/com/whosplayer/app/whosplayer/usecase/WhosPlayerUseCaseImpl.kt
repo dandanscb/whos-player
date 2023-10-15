@@ -1,6 +1,5 @@
 package br.com.whosplayer.app.whosplayer.usecase
 
-import android.os.Handler
 import br.com.whosplayer.app.whosplayer.repository.WhosPlayerRepository
 import br.com.whosplayer.app.whosplayer.repository.WhosPlayerRepositoryState
 import br.com.whosplayer.app.whosplayer.repository.mapper.WhosPlayerMapper
@@ -39,6 +38,10 @@ class WhosPlayerUseCaseImpl(
         when (result) {
             is WhosPlayerRepositoryState.SoccerPlayerRepositoryState.GetSoccerPlayer -> {
                 handleGetSoccerPlayerDatabaseResponse(result.soccerPlayerModel)
+            }
+
+            is WhosPlayerRepositoryState.SoccerPlayerRepositoryState.NotFound -> {
+                WhosPlayerUseCaseState.GetSoccerPlayerUseCaseState.NotFound
             }
 
             else -> {

@@ -18,6 +18,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+    <br.com.whosplayer.commons.view.CustomFinishScreen
+        android:id="@+id/finishScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <br.com.whosplayer.commons.view.CustomErrorScreen
         android:id="@+id/errorScreen"
         android:layout_width="match_parent"
@@ -28,6 +36,13 @@
 
     <FrameLayout
         android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id="@+id/konfettiView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,11 +73,24 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <TextView
+                    android:id="@+id/text_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:typeface="sans"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="@dimen/whos_player_8dp"
+                    android:textSize="@dimen/whos_player_16sp"
+                    tools:text="LEVEL 1" />
+
                 <LinearLayout
                     android:id="@+id/cardView_container"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/whos_player_12dp"
                     android:orientation="vertical"
                     android:padding="@dimen/whos_player_16dp">
 
@@ -121,19 +149,6 @@
                 app:layout_constraintStart_toStartOf="@+id/tips_button"
                 tools:text="3" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/confirmation_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/whos_player_8dp"
-                android:background="@drawable/confirmation_button_background"
-                android:enabled="false"
-                android:text="@string/whos_player_confirmation_button"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/field_letters_container" />
-
             <LinearLayout
                 android:id="@+id/field_letters_container"
                 android:layout_width="match_parent"
@@ -147,6 +162,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/tips_button">
 
             </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/confirmation_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/whos_player_16dp"
+                android:layout_marginBottom="@dimen/whos_player_40dp"
+                android:background="@drawable/confirmation_button_background"
+                android:enabled="false"
+                android:text="@string/whos_player_confirmation_button"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/field_letters_container"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

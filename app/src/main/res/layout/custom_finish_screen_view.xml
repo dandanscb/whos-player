@@ -1,33 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/custom_splash_screen_logo"
-        android:layout_width="@dimen/whos_player_200dp"
-        android:layout_height="@dimen/whos_player_200dp"
-        android:src='@drawable/gol' />
-
-    <TextView
+    <ImageButton
+        android:id="@+id/close_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/whos_player_finish_screen_text"
-        android:textAlignment="center"
-        android:textSize="@dimen/whos_player_14sp"
-        android:textStyle="bold" />
+        android:layout_gravity="end"
+        android:layout_margin="@dimen/whos_player_24dp"
+        android:background="@color/white"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/whos_player_40dp"
-        android:layout_marginEnd="@dimen/whos_player_40dp"
-        android:text="@string/whos_player_finish_screen_second_text"
-        android:textAlignment="center"
-        android:textSize="@dimen/whos_player_12sp"
-        android:textStyle="bold" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/whos_player_40dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/custom_splash_screen_logo"
+            android:layout_width="@dimen/whos_player_200dp"
+            android:layout_height="@dimen/whos_player_200dp"
+            android:src='@drawable/gol' />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/whos_player_finish_screen_text"
+            android:textAlignment="center"
+            android:textSize="@dimen/whos_player_14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/whos_player_40dp"
+            android:layout_marginEnd="@dimen/whos_player_40dp"
+            android:text="@string/whos_player_finish_screen_second_text"
+            android:textAlignment="center"
+            android:textSize="@dimen/whos_player_12sp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

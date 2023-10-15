@@ -6,6 +6,7 @@ sealed class WhosPlayerUseCaseState {
 
     sealed class GetSoccerPlayerUseCaseState {
         data class GetSoccerPlayer(val soccerPlayer: SoccerPlayerModel) : GetSoccerPlayerUseCaseState()
+        object NotFound : GetSoccerPlayerUseCaseState()
         object Error : GetSoccerPlayerUseCaseState()
     }
 

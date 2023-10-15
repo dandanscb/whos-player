@@ -2,6 +2,7 @@ package br.com.whosplayer.app.whosplayer.view
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.app.ActionBar.LayoutParams
 import android.os.Bundle
 import android.view.Gravity
@@ -19,7 +20,8 @@ import br.com.whosplayer.app.whosplayer.view.adapter.TeamCrestAdapter
 import br.com.whosplayer.app.whosplayer.view.utils.NonScrollableGridLayoutManager
 import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
 import android.app.Dialog
-import android.provider.ContactsContract.Data
+import android.graphics.Typeface
+import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
@@ -28,6 +30,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import br.com.whosplayer.app.whosplayer.repository.model.SoccerPlayerModel
 import br.com.whosplayer.app.whosplayer.repository.model.TeamModel
@@ -36,10 +39,14 @@ import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModelFactory
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewState
 import br.com.whosplayer.commons.database.getAndroidID
-import br.com.whosplayer.commons.database.importDataFromJson
-import br.com.whosplayer.commons.database.mock.WhosPlayerMock
 import br.com.whosplayer.commons.view.CustomSplashScreen
 import br.com.whosplayer.commons.view.CustomTipsTextView
+import nl.dionsegijn.konfetti.core.Party
+import nl.dionsegijn.konfetti.core.Position
+import nl.dionsegijn.konfetti.core.emitter.Emitter
+import java.text.Normalizer
+import java.util.concurrent.TimeUnit
+import kotlin.math.sin
 
 class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTextFocusListener {
 
@@ -49,6 +56,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
     private var nameLetterByLetterAdapter = mutableListOf<NameLetterByLetterAdapter>()
     private var recyclerViewReference = mutableListOf<RecyclerView>()
+    private var initialX: Float = 0f
 
     private var viewModel: WhosPlayerViewModel? = null
     private lateinit var soccerPlayerName: String
@@ -65,23 +73,25 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         binding = ActivityWhosPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initialX = binding.container.x
+
         setSupportActionBar(binding.toolbar)
         supportActionBar?.title = "QUAL JOGADOR ?"
 
         configDateButtons()
         configConfirmationButton()
 
-        val pair = WhosPlayerMock.getSoccerPlayerResponse()
-        if (!pair.first.isNullOrEmpty()) {
-            importDataFromJson(pair.first, pair.second)
-        }
+//        val pair = WhosPlayerMock.getSoccerPlayerResponse()
+//        if (!pair.first.isNullOrEmpty()) {
+//            importDataFromJson(pair.first, pair.second)
+//        }
     }
 
     private fun initViewModel() {
         val factory = WhosPlayerViewModelFactory()
         viewModel = ViewModelProvider(this, factory)[WhosPlayerViewModel::class.java]
 
-        // viewModel?.getSoccerPlayer(getAndroidID(this))
+        viewModel?.getSoccerPlayer(getAndroidID(this))
     }
 
     private fun initObservable() {
@@ -97,6 +107,15 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
                 is WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.HideLoading -> {
                     hideLoading()
+                }
+
+                is WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.NotFound -> {
+                    binding.finishScreen.visibility = View.VISIBLE
+                    binding.finishScreen.closeClickListener {
+                        finish()
+                    }
+                    binding.finishScreen.visibility = View.GONE
+
                 }
 
                 is WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.GenericError -> {
@@ -121,15 +140,19 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                 }
 
                 is WhosPlayerViewState.WhosPlayerSaveLevelViewState.ShowLoading -> {
-                    Toast.makeText(this, "ShowLoading", Toast.LENGTH_SHORT).show()
+                    // not used yet
                 }
 
                 is WhosPlayerViewState.WhosPlayerSaveLevelViewState.HideLoading -> {
-                    Toast.makeText(this, "HideLoading", Toast.LENGTH_SHORT).show()
+                    // not used yet
                 }
 
                 is WhosPlayerViewState.WhosPlayerSaveLevelViewState.GenericError -> {
-                    Toast.makeText(this, "GenericError", Toast.LENGTH_SHORT).show()
+                    binding.errorScreen.visibility = View.VISIBLE
+                    binding.errorScreen.closeClickListener {
+                        finish()
+                    }
+                    binding.frameLayout.visibility = View.GONE
                 }
             }
         }
@@ -137,6 +160,10 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
     private fun showSoccerPlayerInformation(level: Int, soccerPlayer: SoccerPlayerModel) {
         currentLevel = level
+        currentLevel?.let {
+            binding.textLevel.typeface = Typeface.create("sans-serif", Typeface.NORMAL)
+            binding.textLevel.text = this.getString(R.string.whos_player_text_level, it)
+        }
 
         soccerPlayerName = soccerPlayer.name
         soccerPlayer.name
@@ -357,19 +384,57 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
             nameLetterByLetterAdapter.map {
                 result += it.getItem()
             }
-
-            val answer = soccerPlayerName.uppercase().trim().replace(" ", "")
+            val answer = removeAccentuation(soccerPlayerName.uppercase().trim().replace(" ", ""))
 
             if (result.uppercase() == answer) {
+                val party = Party(
+                    speed = 0f,
+                    maxSpeed = 30f,
+                    damping = 0.9f,
+                    spread = 360,
+                    colors = listOf(0xfce18a, 0xff726d, 0xf4306d, 0xb48def),
+                    emitter = Emitter(duration = 100, TimeUnit.MILLISECONDS).max(100),
+                    position = Position.Relative(0.5, 0.3)
+                )
+                binding.konfettiView.start(party)
+
                 currentLevel?.let {
                     val nextLevel = it + 1
 
                     viewModel?.saveLevel(getAndroidID(this), nextLevel)
                 }
             } else {
-                Toast.makeText(this, "Falha", Toast.LENGTH_SHORT).show()
+                val duration = 1000L
+                val magnitude = 20f
+
+                val animator = ValueAnimator.ofFloat(0f, 1f)
+                animator.duration = duration
+                animator.addUpdateListener { animation ->
+                    val fraction = animation.animatedValue as Float
+                    val offset = magnitude * sin(fraction * 20)
+                    binding.container.x = initialX + offset
+                }
+
+                animator.start()
+
+                Handler().postDelayed({ binding.container.x = initialX }, 1050L)
+
+                nameLetterByLetterAdapter.map {
+                    it.clearLetters()
+                }
+                val layoutManager =
+                    recyclerViewReference[FIRST_INDEX].layoutManager as LinearLayoutManager
+                layoutManager.findViewByPosition(FIRST_INDEX)
+                    ?.findViewById<EditText>(R.id.letterEditText)
+                    ?.requestFocus()
+
             }
         }
+    }
+
+    private fun removeAccentuation(text: String): String {
+        val textWithoutAccentuation = Normalizer.normalize(text, Normalizer.Form.NFD)
+        return textWithoutAccentuation.replace("[^\\p{ASCII}]".toRegex(), "")
     }
 
     private fun showCustomDialog(tipsNumber: Int, tipsMessage: List<String>) {

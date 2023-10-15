@@ -17,6 +17,7 @@
 
     <!-- Whos Player -->
     <string name="whos_player_confirmation_button">OK</string>
+    <string name="whos_player_text_level">LEVEL %d</string>
 
     <!-- Tips Alert Dialog -->
     <string name="whos_player_alert_dialog_title">Dicas</string>

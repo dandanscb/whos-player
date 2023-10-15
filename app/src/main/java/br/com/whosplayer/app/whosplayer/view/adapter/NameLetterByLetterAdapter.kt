@@ -53,6 +53,12 @@ class NameLetterByLetterAdapter(private val recyclerViewPosition: Int, private v
         return true
     }
 
+    fun clearLetters() {
+        for (itemHolder in itemHolders) {
+            itemHolder.editText.text.clear()
+        }
+    }
+
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val editText: EditText = itemView.findViewById(R.id.letterEditText)
 

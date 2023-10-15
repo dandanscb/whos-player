@@ -52,8 +52,14 @@ class WhosPlayerViewModel(
                     WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.HideLoading
             }
 
+            is WhosPlayerUseCaseState.GetSoccerPlayerUseCaseState.NotFound -> {
+                mutableViewState.value =
+                    WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.NotFound
+            }
+
             is WhosPlayerUseCaseState.GetSoccerPlayerUseCaseState.Error -> {
-                // TODO
+                mutableViewState.value =
+                    WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.GenericError
             }
         }
     }
