@@ -39,6 +39,7 @@ import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewState
 import br.com.whosplayer.commons.database.getAndroidID
 import br.com.whosplayer.commons.database.importDataFromJson
 import br.com.whosplayer.commons.database.mock.WhosPlayerMock
+import br.com.whosplayer.commons.database.mock.WhosPlayerMock.getStageModelMock
 import br.com.whosplayer.commons.view.CustomSplashScreen
 import br.com.whosplayer.commons.view.CustomTipsTextView
 import nl.dionsegijn.konfetti.core.Party
@@ -91,7 +92,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         val factory = WhosPlayerViewModelFactory()
         viewModel = ViewModelProvider(this, factory)[WhosPlayerViewModel::class.java]
 
-        //viewModel?.getSoccerPlayer(getAndroidID(this))
+        // viewModel?.getSoccerPlayer(getAndroidID(this))
     }
 
     private fun initObservable() {
@@ -114,7 +115,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                     binding.finishScreen.closeClickListener {
                         finish()
                     }
-                    binding.finishScreen.visibility = View.GONE
+                    binding.frameLayout.visibility = View.GONE
 
                 }
 
