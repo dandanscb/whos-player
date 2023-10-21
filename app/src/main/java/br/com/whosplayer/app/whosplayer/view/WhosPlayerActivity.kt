@@ -30,6 +30,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import br.com.whosplayer.app.report.view.ReportActivity
 import br.com.whosplayer.app.whosplayer.repository.model.SoccerPlayerModel
 import br.com.whosplayer.app.whosplayer.repository.model.TeamModel
 import br.com.whosplayer.app.whosplayer.repository.model.TipsModel
@@ -233,6 +234,13 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                 startActivity(intent)
                 true
             }
+
+            R.id.action_report -> {
+                val intent = ReportActivity.newInstance(this)
+                startActivity(intent)
+                true
+            }
+
 
             else -> super.onOptionsItemSelected(item)
         }
