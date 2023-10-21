@@ -10,9 +10,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.whosplayer.R
 import br.com.whosplayer.app.whosplayer.repository.model.TeamModel
+import coil.decode.SvgDecoder
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import coil.load
 
 class TeamCrestAdapter(private val context: Context, private val items: List<TeamModel>) :
     RecyclerView.Adapter<TeamCrestAdapter.ItemViewHolder>() {
@@ -46,7 +48,11 @@ class TeamCrestAdapter(private val context: Context, private val items: List<Tea
         private val arrowRight: ImageView = itemView.findViewById(R.id.arrowRight)
 
         fun bind(model: TeamModel) {
-            displayImages(model.crest, crestTeam)
+            if (model.crest.endsWith("svg", ignoreCase = true)) {
+                displaySVGImage(model.crest, crestTeam)
+            } else {
+                displayImage(model.crest, crestTeam)
+            }
             yearsPlayed.text = model.year
             if (model.lastTeam) {
                 arrowRight.visibility = View.INVISIBLE
@@ -60,7 +66,7 @@ class TeamCrestAdapter(private val context: Context, private val items: List<Tea
         }
     }
 
-    private fun displayImages(url: String, imageView: ImageView) {
+    private fun displayImage(url: String, imageView: ImageView) {
         val requestOptions = RequestOptions()
             .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
 
@@ -68,5 +74,16 @@ class TeamCrestAdapter(private val context: Context, private val items: List<Tea
             .load(url)
             .apply(requestOptions)
             .into(imageView)
+    }
+
+    private fun displaySVGImage(url: String, imageView: ImageView) {
+        imageView.load(url) {
+            decoderFactory { result, options, _ ->
+                SvgDecoder(
+                    result.source,
+                    options
+                )
+            }.error(R.drawable.ic_error)
+        }
     }
 }

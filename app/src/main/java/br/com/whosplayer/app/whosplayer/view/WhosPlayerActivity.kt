@@ -37,9 +37,6 @@ import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModelFactory
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewState
 import br.com.whosplayer.commons.database.getAndroidID
-import br.com.whosplayer.commons.database.importDataFromJson
-import br.com.whosplayer.commons.database.mock.WhosPlayerMock
-import br.com.whosplayer.commons.database.mock.WhosPlayerMock.getStageModelMock
 import br.com.whosplayer.commons.view.CustomSplashScreen
 import br.com.whosplayer.commons.view.CustomTipsTextView
 import nl.dionsegijn.konfetti.core.Party
@@ -82,17 +79,17 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         configDateButtons()
         configConfirmationButton()
 
-        val pair = WhosPlayerMock.getSoccerPlayerResponse()
-        if (pair.first.isNotEmpty()) {
-            importDataFromJson(pair.first, pair.second)
-        }
+//        val pair = WhosPlayerMock.getSoccerPlayerResponse()
+//        if (pair.first.isNotEmpty()) {
+//            importDataFromJson(pair.first, pair.second)
+//        }
     }
 
     private fun initViewModel() {
         val factory = WhosPlayerViewModelFactory()
         viewModel = ViewModelProvider(this, factory)[WhosPlayerViewModel::class.java]
 
-        // viewModel?.getSoccerPlayer(getAndroidID(this))
+        viewModel?.getSoccerPlayer(getAndroidID(this))
     }
 
     private fun initObservable() {
@@ -171,6 +168,8 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         displayCrests(soccerPlayer.teams)
         showFieldForLetters(soccerPlayer.nameLetterByLetter)
         configTipsButtons(soccerPlayer.tips)
+
+        binding.dateButton.visibility = View.VISIBLE
     }
 
     private fun displayCrests(teams: List<List<TeamModel>>) {
@@ -303,15 +302,15 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         val messages = mutableListOf<String>()
 
         if (tips.dateOfBirth.isNotEmpty()) {
-            messages.add("A data de nascimento do Jogador é ${tips.dateOfBirth}.")
+            messages.add("A data de nascimento do jogador é ${tips.dateOfBirth}.")
         }
 
         if (tips.position.isNotEmpty()) {
-            messages.add("O Jogador joga como ${tips.position}.")
+            messages.add("A posição do jogador é ${tips.position}.")
         }
 
         if (tips.nationality.isNotEmpty()) {
-            messages.add("Este jogador é da nacionalidade: ${tips.nationality}.")
+            messages.add("A nacionalidade do jogador é ${tips.nationality}.")
         }
 
         return messages

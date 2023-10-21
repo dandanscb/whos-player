@@ -259,22 +259,82 @@ object WhosPlayerMock {
         )
     )
 
-    fun getSoccerPlayerResponse() : Pair<String, SoccerPlayerResponse> {
+    fun getSoccerPlayerResponse(): Pair<String, SoccerPlayerResponse> {
         return Pair(
-            "",
+            "level 100",
             SoccerPlayerResponse(
-                name = "",
+                name = "Balotelli",
                 tips = TipsResponse(
-                    position = "",
-                    nationality = "",
-                    dateOfBirth = ""
+                    position = "Atacante",
+                    nationality = "Italiano",
+                    dateOfBirth = "12 de agosto de 1990"
                 ),
                 teams = getListWithFourTeamsResponse(
                     listOf(
                         TeamResponse(
-                            name = "NOME DO TIME",
-                            crest = "https://logodetimes.com/times/sporting-portugal/logo-sporting-portugal.png",
-                            year = "2001-2003"
+                            name = "Lumezzane",
+                            crest = "https://upload.wikimedia.org/wikipedia/pt/3/3c/AC_Lumezzane.png",
+                            year = "2005–2006"
+                        ),
+                        TeamResponse(
+                            name = "Internazionale",
+                            crest = "https://logodetimes.com/times/football-club-internazionale-milano/football-club-internazionale-milano-4096.png",
+                            year = "2007–2010"
+                        ),
+                        TeamResponse(
+                            name = "Manchester City",
+                            crest = "https://logodetimes.com/times/manchester-city-football-club/manchester-city-football-club-4096.png",
+                            year = "2010–2012"
+                        ),
+                        TeamResponse(
+                            name = "Milan",
+                            crest = "https://logodetimes.com/times/associazione-calcio-milan/associazione-calcio-milan-4096.png",
+                            year = "2013–2014"
+                        ),
+                        TeamResponse(
+                            name = "Liverpool",
+                            crest = "https://logodetimes.com/times/liverpool-football-club/liverpool-football-club-4096.png",
+                            year = "2014–2016"
+                        ),
+                        TeamResponse(
+                            name = "Milan",
+                            crest = "https://logodetimes.com/times/associazione-calcio-milan/associazione-calcio-milan-4096.png",
+                            year = "2015–2016"
+                        ),
+                        TeamResponse(
+                            name = "Nice",
+                            crest = "https://logodetimes.com/times/ogc-nice/ogc-nice-4096.png",
+                            year = "2016–2019"
+                        ),
+                        TeamResponse(
+                            name = "Olympique de Marseille",
+                            crest = "https://logodetimes.com/times/olympique-de-marseille/olympique-de-marseille-4096.png",
+                            year = "2019–2019"
+                        ),
+                        TeamResponse(
+                            name = "Brescia",
+                            crest = "https://upload.wikimedia.org/wikipedia/pt/6/66/Bresciacalcio_new.png",
+                            year = "2019-2020"
+                        ),
+                        TeamResponse(
+                            name = "Monza",
+                            crest = "https://upload.wikimedia.org/wikipedia/commons/3/37/Logo_of_AC_Monza.png",
+                            year = "2020–2021"
+                        ),
+                        TeamResponse(
+                            name = "Adana Demirspor",
+                            crest = "https://upload.wikimedia.org/wikipedia/pt/d/d1/Adana_Demirspor_logo.png",
+                            year = "2021–2022"
+                        ),
+                        TeamResponse(
+                            name = "Sion",
+                            crest = "https://upload.wikimedia.org/wikipedia/commons/5/5d/Logo_FC_Sion.svg",
+                            year = "2022–2023"
+                        ),
+                        TeamResponse(
+                            name = "Adana Demirspor",
+                            crest = "https://upload.wikimedia.org/wikipedia/pt/d/d1/Adana_Demirspor_logo.png",
+                            year = "2023"
                         )
                     )
                 ),
