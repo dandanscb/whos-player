@@ -30,17 +30,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/whos_player_finish_screen_text"
+            android:text="@string/whos_player_report_screen_text"
             android:textAlignment="center"
-            android:textSize="@dimen/whos_player_14sp"
+            android:textSize="@dimen/whos_player_20sp"
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/custom_splash_screen_logo"
-            android:layout_width="@dimen/whos_player_200dp"
-            android:layout_height="@dimen/whos_player_200dp"
-            android:src='@drawable/gol' />
-
+            android:id="@+id/report_imagem"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src='@drawable/report_img' />
 
 
         <TextView
@@ -48,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/whos_player_40dp"
             android:layout_marginEnd="@dimen/whos_player_40dp"
-            android:text="@string/whos_player_finish_screen_second_text"
+            android:text="@string/whos_player_report_screen_second_text"
             android:textAlignment="center"
             android:textSize="@dimen/whos_player_12sp"
             android:textStyle="bold" />

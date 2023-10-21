@@ -31,6 +31,10 @@
         <activity
             android:name=".app.help.view.HelpActivity"
             android:exported="true" />
+        <activity
+            android:name=".app.report.view.ReportActivity"
+            android:exported="true" />
+
 
     </application>
 

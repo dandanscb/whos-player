@@ -3,6 +3,8 @@
 
     <!-- Help -->
     <string name="menu_action_help">help</string>
+    <string name="menu_action_report">report</string>
+
     <string name="whos_player_help_text">O objetivo do jogo consiste em descobrir o jogador através dos emblemas dos clubes no qual ele jogou, por exemplo:</string>
     <string name="whos_player_help_second_text">Ao observar toda a carreira do jogador, ou seja, os clubes nos quais este jogador atuou e/ou atua e quiser optar por um palpite, basta digitar o nome do jogador que você acredita ser no espaço em branco destinado ao texto.</string>
     <string name="whos_player_help_third_text">Mas mesmo ao ver os times pelos quais o jogador passou e ainda não descobriu quem ele é, fique tranquilo, preparamos algumas dicas para te auxiliar nesta descoberta.\nTemos duas opções de dicas para te ajudar, a primeira consta em uma lampada, que ao solicita-lá, te dará até 3 dicas, sendo a primeira a data de nascimento do jogador, a segunda sua posição, por exemplo:Atacante e por fim, a sua nacionalidade.</string>
@@ -33,4 +35,7 @@
     <!-- Custom Finish Screen -->
     <string name="whos_player_finish_screen_text">Que Goleada!</string>
     <string name="whos_player_finish_screen_second_text">Parabéns, você terminou todos os jogadores, neste momento estamos trabalhando para adicionar cada vez mais, para que você possa continuar jogando.</string>
+    <string name="whos_player_report_screen_text">Quer ajudar a manter nosso time na séria A?</string>
+    <string name="whos_player_report_screen_second_text">Envie-nos um email relatando algum erro, e também dando sujestões de novos jogadores</string>
+    <string name="report">report</string>
 </resources>
