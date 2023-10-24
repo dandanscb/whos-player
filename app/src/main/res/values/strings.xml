@@ -37,5 +37,14 @@
     <string name="whos_player_finish_screen_second_text">Parabéns, você terminou todos os jogadores, neste momento estamos trabalhando para adicionar cada vez mais, para que você possa continuar jogando.</string>
     <string name="whos_player_report_screen_text">Quer ajudar a manter nosso time na séria A?</string>
     <string name="whos_player_report_screen_second_text">Envie-nos um email relatando algum erro, e também dando sujestões de novos jogadores</string>
-    <string name="report">report</string>
+
+
+    <!-- Whos Player -->
+    <string name="whos_player_onboarding_skip_button">PULAR</string>
+    <string name="whos_player_onboarding_initial_title">TITULO</string>
+    <string name="whos_player_onboarding_initial_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,</string>
+    <string name="whos_player_onboarding_tips_title">TIPS</string>
+    <string name="whos_player_onboarding_tips_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,</string>
+    <string name="whos_player_onboarding_fun_title">DIVIRTA-SE</string>
+    <string name="whos_player_onboarding_fun_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,</string>
 </resources>

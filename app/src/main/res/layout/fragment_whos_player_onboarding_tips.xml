@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/skip_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/whos_player_12dp"
+            android:background="@android:color/transparent"
+            android:textSize="@dimen/whos_player_20sp"
+            android:text="@string/whos_player_onboarding_skip_button" />
+
+        <ImageView
+            android:layout_width="@dimen/whos_player_200dp"
+            android:layout_height="@dimen/whos_player_200dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/tips" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/whos_player_60dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="@dimen/whos_player_16dp"
+                android:text="@string/whos_player_onboarding_tips_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/whos_player_24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginHorizontal="@dimen/whos_player_16dp"
+                android:text="@string/whos_player_onboarding_tips_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/whos_player_16sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

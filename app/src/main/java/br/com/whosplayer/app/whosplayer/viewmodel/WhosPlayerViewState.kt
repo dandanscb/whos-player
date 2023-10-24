@@ -9,8 +9,6 @@ sealed class WhosPlayerViewState {
         object ShowLoading : WhosPlayerSoccerPlayerViewState()
         data class GetSoccerPlayer(val level: Int, val soccerPlayer: SoccerPlayerModel) :
             WhosPlayerSoccerPlayerViewState()
-
-        object NotFound : WhosPlayerSoccerPlayerViewState()
         object GenericError : WhosPlayerSoccerPlayerViewState()
         object HideLoading : WhosPlayerSoccerPlayerViewState()
     }

@@ -306,7 +306,7 @@ object WhosPlayerMock {
     private fun getListWithFourTeamsResponse(response: List<TeamResponse>): List<List<TeamResponse>> {
         response.last().lastTeam = true
         val list = mutableListOf<List<TeamResponse>>()
-        val subListSize = WhosPlayerActivity.spanCount
+        val subListSize = 3
         var currentIndex = FIRST_INDEX
 
         while (currentIndex < response.size) {
@@ -327,7 +327,7 @@ object WhosPlayerMock {
     private fun getListWithFourTeams(model: List<TeamModel>): List<List<TeamModel>> {
         model.last().lastTeam = true
         val list = mutableListOf<List<TeamModel>>()
-        val subListSize = WhosPlayerActivity.spanCount
+        val subListSize = 3
         var currentIndex = FIRST_INDEX
 
         while (currentIndex < model.size) {

@@ -20,6 +20,8 @@ import br.com.whosplayer.app.whosplayer.view.adapter.TeamCrestAdapter
 import br.com.whosplayer.app.whosplayer.view.utils.NonScrollableGridLayoutManager
 import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
 import android.app.Dialog
+import android.content.Context
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Handler
 import android.view.View
@@ -65,6 +67,11 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        intent?.extras?.let {
+            currentLevel = it.getInt(LEVEL_STATE)
+        }
+
         init()
         initViewModel()
         initObservable()
@@ -92,7 +99,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         val factory = WhosPlayerViewModelFactory()
         viewModel = ViewModelProvider(this, factory)[WhosPlayerViewModel::class.java]
 
-        viewModel?.getSoccerPlayer(getAndroidID(this))
+        viewModel?.getSoccerPlayer(currentLevel)
     }
 
     private fun initObservable() {
@@ -108,15 +115,6 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
                 is WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.HideLoading -> {
                     hideLoading()
-                }
-
-                is WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.NotFound -> {
-                    binding.finishScreen.visibility = View.VISIBLE
-                    binding.finishScreen.closeClickListener {
-                        finish()
-                    }
-                    binding.frameLayout.visibility = View.GONE
-
                 }
 
                 is WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.GenericError -> {
@@ -137,7 +135,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
                     binding.cardViewContainer.removeAllViews()
                     binding.fieldLettersContainer.removeAllViews()
-                    viewModel?.getSoccerPlayer(getAndroidID(this))
+                    viewModel?.getSoccerPlayer(currentLevel)
                 }
 
                 is WhosPlayerViewState.WhosPlayerSaveLevelViewState.ShowLoading -> {
@@ -179,11 +177,11 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         teams.forEach {
             val recyclerView = RecyclerView(this)
 
-            val layoutManager = NonScrollableGridLayoutManager(this, spanCount)
+            val layoutManager = NonScrollableGridLayoutManager(this, SPAN_COUNT)
             val screenWidth = resources.displayMetrics.widthPixels
             val desiredColumnWidth = resources.getDimensionPixelSize(R.dimen.whos_player_80dp)
             val columns = screenWidth / desiredColumnWidth
-            layoutManager.spanCount = columns.coerceAtMost(spanCount)
+            layoutManager.spanCount = columns.coerceAtMost(SPAN_COUNT)
 
             recyclerView.layoutManager = layoutManager
 
@@ -498,10 +496,17 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     }
 
     companion object {
-        const val spanCount = 3
-
+        private const val SPAN_COUNT = 3
         private const val FIRST_INDEX = 0
         private const val NUMBER_ONE = 1
         private const val NEGATIVE_NUMBER_ONE = -1
+
+        const val LEVEL_STATE = "LEVEL_STATE"
+
+        @JvmStatic
+        fun newInstance(context: Context, level: Int): Intent =
+            Intent(context, WhosPlayerActivity::class.java).apply {
+                putExtra(LEVEL_STATE, level)
+            }
     }
 }

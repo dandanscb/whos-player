@@ -11,6 +11,6 @@
         android:id="@+id/action_report"
         android:icon="@drawable/ic_report"
         android:orderInCategory="99"
-        android:title="@string/report"
+        android:title="@string/menu_action_report"
         app:showAsAction="always" />
 </menu>

@@ -24,11 +24,10 @@ class WhosPlayerViewModel(
     val saveLevelViewState: LiveData<WhosPlayerViewState.WhosPlayerSaveLevelViewState> =
         mutableSaveLevelViewState
 
-    fun getSoccerPlayer(androidId: String) {
+    fun getSoccerPlayer(currentLevel: Int?) {
         mutableViewState.value = WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.ShowLoading
         viewModelScope.launch {
-            val level = handleGetPlayerLevelState(useCase.getPlayerLevel(androidId))
-            level?.let {
+            currentLevel?.let {
                 handleGetSoccerPlayerState(it, useCase.getSoccerPlayer(it))
             } ?: run {
                 mutableViewState.value =
@@ -54,7 +53,7 @@ class WhosPlayerViewModel(
 
             is WhosPlayerUseCaseState.GetSoccerPlayerUseCaseState.NotFound -> {
                 mutableViewState.value =
-                    WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.NotFound
+                    WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.GenericError
             }
 
             is WhosPlayerUseCaseState.GetSoccerPlayerUseCaseState.Error -> {
@@ -63,21 +62,6 @@ class WhosPlayerViewModel(
             }
         }
     }
-
-    private fun handleGetPlayerLevelState(result: WhosPlayerUseCaseState.GetPlayerLevelUseCaseState): Int? =
-        when (result) {
-            is WhosPlayerUseCaseState.GetPlayerLevelUseCaseState.GetPlayerLevel -> {
-                result.level.toInt()
-            }
-
-            is WhosPlayerUseCaseState.GetPlayerLevelUseCaseState.EmptyState -> {
-                FIRST_INDEX
-            }
-
-            is WhosPlayerUseCaseState.GetPlayerLevelUseCaseState.Error -> {
-                null
-            }
-        }
 
     fun saveLevel(androidId: String, level: Int) {
         mutableSaveLevelViewState.value =
@@ -101,9 +85,5 @@ class WhosPlayerViewModel(
                     WhosPlayerViewState.WhosPlayerSaveLevelViewState.GenericError
             }
         }
-    }
-
-    companion object {
-        private const val FIRST_INDEX = 1
     }
 }
