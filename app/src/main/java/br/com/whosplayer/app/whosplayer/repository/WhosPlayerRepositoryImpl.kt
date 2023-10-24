@@ -35,7 +35,6 @@ class WhosPlayerRepositoryImpl(private val db: FirebaseFirestore) : WhosPlayerRe
                 WhosPlayerRepositoryState.GetPlayerLevelRepositoryState.NotFoundPlayer
             }
         } catch (e: Exception) {
-            val teste = e.message
             WhosPlayerRepositoryState.GetPlayerLevelRepositoryState.Error
         }
     }
