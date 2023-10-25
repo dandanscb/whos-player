@@ -31,6 +31,9 @@ class HelpActivity : AppCompatActivity() {
         binding.closeButton.setOnClickListener {
             finish()
         }
+        binding.closeButton2.setOnClickListener {
+            finish()
+        }
     }
 
     private fun configureCardView() {
@@ -116,7 +119,7 @@ class HelpActivity : AppCompatActivity() {
         binding.firstTip.tipsValue.text =
             "A data de nascimento do Jogador é 5 de fevereiro de 1992."
         binding.secondTip.tipsTitle.text = "Dica 2"
-        binding.secondTip.tipsValue.text = "O Jogador joga como Atacante."
+        binding.secondTip.tipsValue.text = "A posição do jogador é Atacante."
         binding.thirdTip.tipsTitle.text = "Dica 3"
         binding.thirdTip.tipsValue.text = "Este jogador é da nacionalidade: Brasileiro."
     }

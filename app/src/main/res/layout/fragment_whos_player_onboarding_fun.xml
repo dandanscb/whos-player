@@ -16,12 +16,26 @@
             android:background="@android:color/transparent"
             android:src="@drawable/ic_close" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/whos_player_16dp"
+            android:layout_marginTop="@dimen/whos_player_120dp"
+            android:gravity="center"
+            android:text="@string/whos_player_onboarding_fun_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/whos_player_24sp"
+            android:textStyle="bold" />
+
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:adjustViewBounds="true"
-            android:layout_marginBottom="@dimen/whos_player_80dp"
             android:src="@drawable/logo_whos_player" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,16 +43,6 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/whos_player_60dp"
             android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_marginHorizontal="@dimen/whos_player_16dp"
-                android:text="@string/whos_player_onboarding_fun_title"
-                android:textColor="@color/black"
-                android:textSize="@dimen/whos_player_24sp" />
 
             <TextView
                 android:id="@+id/fun_description"

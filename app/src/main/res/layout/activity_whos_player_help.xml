@@ -226,7 +226,7 @@
             android:id="@+id/help_confirmation_button_example"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/whos_player_8dp"
+            android:layout_marginTop="@dimen/whos_player_20dp"
             android:background="@drawable/confirmation_button_not_enabled"
             android:enabled="false"
             android:text="@string/whos_player_confirmation_button"
@@ -240,6 +240,7 @@
             android:layout_width="@dimen/whos_player_0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/whos_player_24dp"
+            android:layout_marginTop="@dimen/whos_player_20dp"
             android:gravity="center"
             android:text="@string/whos_player_help_seventh_text"
             android:textColor="@color/black"
@@ -252,7 +253,7 @@
             android:id="@+id/help_confirmation_button_example2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/whos_player_8dp"
+            android:layout_marginTop="@dimen/whos_player_20dp"
             android:background="@drawable/confirmation_button_enabled"
             android:text="@string/whos_player_confirmation_button"
             android:textStyle="bold"
@@ -265,14 +266,26 @@
             android:layout_width="@dimen/whos_player_0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/whos_player_24dp"
+            android:layout_marginTop="@dimen/whos_player_20dp"
             android:gravity="center"
             android:text="@string/whos_player_help_eighth_text"
             android:textColor="@color/black"
             android:textSize="@dimen/whos_player_16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_confirmation_button_example2" />
+
+        <ImageButton
+            android:id="@+id/close_button_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/whos_player_24dp"
+            android:layout_marginTop="@dimen/whos_player_20dp"
+            android:background="@color/whos_player_gray"
+            android:src="@drawable/ic_close"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/help_eighth_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

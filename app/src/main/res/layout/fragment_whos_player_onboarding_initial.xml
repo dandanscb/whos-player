@@ -20,6 +20,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
+
         <include
             android:id="@+id/initial_card_view"
             layout="@layout/card_view_whos_player_help_example"

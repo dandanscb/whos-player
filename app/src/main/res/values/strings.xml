@@ -6,13 +6,13 @@
     <string name="menu_action_report">report</string>
 
     <string name="whos_player_help_text">O objetivo do jogo consiste em descobrir o jogador através dos emblemas dos clubes no qual ele jogou, por exemplo:</string>
-    <string name="whos_player_help_second_text">Ao observar toda a carreira do jogador, ou seja, os clubes nos quais este jogador atuou e/ou atua e quiser optar por um palpite, basta digitar o nome do jogador que você acredita ser no espaço em branco destinado ao texto.</string>
-    <string name="whos_player_help_third_text">Mas mesmo ao ver os times pelos quais o jogador passou e ainda não descobriu quem ele é, fique tranquilo, preparamos algumas dicas para te auxiliar nesta descoberta.\nTemos duas opções de dicas para te ajudar, a primeira consta em uma lampada, que ao solicita-lá, te dará até 3 dicas, sendo a primeira a data de nascimento do jogador, a segunda sua posição, por exemplo:Atacante e por fim, a sua nacionalidade.</string>
-    <string name="whos_player_help_fourth_text">A segunda opção de dica que preparamos para você é um calendário, que ao clica-lo você saberá a data na qual o jogador atuou em cada clube, depois disso ele desaparecerá de sua tela.</string>
-    <string name="whos_player_help_fifth_text">Após utilizar as dicas fornecidas ou, caso não precise delas, insira o nome do jogador que você acredita ser o correto no campo de texto em branco abaixo desta forma.</string>
-    <string name="whos_player_help_sixth_text">Quando você terminar de escrever o nome do jogador, o botão para confirmar o nome irá sair disso</string>
+    <string name="whos_player_help_second_text">Ao observar toda a carreira do jogador, ou seja, os clubes nos quais este jogador atuou e/ou atua e quiser optar por um palpite, basta digitar o nome do jogador ou apelido do qual este é conhecido, que você acredita ser no espaço em branco destinado ao texto.</string>
+    <string name="whos_player_help_third_text">Mas mesmo ao ver os times pelos quais o jogador passou e ainda não descobriu quem ele é, fique tranquilo, preparamos algumas dicas para te auxiliar nesta descoberta.\nTemos duas opções de dicas para te ajudar, a primeira consta em uma lampada (encontra-se à direita da tela), que ao solicita-lá, te dará até 3 dicas, sendo a primeira a data de nascimento do jogador, a segunda sua posição, por exemplo:Atacante e por fim, a sua nacionalidade.</string>
+    <string name="whos_player_help_fourth_text">A segunda opção de dica que preparamos para você é um calendário (encontra-se à esquerda da tela), que ao clica-lo você saberá a data na qual o jogador atuou em cada clube, depois disso ele desaparecerá de sua tela.</string>
+    <string name="whos_player_help_fifth_text">Após utilizar as dicas fornecidas ou, caso não precise delas, insira o nome ou apelido do jogador que você acredita ser o correto no campo de texto em branco abaixo desta forma.</string>
+    <string name="whos_player_help_sixth_text">Quando você terminar de escrever o nome ou apelido do jogador, o botão para confirmar o nome irá sair disso</string>
     <string name="whos_player_help_seventh_text">Para isto</string>
-    <string name="whos_player_help_eighth_text">Então você irá poder confirmar o jogador na qual você acredita ser clicando no botão "OK", caso seu palpite esteja errado, a tela do seu celular irá "chacoalhar" alertando que você errou o palpite</string>
+    <string name="whos_player_help_eighth_text">Então você irá poder confirmar o jogador na qual você acredita ser clicando no botão "OK", caso seu palpite esteja errado, a tela do seu celular irá "chacoalhar" alertando que você errou o palpite, se acertar, passará de nivel.</string>
 
     <string name="whos_player_help_first_team_years_played">2009-2013</string>
 
@@ -43,12 +43,12 @@
     <string name="whos_player_onboarding_skip_button">PULAR</string>
     <string name="whos_player_onboarding_welcome_title">BEM VINDO</string>
     <string name="whos_player_onboarding_welcome_text">Agradecemos profundamente por ter feito o download do nosso jogo. Para garantir que você tenha a melhor experiência, gostaríamos de oferecer uma breve introdução sobre como ele funciona. Estamos ansiosos para que você se divirta ao máximo. Até breve!</string>
-    <string name="whos_player_onboarding_initial_title">TITULO</string>
+    <string name="whos_player_onboarding_initial_title">CLUBES</string>
     <string name="whos_player_onboarding_initial_text">Em nosso jogo, o desafio é acertar o nome ou apelido dos jogadores com base nos times pelos quais eles já passaram ou estão atualmente.</string>
-    <string name="whos_player_onboarding_nickname_title">NICKNAME</string>
-    <string name="whos_player_onboarding_nickname_text">Em nosso jogo, o desafio é acertar o nome ou apelido dos jogadores com base nos times pelos quais eles já passaram ou estão atualmente.</string>
-    <string name="whos_player_onboarding_tips_title">TIPS</string>
-    <string name="whos_player_onboarding_tips_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,</string>
+    <string name="whos_player_onboarding_nickname_title">NOME/APELIDO</string>
+    <string name="whos_player_onboarding_nickname_text">Assim que identificar o jogador, basta inserir o nome no campo de texto e confirmar.</string>
+    <string name="whos_player_onboarding_tips_title">Ajuda</string>
+    <string name="whos_player_onboarding_tips_text">Também oferecemos uma opção de ajuda para aqueles que não estão familiarizados com as regras do jogo. Lá, explicamos detalhadamente o passo a passo de como funciona, para que você possa se divertir ao máximo.</string>
     <string name="whos_player_onboarding_fun_title">DIVIRTA-SE</string>
-    <string name="whos_player_onboarding_fun_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,</string>
+    <string name="whos_player_onboarding_fun_text">Desejamos que você aproveite ao máximo o jogo. Se você gostar ou tiver alguma sugestão, ficaríamos gratos se você pudesse deixar sua avaliação no Google Play e compartilhar sugestões de novos jogadores para serem considerados em futuras atualizações. Seu feedback é valioso para nós!</string>
 </resources>

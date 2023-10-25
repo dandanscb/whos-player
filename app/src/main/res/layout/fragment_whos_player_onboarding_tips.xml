@@ -17,6 +17,17 @@
             android:textSize="@dimen/whos_player_20sp"
             android:text="@string/whos_player_onboarding_skip_button" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/whos_player_16dp"
+            android:layout_marginTop="@dimen/whos_player_120dp"
+            android:gravity="center"
+            android:text="@string/whos_player_onboarding_tips_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/whos_player_24sp"
+            android:textStyle="bold" />
+
         <ImageView
             android:layout_width="@dimen/whos_player_200dp"
             android:layout_height="@dimen/whos_player_200dp"
@@ -31,16 +42,6 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/whos_player_60dp"
             android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_marginHorizontal="@dimen/whos_player_16dp"
-                android:text="@string/whos_player_onboarding_tips_title"
-                android:textColor="@color/black"
-                android:textSize="@dimen/whos_player_24sp" />
 
             <TextView
                 android:id="@+id/tips_description"
