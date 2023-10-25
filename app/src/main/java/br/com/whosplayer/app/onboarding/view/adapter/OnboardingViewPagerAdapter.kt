@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import br.com.whosplayer.app.onboarding.view.OnboardingFunFragment
 import br.com.whosplayer.app.onboarding.view.OnboardingInitialFragment
+import br.com.whosplayer.app.onboarding.view.OnboardingNicknameFragment
 import br.com.whosplayer.app.onboarding.view.OnboardingTipsFragment
 import br.com.whosplayer.app.onboarding.view.OnboardingWelcomeFragment
 
@@ -13,6 +14,7 @@ class OnboardingViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPag
     private val fragments = listOf(
         OnboardingWelcomeFragment(),
         OnboardingInitialFragment(),
+        OnboardingNicknameFragment(),
         OnboardingTipsFragment(),
         OnboardingFunFragment()
     )

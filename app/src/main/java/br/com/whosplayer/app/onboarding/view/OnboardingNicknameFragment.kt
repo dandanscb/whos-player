@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import br.com.whosplayer.databinding.FragmentWhosPlayerOnboardingWelcomeBinding
+import br.com.whosplayer.databinding.FragmentWhosPlayerOnboardingNicknameBinding
 
-class OnboardingWelcomeFragment : Fragment() {
+class OnboardingNicknameFragment : Fragment() {
 
-    private lateinit var binding: FragmentWhosPlayerOnboardingWelcomeBinding
+    private lateinit var binding: FragmentWhosPlayerOnboardingNicknameBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,10 +20,10 @@ class OnboardingWelcomeFragment : Fragment() {
     }
 
     private fun setupBindingLayout(fragmentLocalInflater: LayoutInflater): View {
-        return FragmentWhosPlayerOnboardingWelcomeBinding.inflate(
+        return FragmentWhosPlayerOnboardingNicknameBinding.inflate(
             fragmentLocalInflater
         ).root.also {
-            binding = FragmentWhosPlayerOnboardingWelcomeBinding.bind(it)
+            binding = FragmentWhosPlayerOnboardingNicknameBinding.bind(it)
         }
     }
 
@@ -38,5 +38,15 @@ class OnboardingWelcomeFragment : Fragment() {
             val parentActivity = activity as OnboardingActivity
             parentActivity.goToNextFragment()
         }
+        configureLetterByLetters()
+    }
+
+    private fun configureLetterByLetters() {
+        binding.nicknameLetterByLetter.firstLetter.letterEditText.visibility = View.GONE
+        binding.nicknameLetterByLetter.secondLetter.letterEditText.visibility = View.GONE
+        binding.nicknameLetterByLetter.thirdLetter.letterEditText.visibility = View.GONE
+        binding.nicknameLetterByLetter.fourthLetter.letterEditText.visibility = View.GONE
+        binding.nicknameLetterByLetter.fifthLetter.letterEditText.visibility = View.GONE
+        binding.nicknameLetterByLetter.sixthLetter.letterEditText.visibility = View.GONE
     }
 }

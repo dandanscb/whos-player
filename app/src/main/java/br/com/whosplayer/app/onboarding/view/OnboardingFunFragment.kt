@@ -1,9 +1,6 @@
 package br.com.whosplayer.app.onboarding.view
 
 import android.os.Bundle
-import android.text.Layout
-import android.text.SpannableString
-import android.text.style.AlignmentSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
