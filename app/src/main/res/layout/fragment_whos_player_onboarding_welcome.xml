@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -13,39 +12,33 @@
             android:id="@+id/skip_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_margin="@dimen/whos_player_12dp"
             android:background="@android:color/transparent"
             android:textSize="@dimen/whos_player_20sp"
-            android:text="@string/whos_player_onboarding_skip_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:text="@string/whos_player_onboarding_skip_button" />
 
-        <include
-            android:id="@+id/initial_card_view"
-            layout="@layout/card_view_whos_player_help_example"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/whos_player_80dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/skip_button"/>
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/logo_whos_player" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="@dimen/whos_player_60dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/initial_card_view">
+            android:layout_marginBottom="@dimen/whos_player_60dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/whos_player_16dp"
                 android:gravity="center"
-                android:text="@string/whos_player_onboarding_initial_title"
+                android:text="@string/whos_player_onboarding_welcome_title"
                 android:textColor="@color/black"
                 android:textSize="@dimen/whos_player_24sp"
                 android:textStyle="bold" />
@@ -55,12 +48,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/whos_player_16dp"
                 android:gravity="center"
-                android:text="@string/whos_player_onboarding_initial_text"
+                android:text="@string/whos_player_onboarding_welcome_text"
                 android:textColor="@color/black"
                 android:textSize="@dimen/whos_player_16sp" />
 
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
 </FrameLayout>

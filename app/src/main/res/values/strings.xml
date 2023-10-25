@@ -41,6 +41,8 @@
 
     <!-- Whos Player -->
     <string name="whos_player_onboarding_skip_button">PULAR</string>
+    <string name="whos_player_onboarding_welcome_title">BEM VINDO</string>
+    <string name="whos_player_onboarding_welcome_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,</string>
     <string name="whos_player_onboarding_initial_title">TITULO</string>
     <string name="whos_player_onboarding_initial_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,</string>
     <string name="whos_player_onboarding_tips_title">TIPS</string>

@@ -1,33 +1,80 @@
 package br.com.whosplayer.app.onboarding.view
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import br.com.whosplayer.R
 import br.com.whosplayer.app.whosplayer.view.WhosPlayerActivity
+import br.com.whosplayer.databinding.FragmentWhosPlayerOnboardingInitialBinding
 
 class OnboardingInitialFragment : Fragment() {
 
-    @SuppressLint("MissingInflatedId")
+    private lateinit var binding: FragmentWhosPlayerOnboardingInitialBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_whos_player_onboarding_initial, container, false)
+    ): View {
+        val fragmentLocalInflater = inflater.cloneInContext(requireContext())
+        return setupBindingLayout(fragmentLocalInflater)
+    }
 
-        val transparentButton = rootView.findViewById<Button>(R.id.skip_button)
+    private fun setupBindingLayout(fragmentLocalInflater: LayoutInflater) : View {
+        return FragmentWhosPlayerOnboardingInitialBinding.inflate(
+            fragmentLocalInflater
+        ).root.also {
+            binding = FragmentWhosPlayerOnboardingInitialBinding.bind(it)
+        }
+    }
 
-        transparentButton.setOnClickListener {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        init()
+    }
+
+    private fun init() {
+        binding.skipButton.setOnClickListener {
             val intent = WhosPlayerActivity.newInstance(requireContext(), FIRST_INDEX)
             startActivity(intent)
             requireActivity().finish()
         }
 
-        return rootView
+        configureCardView()
+    }
+
+    private fun configureCardView() {
+        binding.initialCardView.firstTeam.crestTeam.setImageDrawable(
+            ContextCompat.getDrawable(
+                requireContext(),
+                R.drawable.img_santos
+            )
+        )
+
+        binding.initialCardView.secondTeam.crestTeam.setImageDrawable(
+            ContextCompat.getDrawable(
+                requireContext(),
+                R.drawable.img_barcelona
+            )
+        )
+
+        binding.initialCardView.thirdTeam.crestTeam.setImageDrawable(
+            ContextCompat.getDrawable(
+                requireContext(),
+                R.drawable.img_paris_saint_germain
+            )
+        )
+
+        binding.initialCardView.fourthTeam.crestTeam.setImageDrawable(
+            ContextCompat.getDrawable(
+                requireContext(),
+                R.drawable.img_al_hilal
+            )
+        )
+        binding.initialCardView.fourthTeam.arrowRight.visibility = View.INVISIBLE
     }
 
     companion object {

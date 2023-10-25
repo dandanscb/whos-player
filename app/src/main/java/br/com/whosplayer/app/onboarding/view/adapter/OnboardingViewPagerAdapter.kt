@@ -6,10 +6,12 @@ import androidx.fragment.app.FragmentPagerAdapter
 import br.com.whosplayer.app.onboarding.view.OnboardingFunFragment
 import br.com.whosplayer.app.onboarding.view.OnboardingInitialFragment
 import br.com.whosplayer.app.onboarding.view.OnboardingTipsFragment
+import br.com.whosplayer.app.onboarding.view.OnboardingWelcomeFragment
 
 class OnboardingViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
 
     private val fragments = listOf(
+        OnboardingWelcomeFragment(),
         OnboardingInitialFragment(),
         OnboardingTipsFragment(),
         OnboardingFunFragment()

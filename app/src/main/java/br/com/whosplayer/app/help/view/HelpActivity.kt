@@ -100,8 +100,6 @@ class HelpActivity : AppCompatActivity() {
         binding.helpCardViewDates.fourthTeam.yearsPlayed.text = "2023"
 
         binding.helpCardViewDates.fourthTeam.arrowRight.visibility = View.INVISIBLE
-
-
     }
 
     private fun configureLetterByLetters() {
