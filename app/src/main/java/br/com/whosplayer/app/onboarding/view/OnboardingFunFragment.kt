@@ -46,18 +46,9 @@ class OnboardingFunFragment : Fragment() {
             requireActivity().finish()
         }
 
-        val spannableString = SpannableString(binding.funDescription.text)
-        spannableString.setSpan(
-            AlignmentSpan.Standard(Layout.Alignment.ALIGN_NORMAL),
-            START_INDEX,
-            spannableString.length,
-            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        binding.funDescription.text = spannableString
     }
 
     companion object {
         private const val FIRST_INDEX = 1
-        private const val START_INDEX = 0
     }
 }

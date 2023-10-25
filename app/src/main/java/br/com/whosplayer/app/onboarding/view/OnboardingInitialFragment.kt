@@ -44,15 +44,6 @@ class OnboardingInitialFragment : Fragment() {
             parentActivity.goToNextFragment()
         }
 
-        val spannableString = SpannableString(binding.initialDescription.text)
-        spannableString.setSpan(
-            AlignmentSpan.Standard(Layout.Alignment.ALIGN_NORMAL),
-            START_INDEX,
-            spannableString.length,
-            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        binding.initialDescription.text = spannableString
-
         configureCardView()
     }
 
@@ -85,9 +76,5 @@ class OnboardingInitialFragment : Fragment() {
             )
         )
         binding.initialCardView.fourthTeam.arrowRight.visibility = View.INVISIBLE
-    }
-
-    companion object {
-        private const val START_INDEX = 0
     }
 }

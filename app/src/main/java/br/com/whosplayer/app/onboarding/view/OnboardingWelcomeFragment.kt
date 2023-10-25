@@ -41,18 +41,5 @@ class OnboardingWelcomeFragment : Fragment() {
             val parentActivity = activity as OnboardingActivity
             parentActivity.goToNextFragment()
         }
-
-        val spannableString = SpannableString(binding.welcomeDescription.text)
-        spannableString.setSpan(
-            AlignmentSpan.Standard(Layout.Alignment.ALIGN_NORMAL),
-            START_INDEX,
-            spannableString.length,
-            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        binding.welcomeDescription.text = spannableString
-    }
-
-    companion object {
-        private const val START_INDEX = 0
     }
 }

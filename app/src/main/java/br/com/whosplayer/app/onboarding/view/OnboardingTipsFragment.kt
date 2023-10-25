@@ -41,17 +41,5 @@ class OnboardingTipsFragment : Fragment() {
             val parentActivity = activity as OnboardingActivity
             parentActivity.goToNextFragment()
         }
-        val spannableString = SpannableString(binding.tipsDescription.text)
-        spannableString.setSpan(
-            AlignmentSpan.Standard(Layout.Alignment.ALIGN_NORMAL),
-            START_INDEX,
-            spannableString.length,
-            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        binding.tipsDescription.text = spannableString
-    }
-
-    companion object {
-        private const val START_INDEX = 0
     }
 }
