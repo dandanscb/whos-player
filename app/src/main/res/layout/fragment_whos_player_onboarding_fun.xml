@@ -41,6 +41,7 @@
                 android:textSize="@dimen/whos_player_24sp" />
 
             <TextView
+                android:id="@+id/fun_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

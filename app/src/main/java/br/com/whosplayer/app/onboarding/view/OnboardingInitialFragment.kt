@@ -1,13 +1,15 @@
 package br.com.whosplayer.app.onboarding.view
 
 import android.os.Bundle
+import android.text.Layout
+import android.text.SpannableString
+import android.text.style.AlignmentSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import br.com.whosplayer.R
-import br.com.whosplayer.app.whosplayer.view.WhosPlayerActivity
 import br.com.whosplayer.databinding.FragmentWhosPlayerOnboardingInitialBinding
 
 class OnboardingInitialFragment : Fragment() {
@@ -22,7 +24,7 @@ class OnboardingInitialFragment : Fragment() {
         return setupBindingLayout(fragmentLocalInflater)
     }
 
-    private fun setupBindingLayout(fragmentLocalInflater: LayoutInflater) : View {
+    private fun setupBindingLayout(fragmentLocalInflater: LayoutInflater): View {
         return FragmentWhosPlayerOnboardingInitialBinding.inflate(
             fragmentLocalInflater
         ).root.also {
@@ -41,6 +43,15 @@ class OnboardingInitialFragment : Fragment() {
             val parentActivity = activity as OnboardingActivity
             parentActivity.goToNextFragment()
         }
+
+        val spannableString = SpannableString(binding.initialDescription.text)
+        spannableString.setSpan(
+            AlignmentSpan.Standard(Layout.Alignment.ALIGN_NORMAL),
+            START_INDEX,
+            spannableString.length,
+            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        binding.initialDescription.text = spannableString
 
         configureCardView()
     }
@@ -74,5 +85,9 @@ class OnboardingInitialFragment : Fragment() {
             )
         )
         binding.initialCardView.fourthTeam.arrowRight.visibility = View.INVISIBLE
+    }
+
+    companion object {
+        private const val START_INDEX = 0
     }
 }

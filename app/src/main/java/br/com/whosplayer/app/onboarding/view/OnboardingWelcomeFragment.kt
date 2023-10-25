@@ -1,28 +1,58 @@
 package br.com.whosplayer.app.onboarding.view
 
 import android.os.Bundle
+import android.text.Layout
+import android.text.SpannableString
+import android.text.style.AlignmentSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
-import br.com.whosplayer.R
+import br.com.whosplayer.databinding.FragmentWhosPlayerOnboardingWelcomeBinding
 
 class OnboardingWelcomeFragment : Fragment() {
+
+    private lateinit var binding: FragmentWhosPlayerOnboardingWelcomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_whos_player_onboarding_welcome, container, false)
+    ): View {
+        val fragmentLocalInflater = inflater.cloneInContext(requireContext())
+        return setupBindingLayout(fragmentLocalInflater)
+    }
 
-        val transparentButton = rootView.findViewById<Button>(R.id.skip_button)
+    private fun setupBindingLayout(fragmentLocalInflater: LayoutInflater): View {
+        return FragmentWhosPlayerOnboardingWelcomeBinding.inflate(
+            fragmentLocalInflater
+        ).root.also {
+            binding = FragmentWhosPlayerOnboardingWelcomeBinding.bind(it)
+        }
+    }
 
-        transparentButton.setOnClickListener {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        init()
+    }
+
+    private fun init() {
+        binding.skipButton.setOnClickListener {
             val parentActivity = activity as OnboardingActivity
             parentActivity.goToNextFragment()
         }
 
-        return rootView
+        val spannableString = SpannableString(binding.welcomeDescription.text)
+        spannableString.setSpan(
+            AlignmentSpan.Standard(Layout.Alignment.ALIGN_NORMAL),
+            START_INDEX,
+            spannableString.length,
+            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        binding.welcomeDescription.text = spannableString
+    }
+
+    companion object {
+        private const val START_INDEX = 0
     }
 }
