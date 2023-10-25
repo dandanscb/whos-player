@@ -38,9 +38,8 @@ class OnboardingInitialFragment : Fragment() {
 
     private fun init() {
         binding.skipButton.setOnClickListener {
-            val intent = WhosPlayerActivity.newInstance(requireContext(), FIRST_INDEX)
-            startActivity(intent)
-            requireActivity().finish()
+            val parentActivity = activity as OnboardingActivity
+            parentActivity.goToNextFragment()
         }
 
         configureCardView()
@@ -75,9 +74,5 @@ class OnboardingInitialFragment : Fragment() {
             )
         )
         binding.initialCardView.fourthTeam.arrowRight.visibility = View.INVISIBLE
-    }
-
-    companion object {
-        private const val FIRST_INDEX = 1
     }
 }

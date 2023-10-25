@@ -43,6 +43,11 @@ class OnboardingActivity : AppCompatActivity() {
 
         binding.viewPager.adapter = OnboardingViewPagerAdapter(supportFragmentManager)
     }
+
+    fun goToNextFragment() {
+        val currentItem = binding.viewPager.currentItem
+        binding.viewPager.currentItem = currentItem + 1
+    }
     
     private fun initObservable() {
         viewModel?.viewState?.observe(this) {

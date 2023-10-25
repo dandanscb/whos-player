@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import br.com.whosplayer.R
-import br.com.whosplayer.app.whosplayer.view.WhosPlayerActivity
 
 class OnboardingWelcomeFragment : Fragment() {
 
@@ -20,15 +19,10 @@ class OnboardingWelcomeFragment : Fragment() {
         val transparentButton = rootView.findViewById<Button>(R.id.skip_button)
 
         transparentButton.setOnClickListener {
-            val intent = WhosPlayerActivity.newInstance(requireContext(), FIRST_INDEX)
-            startActivity(intent)
-            requireActivity().finish()
+            val parentActivity = activity as OnboardingActivity
+            parentActivity.goToNextFragment()
         }
 
         return rootView
-    }
-
-    companion object {
-        private const val FIRST_INDEX = 1
     }
 }
