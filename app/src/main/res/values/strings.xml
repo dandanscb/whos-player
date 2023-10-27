@@ -36,7 +36,7 @@
     <!-- Custom Finish Screen -->
     <string name="whos_player_finish_screen_text">Que Goleada!</string>
     <string name="whos_player_finish_screen_second_text">Parabéns, você terminou todos os jogadores, neste momento estamos trabalhando para adicionar cada vez mais, para que você possa continuar jogando.</string>
-    <string name="whos_player_report_screen_text">Quer ajudar a manter nosso time na séria A?</string>
+    <string name="whos_player_report_screen_text">Quer ajudar a manter nosso time \n na séria A?</string>
     <string name="whos_player_report_screen_second_text">Envie-nos um email relatando algum erro, e também dando sujestões de novos jogadores</string>
 
 

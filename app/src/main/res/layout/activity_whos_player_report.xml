@@ -49,7 +49,7 @@
             android:layout_marginEnd="@dimen/whos_player_40dp"
             android:text="@string/whos_player_report_screen_second_text"
             android:textAlignment="center"
-            android:textSize="@dimen/whos_player_12sp"
+            android:textSize="@dimen/whos_player_16sp"
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

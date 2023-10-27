@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="@string/whos_player_finish_screen_text"
             android:textAlignment="center"
-            android:textSize="@dimen/whos_player_14sp"
+            android:textSize="@dimen/whos_player_20sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -50,7 +50,7 @@
             android:layout_marginEnd="@dimen/whos_player_40dp"
             android:text="@string/whos_player_finish_screen_second_text"
             android:textAlignment="center"
-            android:textSize="@dimen/whos_player_12sp"
+            android:textSize="@dimen/whos_player_16sp"
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
