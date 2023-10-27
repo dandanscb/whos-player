@@ -52,6 +52,17 @@
             android:textSize="@dimen/whos_player_16sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/whos_player_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/whos_player_40dp"
+            android:layout_marginEnd="@dimen/whos_player_40dp"
+            android:text="@string/whos_player_report_screen_email"
+            android:textAlignment="center"
+            android:textSize="@dimen/whos_player_16sp"
+            android:textStyle="bold" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
