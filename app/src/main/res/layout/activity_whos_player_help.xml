@@ -1,291 +1,312 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/whos_player_gray">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageButton
+        android:id="@+id/close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/whos_player_24dp"
+        android:background="@color/whos_player_gray"
+        android:src="@drawable/ic_close"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/whos_player_0dp"
-        android:background="@color/whos_player_gray">
-
-        <ImageButton
-            android:id="@+id/close_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/whos_player_24dp"
-            android:background="@color/whos_player_gray"
-            android:src="@drawable/ic_close"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/help_title"
-            android:layout_width="@dimen/whos_player_0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/whos_player_24dp"
-            android:text="@string/whos_player_help_text"
-            android:textColor="@color/black"
-            android:textSize="@dimen/whos_player_16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/close_button" />
-
-        <include
-            android:id="@+id/help_cardView"
-            layout="@layout/card_view_whos_player_help_example"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/whos_player_16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/help_title" />
-
-        <TextView
-            android:id="@+id/help_second_text"
-            android:layout_width="@dimen/whos_player_0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/whos_player_24dp"
-            android:text="@string/whos_player_help_second_text"
-            android:textColor="@color/black"
-            android:textSize="@dimen/whos_player_16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/help_cardView" />
-
-        <include
-            android:id="@+id/help_letter_by_letter"
-            layout="@layout/layout_whos_player_help_letter_by_letter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/whos_player_16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/help_second_text" />
-
-        <TextView
-            android:id="@+id/help_third_text"
-            android:layout_width="@dimen/whos_player_0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/whos_player_24dp"
-            android:text="@string/whos_player_help_third_text"
-            android:textColor="@color/black"
-            android:textSize="@dimen/whos_player_16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/help_letter_by_letter" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/whos_player_16dp"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/close_button">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/tips_example_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/whos_player_40dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/help_third_text">
+            android:layout_height="match_parent"
+            android:background="@color/whos_player_gray">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/tips_example_title_container"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/help_title"
+                android:layout_width="@dimen/whos_player_0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/whos_player_16dp"
-                android:background="@drawable/gray_rounded_black_border_top"
-                android:paddingBottom="@dimen/whos_player_8dp"
+                android:layout_margin="@dimen/whos_player_24dp"
+                android:text="@string/whos_player_help_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/whos_player_16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+            <include
+                android:id="@+id/help_cardView"
+                layout="@layout/card_view_whos_player_help_example"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/whos_player_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/help_title" />
+
+            <TextView
+                android:id="@+id/help_second_text"
+                android:layout_width="@dimen/whos_player_0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/whos_player_24dp"
+                android:text="@string/whos_player_help_second_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/whos_player_16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/help_cardView" />
+
+            <include
+                android:id="@+id/help_letter_by_letter"
+                layout="@layout/layout_whos_player_help_letter_by_letter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/whos_player_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/help_second_text" />
+
+            <TextView
+                android:id="@+id/help_third_text"
+                android:layout_width="@dimen/whos_player_0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/whos_player_24dp"
+                android:text="@string/whos_player_help_third_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/whos_player_16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/help_letter_by_letter" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tips_example_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/whos_player_40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/help_third_text">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/tips_example_title_container"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/whos_player_16dp"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/whos_player_16dp"
+                    android:background="@drawable/gray_rounded_black_border_top"
+                    android:paddingBottom="@dimen/whos_player_8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageButton
-                        android:id="@+id/tips_icon_example"
-                        android:layout_width="@dimen/whos_player_40dp"
-                        android:layout_height="@dimen/whos_player_40dp"
-                        android:layout_marginTop="@dimen/whos_player_2dp"
-                        android:background="@android:color/transparent"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/img_light_tips" />
-
-                    <TextView
-                        android:id="@+id/tips_title_example"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/whos_player_8dp"
-                        android:text="@string/whos_player_alert_dialog_title"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/whos_player_24sp" />
+                        android:layout_marginEnd="@dimen/whos_player_16dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageButton
+                            android:id="@+id/tips_icon_example"
+                            android:layout_width="@dimen/whos_player_40dp"
+                            android:layout_height="@dimen/whos_player_40dp"
+                            android:layout_marginTop="@dimen/whos_player_2dp"
+                            android:background="@android:color/transparent"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/img_light_tips" />
+
+                        <TextView
+                            android:id="@+id/tips_title_example"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/whos_player_8dp"
+                            android:text="@string/whos_player_alert_dialog_title"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/whos_player_24sp" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/tipsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_rounded_border_bottom"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/whos_player_24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tips_example_title_container">
+
+                    <include
+                        android:id="@+id/firstTip"
+                        layout="@layout/custom_tips_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/whos_player_16dp"
+                        android:layout_marginTop="@dimen/whos_player_16dp" />
+
+                    <include
+                        android:id="@+id/secondTip"
+                        layout="@layout/custom_tips_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/whos_player_16dp"
+                        android:layout_marginTop="@dimen/whos_player_16dp" />
+
+                    <include
+                        android:id="@+id/thirdTip"
+                        layout="@layout/custom_tips_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/whos_player_16dp"
+                        android:layout_marginTop="@dimen/whos_player_16dp" />
 
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
-                android:id="@+id/tipsContainer"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/help_fourth_text"
+                android:layout_width="@dimen/whos_player_0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/white_rounded_border_bottom"
-                android:orientation="vertical"
-                android:paddingBottom="@dimen/whos_player_24dp"
+                android:layout_margin="@dimen/whos_player_24dp"
+                android:text="@string/whos_player_help_fourth_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/whos_player_16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tips_example_title_container">
+                app:layout_constraintTop_toBottomOf="@+id/tips_example_container" />
 
-                <include
-                    android:id="@+id/firstTip"
-                    layout="@layout/custom_tips_text_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/whos_player_16dp"
-                    android:layout_marginTop="@dimen/whos_player_16dp" />
+            <include
+                android:id="@+id/help_cardViewDates"
+                layout="@layout/card_view_whos_player_help_example"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/whos_player_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/help_fourth_text" />
 
-                <include
-                    android:id="@+id/secondTip"
-                    layout="@layout/custom_tips_text_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/whos_player_16dp"
-                    android:layout_marginTop="@dimen/whos_player_16dp" />
+            <TextView
+                android:id="@+id/help_fifth_text"
+                android:layout_width="@dimen/whos_player_0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/whos_player_24dp"
+                android:text="@string/whos_player_help_fifth_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/whos_player_16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/help_cardViewDates" />
 
-                <include
-                    android:id="@+id/thirdTip"
-                    layout="@layout/custom_tips_text_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/whos_player_16dp"
-                    android:layout_marginTop="@dimen/whos_player_16dp" />
+            <include
+                android:id="@+id/help_letter_by_filled_letter"
+                layout="@layout/layout_whos_player_help_letter_by_letter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/whos_player_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/help_fifth_text" />
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/help_sixth_text"
+                android:layout_width="@dimen/whos_player_0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/whos_player_24dp"
+                android:text="@string/whos_player_help_sixth_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/whos_player_16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/help_letter_by_filled_letter" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/help_confirmation_button_example"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/whos_player_20dp"
+                android:background="@drawable/confirmation_button_not_enabled"
+                android:enabled="false"
+                android:text="@string/whos_player_confirmation_button"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/help_sixth_text" />
+
+            <TextView
+                android:id="@+id/help_seventh_text"
+                android:layout_width="@dimen/whos_player_0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/whos_player_24dp"
+                android:layout_marginTop="@dimen/whos_player_20dp"
+                android:gravity="center"
+                android:text="@string/whos_player_help_seventh_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/whos_player_16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/help_confirmation_button_example" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/help_confirmation_button_example2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/whos_player_20dp"
+                android:background="@drawable/confirmation_button_enabled"
+                android:text="@string/whos_player_confirmation_button"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/help_seventh_text" />
+
+            <TextView
+                android:id="@+id/help_eighth_text"
+                android:layout_width="@dimen/whos_player_0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/whos_player_24dp"
+                android:layout_marginTop="@dimen/whos_player_20dp"
+                android:gravity="center"
+                android:text="@string/whos_player_help_eighth_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/whos_player_16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/help_confirmation_button_example2" />
+
+            <Button
+                android:id="@+id/continue_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/whos_player_48dp"
+                android:layout_marginHorizontal="@dimen/whos_player_24dp"
+                android:elevation="@dimen/whos_player_4dp"
+                android:background="@drawable/rounded_border_button"
+                android:text="@string/whos_player_help_cotinue_button_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/help_eighth_text" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/whos_player_gray"
+                android:layout_marginTop="@dimen/whos_player_100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/continue_button" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/help_fourth_text"
-            android:layout_width="@dimen/whos_player_0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/whos_player_24dp"
-            android:text="@string/whos_player_help_fourth_text"
-            android:textColor="@color/black"
-            android:textSize="@dimen/whos_player_16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tips_example_container" />
-
-        <include
-            android:id="@+id/help_cardViewDates"
-            layout="@layout/card_view_whos_player_help_example"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/whos_player_16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/help_fourth_text" />
-
-        <TextView
-            android:id="@+id/help_fifth_text"
-            android:layout_width="@dimen/whos_player_0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/whos_player_24dp"
-            android:text="@string/whos_player_help_fifth_text"
-            android:textColor="@color/black"
-            android:textSize="@dimen/whos_player_16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/help_cardViewDates" />
-
-        <include
-            android:id="@+id/help_letter_by_filled_letter"
-            layout="@layout/layout_whos_player_help_letter_by_letter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/whos_player_16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/help_fifth_text" />
-
-        <TextView
-            android:id="@+id/help_sixth_text"
-            android:layout_width="@dimen/whos_player_0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/whos_player_24dp"
-            android:text="@string/whos_player_help_sixth_text"
-            android:textColor="@color/black"
-            android:textSize="@dimen/whos_player_16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/help_letter_by_filled_letter" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/help_confirmation_button_example"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/whos_player_20dp"
-            android:background="@drawable/confirmation_button_not_enabled"
-            android:enabled="false"
-            android:text="@string/whos_player_confirmation_button"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/help_sixth_text" />
-
-        <TextView
-            android:id="@+id/help_seventh_text"
-            android:layout_width="@dimen/whos_player_0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/whos_player_24dp"
-            android:layout_marginTop="@dimen/whos_player_20dp"
-            android:gravity="center"
-            android:text="@string/whos_player_help_seventh_text"
-            android:textColor="@color/black"
-            android:textSize="@dimen/whos_player_16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/help_confirmation_button_example" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/help_confirmation_button_example2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/whos_player_20dp"
-            android:background="@drawable/confirmation_button_enabled"
-            android:text="@string/whos_player_confirmation_button"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/help_seventh_text" />
-
-        <TextView
-            android:id="@+id/help_eighth_text"
-            android:layout_width="@dimen/whos_player_0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/whos_player_24dp"
-            android:layout_marginTop="@dimen/whos_player_20dp"
-            android:gravity="center"
-            android:text="@string/whos_player_help_eighth_text"
-            android:textColor="@color/black"
-            android:textSize="@dimen/whos_player_16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/help_confirmation_button_example2" />
-
-        <ImageButton
-            android:id="@+id/close_button_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/whos_player_24dp"
-            android:layout_marginTop="@dimen/whos_player_20dp"
-            android:background="@color/whos_player_gray"
-            android:src="@drawable/ic_close"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/help_eighth_text" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

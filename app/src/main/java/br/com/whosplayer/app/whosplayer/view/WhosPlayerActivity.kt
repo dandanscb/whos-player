@@ -84,7 +84,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         initialX = binding.container.x
 
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.title = "QUAL JOGADOR ?"
+        supportActionBar?.title = ""
 
         configDateButtons()
         configConfirmationButton()
@@ -132,6 +132,10 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                     teamCrestAdapter.clear()
                     nameLetterByLetterAdapter.clear()
                     recyclerViewReference.clear()
+
+                    currentLevel?.let { level ->
+                        currentLevel = level + 1
+                    }
 
                     binding.cardViewContainer.removeAllViews()
                     binding.fieldLettersContainer.removeAllViews()

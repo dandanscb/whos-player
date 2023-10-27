@@ -37,7 +37,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:piv_animationType="worm"
+        app:piv_animationType="swap"
         app:piv_radius="@dimen/whos_player_4dp"
         app:piv_selectedColor="@color/whos_player_blue"
         app:piv_strokeWidth="@dimen/whos_player_4dp"

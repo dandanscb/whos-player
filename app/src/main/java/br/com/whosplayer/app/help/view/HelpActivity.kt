@@ -31,7 +31,7 @@ class HelpActivity : AppCompatActivity() {
         binding.closeButton.setOnClickListener {
             finish()
         }
-        binding.closeButton2.setOnClickListener {
+        binding.continueButton.setOnClickListener {
             finish()
         }
     }

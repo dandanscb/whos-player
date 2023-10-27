@@ -13,6 +13,7 @@
     <string name="whos_player_help_sixth_text">Quando você terminar de escrever o nome ou apelido do jogador, o botão para confirmar o nome irá sair disso</string>
     <string name="whos_player_help_seventh_text">Para isto</string>
     <string name="whos_player_help_eighth_text">Então você irá poder confirmar o jogador na qual você acredita ser clicando no botão "OK", caso seu palpite esteja errado, a tela do seu celular irá "chacoalhar" alertando que você errou o palpite, se acertar, passará de nivel.</string>
+    <string name="whos_player_help_cotinue_button_label">VAMOS JOGAR</string>
 
     <string name="whos_player_help_first_team_years_played">2009-2013</string>
 
