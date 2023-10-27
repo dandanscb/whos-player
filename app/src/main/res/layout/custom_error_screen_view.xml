@@ -19,13 +19,21 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/whos_player_40dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_marginBottom="@dimen/whos_player_40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/whos_player_error_screen_text"
+            android:textAlignment="center"
+            android:textSize="@dimen/whos_player_20sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/custom_splash_screen_logo"
@@ -34,20 +42,13 @@
             android:contentDescription="@string/whos_player_error_screen_img"
             android:src='@drawable/bola_na_trave' />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/whos_player_error_screen_text"
-            android:textAlignment="center"
-            android:textSize="@dimen/whos_player_14sp"
-            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/whos_player_error_screen_second_text"
             android:textAlignment="center"
-            android:textSize="@dimen/whos_player_12sp"
+            android:textSize="@dimen/whos_player_16sp"
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
