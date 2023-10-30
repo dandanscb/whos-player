@@ -40,7 +40,7 @@
             android:layout_width="@dimen/whos_player_200dp"
             android:layout_height="@dimen/whos_player_200dp"
             android:contentDescription="@string/whos_player_error_screen_img"
-            android:src='@drawable/bola_na_trave' />
+            android:src='@drawable/img_hit_the_crossbar' />
 
 
         <TextView

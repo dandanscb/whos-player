@@ -39,7 +39,7 @@
             android:id="@+id/custom_splash_screen_logo"
             android:layout_width="@dimen/whos_player_200dp"
             android:layout_height="@dimen/whos_player_200dp"
-            android:src='@drawable/gol' />
+            android:src='@drawable/img_goal' />
 
 
 

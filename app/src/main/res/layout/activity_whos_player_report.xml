@@ -39,7 +39,7 @@
             android:id="@+id/report_imagem"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src='@drawable/report_img' />
+            android:src='@drawable/img_report' />
 
 
         <TextView

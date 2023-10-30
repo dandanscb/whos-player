@@ -61,6 +61,7 @@ class OnboardingActivity : AppCompatActivity() {
                 is OnboardingViewState.FirstAccess -> {
                     binding.frameLayout.visibility = View.GONE
                     binding.viewPager.visibility = View.VISIBLE
+                    binding.indicator.visibility = View.VISIBLE
                 }
 
                 is OnboardingViewState.ShowLoading -> {

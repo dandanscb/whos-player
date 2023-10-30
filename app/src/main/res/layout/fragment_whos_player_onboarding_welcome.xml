@@ -1,61 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <RelativeLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/skip_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="@dimen/whos_player_12dp"
-            android:background="@android:color/transparent"
-            android:textSize="@dimen/whos_player_20sp"
-            android:text="@string/whos_player_onboarding_skip_button" />
-
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/whos_player_16dp"
-            android:layout_marginTop="@dimen/whos_player_120dp"
-            android:gravity="center"
-            android:text="@string/whos_player_onboarding_welcome_title"
-            android:textColor="@color/black"
-            android:textSize="@dimen/whos_player_24sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:adjustViewBounds="true"
-            android:src="@drawable/logo_oficial" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/whos_player_60dp"
-            android:orientation="vertical">
+            <Button
+                android:id="@+id/skip_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="@dimen/whos_player_12dp"
+                android:background="@android:color/transparent"
+                android:text="@string/whos_player_onboarding_skip_button"
+                android:textSize="@dimen/whos_player_20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/welcome_description"
+                android:id="@+id/welcome_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/whos_player_16dp"
+                android:layout_marginTop="@dimen/whos_player_60dp"
                 android:gravity="center"
-                android:text="@string/whos_player_onboarding_welcome_text"
+                android:text="@string/whos_player_onboarding_welcome_title"
                 android:textColor="@color/black"
-                android:textSize="@dimen/whos_player_16sp" />
+                android:textSize="@dimen/whos_player_24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/skip_button" />
 
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/welcome_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/whos_player_40dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_official_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/welcome_title" />
 
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/whos_player_60dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/welcome_image"
+                app:layout_constraintVertical_bias="1.0">
+
+                <TextView
+                    android:id="@+id/welcome_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/whos_player_16dp"
+                    android:gravity="center"
+                    android:text="@string/whos_player_onboarding_welcome_text"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/whos_player_16sp" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </FrameLayout>

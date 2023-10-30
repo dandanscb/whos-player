@@ -44,6 +44,10 @@ import br.com.whosplayer.commons.database.importDataFromJson
 import br.com.whosplayer.commons.database.mock.WhosPlayerMock
 import br.com.whosplayer.commons.view.CustomSplashScreen
 import br.com.whosplayer.commons.view.CustomTipsTextView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import nl.dionsegijn.konfetti.core.Party
 import nl.dionsegijn.konfetti.core.Position
 import nl.dionsegijn.konfetti.core.emitter.Emitter
@@ -71,6 +75,9 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         intent?.extras?.let {
             currentLevel = it.getInt(LEVEL_STATE)
         }
+        MobileAds.initialize(this) {
+            // not used
+        }
 
         init()
         initViewModel()
@@ -88,6 +95,12 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
         configDateButtons()
         configConfirmationButton()
+
+        val adView = AdView(this)
+
+        adView.setAdSize(AdSize.BANNER)
+
+        adView.adUnitId = "ca-app-pub-6036183629578343~5450720964"
 
 //        val pair = WhosPlayerMock.getSoccerPlayerResponse()
 //        if (pair.first.isNotEmpty()) {
@@ -460,6 +473,10 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         }
 
         val tipsContainer = dialog.findViewById<LinearLayout>(R.id.tipsContainer)
+
+        val mAdView = dialog.findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
 
         val layoutParams = WindowManager.LayoutParams()
         layoutParams.copyFrom(dialog.window?.attributes)
