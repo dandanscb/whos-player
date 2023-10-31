@@ -24,6 +24,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
@@ -40,14 +41,15 @@ import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModelFactory
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewState
 import br.com.whosplayer.commons.database.getAndroidID
-import br.com.whosplayer.commons.database.importDataFromJson
-import br.com.whosplayer.commons.database.mock.WhosPlayerMock
 import br.com.whosplayer.commons.view.CustomSplashScreen
 import br.com.whosplayer.commons.view.CustomTipsTextView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import nl.dionsegijn.konfetti.core.Party
 import nl.dionsegijn.konfetti.core.Position
 import nl.dionsegijn.konfetti.core.emitter.Emitter
@@ -68,6 +70,9 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     private var viewModel: WhosPlayerViewModel? = null
     private lateinit var soccerPlayerName: String
     private var currentLevel: Int? = null
+
+    private var dateInterstitialAd: InterstitialAd? = null
+    private var byLevelInterstitialAd: InterstitialAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,16 +101,22 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         configDateButtons()
         configConfirmationButton()
 
+        startAds()
+
+//        val pair = WhosPlayerMock.getSoccerPlayerResponse()
+//        if (pair.first.isNotEmpty()) {
+//            importDataFromJson(pair.first, pair.second)
+//        }
+    }
+
+    private fun startAds() {
         val adView = AdView(this)
 
         adView.setAdSize(AdSize.BANNER)
 
         adView.adUnitId = "ca-app-pub-6036183629578343~5450720964"
 
-//        val pair = WhosPlayerMock.getSoccerPlayerResponse()
-//        if (pair.first.isNotEmpty()) {
-//            importDataFromJson(pair.first, pair.second)
-//        }
+        loadInterstitialAds()
     }
 
     private fun initViewModel() {
@@ -176,7 +187,17 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
     private fun showSoccerPlayerInformation(level: Int, soccerPlayer: SoccerPlayerModel) {
         currentLevel = level
+
+
         currentLevel?.let {
+            if (it % 10 == 0) {
+                if (byLevelInterstitialAd != null) {
+                    byLevelInterstitialAd?.show(this)
+                } else {
+                    Log.d(TAG, "The interstitial ad wasn't ready yet.")
+                }
+            }
+
             binding.textLevel.typeface = Typeface.create("sans-serif", Typeface.NORMAL)
             binding.textLevel.text = this.getString(R.string.whos_player_text_level, it)
         }
@@ -396,10 +417,45 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     private fun configDateButtons() {
         binding.dateButton.setOnClickListener {
             binding.dateButton.visibility = View.GONE
+
+            if (dateInterstitialAd != null) {
+                dateInterstitialAd?.show(this)
+            } else {
+                Log.d(TAG, "The interstitial ad wasn't ready yet.")
+            }
+
             teamCrestAdapter.forEach {
                 it.changeYearsPlayedVisibility()
             }
         }
+    }
+
+    private fun loadInterstitialAds() {
+        var adRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                Log.d(TAG, adError.toString())
+                byLevelInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                Log.d(TAG, "Ad was loaded.")
+                byLevelInterstitialAd = interstitialAd
+            }
+        })
+
+        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                Log.d(TAG, adError.toString())
+                dateInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                Log.d(TAG, "Ad was loaded.")
+                dateInterstitialAd = interstitialAd
+            }
+        })
     }
 
     private fun configConfirmationButton() {
@@ -523,6 +579,8 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         private const val NEGATIVE_NUMBER_ONE = -1
 
         const val LEVEL_STATE = "LEVEL_STATE"
+
+        private val TAG = "INTERSTICIAL_AD"
 
         @JvmStatic
         fun newInstance(context: Context, level: Int): Intent =

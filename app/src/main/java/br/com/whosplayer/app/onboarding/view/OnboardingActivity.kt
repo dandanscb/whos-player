@@ -4,6 +4,7 @@ import android.app.ActionBar
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -21,7 +22,7 @@ class OnboardingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWhosPlayerOnboardingBinding
     private var viewModel: OnboardingViewModel? = null
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -48,7 +49,7 @@ class OnboardingActivity : AppCompatActivity() {
         val currentItem = binding.viewPager.currentItem
         binding.viewPager.currentItem = currentItem + 1
     }
-    
+
     private fun initObservable() {
         viewModel?.viewState?.observe(this) {
             when (it) {
@@ -62,6 +63,7 @@ class OnboardingActivity : AppCompatActivity() {
                     binding.frameLayout.visibility = View.GONE
                     binding.viewPager.visibility = View.VISIBLE
                     binding.indicator.visibility = View.VISIBLE
+                    binding.grayView.visibility = View.GONE
                 }
 
                 is OnboardingViewState.ShowLoading -> {
@@ -81,6 +83,7 @@ class OnboardingActivity : AppCompatActivity() {
                         finish()
                     }
                     binding.frameLayout.visibility = View.GONE
+                    binding.grayView.visibility = View.GONE
                 }
             }
         }

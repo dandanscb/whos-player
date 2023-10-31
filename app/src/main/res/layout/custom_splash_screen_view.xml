@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/custom_splash_screen_logo"
-        android:layout_width="@dimen/whos_player_200dp"
-        android:layout_height="@dimen/whos_player_200dp"
-        android:src='@drawable/img_official_logo' />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src='@drawable/img_logo_neymar' />
 
 </LinearLayout>
