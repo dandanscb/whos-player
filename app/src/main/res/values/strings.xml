@@ -5,17 +5,29 @@
     <string name="menu_action_help">help</string>
     <string name="menu_action_report">report</string>
 
-    <string name="whos_player_help_text">O objetivo do jogo consiste em descobrir o jogador através dos emblemas dos clubes no qual ele jogou, por exemplo:</string>
-    <string name="whos_player_help_second_text">Ao observar toda a carreira do jogador, ou seja, os clubes nos quais este jogador atuou e/ou atua e quiser optar por um palpite, basta digitar o nome do jogador ou apelido do qual este é conhecido, que você acredita ser no espaço em branco destinado ao texto.</string>
-    <string name="whos_player_help_third_text">Mas mesmo ao ver os times pelos quais o jogador passou e ainda não descobriu quem ele é, fique tranquilo, preparamos algumas dicas para te auxiliar nesta descoberta.\nTemos duas opções de dicas para te ajudar, a primeira consta em uma lampada (encontra-se à direita da tela), que ao solicita-lá, te dará até 3 dicas, sendo a primeira a data de nascimento do jogador, a segunda sua posição, por exemplo:Atacante e por fim, a sua nacionalidade.</string>
-    <string name="whos_player_help_fourth_text">A segunda opção de dica que preparamos para você é um calendário (encontra-se à esquerda da tela), que ao clica-lo você saberá a data na qual o jogador atuou em cada clube, depois disso ele desaparecerá de sua tela.</string>
-    <string name="whos_player_help_fifth_text">Após utilizar as dicas fornecidas ou, caso não precise delas, insira o nome ou apelido do jogador que você acredita ser o correto no campo de texto em branco abaixo desta forma.</string>
+    <string name="whos_player_help_text">O objetivo do jogo é identificar o jogador com base nos emblemas dos clubes em que ele atuou. Por exemplo:</string>
+    <string name="whos_player_help_second_text">Ao analisar a trajetória completa do jogador, ou seja, os clubes onde ele já atuou ou está atualmente, e desejar fazer uma suposição, você pode simplesmente preencher o espaço em branco com o nome pelo qual o jogador é conhecido.</string>
+    <string name="whos_player_help_third_text">Mesmo que você tenha verificado os times pelos quais o jogador passou e ainda não tenha descoberto sua identidade, não se preocupe, preparamos algumas dicas para ajudá-lo nessa busca.\nOferecemos duas opções de dicas para facilitar a sua descoberta. A primeira delas é representada por uma lâmpada (localizada à direita da tela). Ao solicitá-la, você receberá até 3 pistas. A primeira pista será a data de nascimento do jogador, a segunda indicará a posição em que ele atua, e a terceira fornecerá sua nacionalidade.</string>
+    <string name="whos_player_help_fourth_text">A segunda opção de dica que disponibilizamos é um calendário (localizado à esquerda da tela). Clicando nele, você poderá ver a data em que o jogador atuou em cada clube (caso haja um único ano, quer dizer que ele ainda atua pelo clube).</string>
+    <string name="whos_player_help_fifth_text">Após utilizar as dicas fornecidas ou, caso não precise delas, insira o jogador que você acredita ser o correto no campo de texto em branco abaixo desta forma:</string>
     <string name="whos_player_help_sixth_text">Quando você terminar de escrever o nome ou apelido do jogador, o botão para confirmar o nome irá sair disso</string>
     <string name="whos_player_help_seventh_text">Para isto</string>
-    <string name="whos_player_help_eighth_text">Então você irá poder confirmar o jogador na qual você acredita ser clicando no botão "OK", caso seu palpite esteja errado, a tela do seu celular irá "chacoalhar" alertando que você errou o palpite, se acertar, passará de nivel.</string>
+    <string name="whos_player_help_eighth_text">Então você irá poder ter a confirmação clicando no botão "OK", caso seu palpite esteja errado, a tela do seu celular irá "chacoalhar" alertando que você errou o palpite, caso esteja certo, será encaminhado para o próximo nivel.</string>
     <string name="whos_player_help_cotinue_button_label">VAMOS JOGAR</string>
 
-    <string name="whos_player_help_first_team_years_played">2009-2013</string>
+    <string name="whos_player_help_neymar_years_played_santos">2009-2013</string>
+    <string name="whos_player_help_neymar_years_played_barcelona">2013–2017</string>
+    <string name="whos_player_help_neymar_years_played_psg">2017–2023</string>
+    <string name="whos_player_help_neymar_years_played_al_hilal">2023</string>
+
+    <string name="whos_player_help_first_tip_label">Dica 1</string>
+    <string name="whos_player_help_second_tip_label">Dica 2</string>
+    <string name="whos_player_help_third_tip_label">Dica 3</string>
+
+    <string name="whos_player_help_neymar_first_tip">A data de nascimento do Jogador é 5 de fevereiro de 1992.</string>
+    <string name="whos_player_help_neymar_second_tip">A posição do jogador é Atacante.</string>
+    <string name="whos_player_help_neymar_third_tip">Este jogador é da nacionalidade: Brasileiro.</string>
+
 
 
     <!-- Whos Player -->
@@ -53,4 +65,18 @@
     <string name="whos_player_onboarding_tips_text">Também oferecemos uma opção de ajuda para aqueles que não estão familiarizados com as regras do jogo. Lá, explicamos detalhadamente o passo a passo de como funciona, para que você possa se divertir ao máximo.</string>
     <string name="whos_player_onboarding_fun_title">DIVIRTA-SE</string>
     <string name="whos_player_onboarding_fun_text">Desejamos que você aproveite ao máximo o jogo. Se você gostar ou tiver alguma sugestão, ficaríamos gratos se você pudesse deixar sua avaliação no Google Play e compartilhar sugestões de novos jogadores para serem considerados em futuras atualizações. Seu feedback é valioso para nós!</string>
+
+
+
+    <!-- ADMOB -->
+    <string name="whos_player_banner_ad_test">ca-app-pub-6036183629578343~5450720964</string>
+    <string name="whos_player_interstitial_ad_test">ca-app-pub-3940256099942544/1033173712</string>
+
+    <string name="whos_player_banner_ad">ca-app-pub-6036183629578343/7502169231</string>
+    <string name="whos_player_calendar_ad">ca-app-pub-6036183629578343/9216923195</string>
+    <string name="whos_player_level_ad">ca-app-pub-6036183629578343/6417152427</string>
+
+
+
+
 </resources>

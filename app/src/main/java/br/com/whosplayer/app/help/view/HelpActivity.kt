@@ -75,7 +75,7 @@ class HelpActivity : AppCompatActivity() {
             )
         )
         binding.helpCardViewDates.firstTeam.yearsPlayed.text =
-            this.getString(R.string.whos_player_help_first_team_years_played)
+            this.getString(R.string.whos_player_help_neymar_years_played_santos)
 
 
         binding.helpCardViewDates.secondTeam.crestTeam.setImageDrawable(
@@ -84,7 +84,8 @@ class HelpActivity : AppCompatActivity() {
                 R.drawable.img_barcelona
             )
         )
-        binding.helpCardViewDates.secondTeam.yearsPlayed.text = "2013-2017"
+        binding.helpCardViewDates.secondTeam.yearsPlayed.text =
+            this.getString(R.string.whos_player_help_neymar_years_played_barcelona)
 
         binding.helpCardViewDates.thirdTeam.crestTeam.setImageDrawable(
             ContextCompat.getDrawable(
@@ -92,7 +93,8 @@ class HelpActivity : AppCompatActivity() {
                 R.drawable.img_paris_saint_germain
             )
         )
-        binding.helpCardViewDates.thirdTeam.yearsPlayed.text = "2017-2023"
+        binding.helpCardViewDates.thirdTeam.yearsPlayed.text =
+            this.getString(R.string.whos_player_help_neymar_years_played_psg)
 
         binding.helpCardViewDates.fourthTeam.crestTeam.setImageDrawable(
             ContextCompat.getDrawable(
@@ -100,7 +102,8 @@ class HelpActivity : AppCompatActivity() {
                 R.drawable.img_al_hilal
             )
         )
-        binding.helpCardViewDates.fourthTeam.yearsPlayed.text = "2023"
+        binding.helpCardViewDates.fourthTeam.yearsPlayed.text =
+            this.getString(R.string.whos_player_help_neymar_years_played_al_hilal)
 
         binding.helpCardViewDates.fourthTeam.arrowRight.visibility = View.INVISIBLE
     }
@@ -115,13 +118,15 @@ class HelpActivity : AppCompatActivity() {
     }
 
     private fun configureTips() {
-        binding.firstTip.tipsTitle.text = "Dica 1"
+        binding.firstTip.tipsTitle.text = this.getString(R.string.whos_player_help_first_tip_label)
         binding.firstTip.tipsValue.text =
-            "A data de nascimento do Jogador é 5 de fevereiro de 1992."
-        binding.secondTip.tipsTitle.text = "Dica 2"
-        binding.secondTip.tipsValue.text = "A posição do jogador é Atacante."
-        binding.thirdTip.tipsTitle.text = "Dica 3"
-        binding.thirdTip.tipsValue.text = "Este jogador é da nacionalidade: Brasileiro."
+            this.getString(R.string.whos_player_help_neymar_first_tip)
+        binding.secondTip.tipsTitle.text = this.getString(R.string.whos_player_help_second_tip_label)
+        binding.secondTip.tipsValue.text =
+            this.getString(R.string.whos_player_help_neymar_second_tip)
+        binding.thirdTip.tipsTitle.text = this.getString(R.string.whos_player_help_third_tip_label)
+        binding.thirdTip.tipsValue.text =
+            this.getString(R.string.whos_player_help_neymar_third_tip)
     }
 
     private fun configureLetterByFilledLetters() {

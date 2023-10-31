@@ -29,9 +29,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
+import androidx.appcompat.widget.AppCompatEditText
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.lifecycle.ViewModelProvider
 import br.com.whosplayer.app.report.view.ReportActivity
 import br.com.whosplayer.app.whosplayer.repository.model.SoccerPlayerModel
@@ -114,7 +113,8 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
         adView.setAdSize(AdSize.BANNER)
 
-        adView.adUnitId = "ca-app-pub-6036183629578343~5450720964"
+        // TODO AD
+        adView.adUnitId = this.getString(R.string.whos_player_banner_ad_test)
 
         loadInterstitialAds()
     }
@@ -292,20 +292,20 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                     layoutManager.findViewByPosition(
                         recyclerViewReference[recyclerViewPosition - NUMBER_ONE].size - NUMBER_ONE
                     )
-                        ?.findViewById<EditText>(R.id.letterEditText)?.requestFocus()
+                        ?.findViewById<AppCompatEditText>(R.id.letterEditText)?.requestFocus()
                 }
             } else {
                 val layoutManager =
                     recyclerViewReference[recyclerViewPosition].layoutManager as LinearLayoutManager
                 layoutManager.findViewByPosition(position)
-                    ?.findViewById<EditText>(R.id.letterEditText)?.requestFocus()
+                    ?.findViewById<AppCompatEditText>(R.id.letterEditText)?.requestFocus()
             }
         } else {
             if (recyclerViewPosition + NUMBER_ONE < recyclerViewReference.size) {
                 val layoutManager =
                     recyclerViewReference[recyclerViewPosition + NUMBER_ONE].layoutManager as LinearLayoutManager
                 layoutManager.findViewByPosition(FIRST_INDEX)
-                    ?.findViewById<EditText>(R.id.letterEditText)
+                    ?.findViewById<AppCompatEditText>(R.id.letterEditText)
                     ?.requestFocus()
             }
         }
@@ -409,7 +409,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         val animatorSet = AnimatorSet()
         animatorSet.playTogether(scaleXAnimator, scaleYAnimator, alphaAnimator)
 
-        binding.tipsNumberAnimation.visibility = TextView.VISIBLE
+        binding.tipsNumberAnimation.visibility = View.VISIBLE
 
         animatorSet.start()
     }
@@ -431,31 +431,41 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     }
 
     private fun loadInterstitialAds() {
-        var adRequest = AdRequest.Builder().build()
+        val adRequest = AdRequest.Builder().build()
 
-        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-                Log.d(TAG, adError.toString())
-                byLevelInterstitialAd = null
-            }
+        // TODO AD
+        InterstitialAd.load(
+            this,
+            getString(R.string.whos_player_interstitial_ad_test),
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    Log.d(TAG, adError.toString())
+                    byLevelInterstitialAd = null
+                }
 
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                Log.d(TAG, "Ad was loaded.")
-                byLevelInterstitialAd = interstitialAd
-            }
-        })
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    Log.d(TAG, "Ad was loaded.")
+                    byLevelInterstitialAd = interstitialAd
+                }
+            })
 
-        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-                Log.d(TAG, adError.toString())
-                dateInterstitialAd = null
-            }
+        // TODO AD
+        InterstitialAd.load(
+            this,
+            getString(R.string.whos_player_interstitial_ad_test),
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    Log.d(TAG, adError.toString())
+                    dateInterstitialAd = null
+                }
 
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                Log.d(TAG, "Ad was loaded.")
-                dateInterstitialAd = interstitialAd
-            }
-        })
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    Log.d(TAG, "Ad was loaded.")
+                    dateInterstitialAd = interstitialAd
+                }
+            })
     }
 
     private fun configConfirmationButton() {
@@ -505,7 +515,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                 val layoutManager =
                     recyclerViewReference[FIRST_INDEX].layoutManager as LinearLayoutManager
                 layoutManager.findViewByPosition(FIRST_INDEX)
-                    ?.findViewById<EditText>(R.id.letterEditText)
+                    ?.findViewById<AppCompatEditText>(R.id.letterEditText)
                     ?.requestFocus()
 
             }
@@ -523,7 +533,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         dialog.setContentView(R.layout.alert_dialog_whos_player_tips)
         dialog.setCancelable(true)
 
-        val closeButton = dialog.findViewById<ImageButton>(R.id.dialog_close_button)
+        val closeButton = dialog.findViewById<AppCompatImageButton>(R.id.dialog_close_button)
         closeButton.setOnClickListener {
             dialog.dismiss()
         }
@@ -580,7 +590,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
         const val LEVEL_STATE = "LEVEL_STATE"
 
-        private val TAG = "INTERSTICIAL_AD"
+        private const val TAG = "INTERSTICIAL_AD"
 
         @JvmStatic
         fun newInstance(context: Context, level: Int): Intent =

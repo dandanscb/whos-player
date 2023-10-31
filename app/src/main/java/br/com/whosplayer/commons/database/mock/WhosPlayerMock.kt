@@ -8,7 +8,6 @@ import br.com.whosplayer.app.whosplayer.repository.response.SoccerPlayerResponse
 import br.com.whosplayer.app.whosplayer.repository.response.StageResponse
 import br.com.whosplayer.app.whosplayer.repository.response.TeamResponse
 import br.com.whosplayer.app.whosplayer.repository.response.TipsResponse
-import br.com.whosplayer.app.whosplayer.view.WhosPlayerActivity
 
 object WhosPlayerMock {
 
