@@ -1,8 +1,6 @@
 package br.com.whosplayer.app.onboarding.view
 
 import android.app.ActionBar
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -86,11 +84,5 @@ class OnboardingActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    companion object {
-
-        @JvmStatic
-        fun newInstance(context: Context): Intent = Intent(context, OnboardingActivity::class.java)
     }
 }
