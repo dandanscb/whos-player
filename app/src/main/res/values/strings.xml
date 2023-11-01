@@ -56,6 +56,7 @@
     <string name="whos_player_report_screen_text">Para dúvidas, sugestões ou informar algum problema, envie um email para</string>
     <string name="whos_player_report_screen_second_text">Envie-nos um email relatando algum erro, e também dando sujestões de novos jogadores</string>
     <string name="whos_player_report_screen_email">qualjogador1@gmail.com</string>
+    <string name="whos_player_report_screen_version_code">Versão 1.0.0</string>
 
     <!-- Whos Player -->
     <string name="whos_player_onboarding_skip_button">PULAR</string>

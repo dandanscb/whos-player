@@ -16,84 +16,117 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/whos_player_24dp"
-        android:background="@drawable/dark_gray_rounded"
-        android:padding="@dimen/whos_player_24dp"
+        android:layout_height="@dimen/whos_player_0dp"
+        android:layout_marginVertical="@dimen/whos_player_24dp"
+        android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/close_button">
-
-        <TextView
-            android:id="@+id/developed_by"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/whos_player_report_screen_developed_by"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/developers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/whos_player_report_screen_developers"
-            android:textAlignment="center"
-            android:textColor="@color/whos_player_blue"
-            android:textSize="@dimen/whos_player_20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/developed_by" />
-
-        <TextView
-            android:id="@+id/report_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/whos_player_24dp"
-            android:text="@string/whos_player_report_screen_text"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/developers" />
+        app:layout_constraintTop_toBottomOf="@+id/close_button"
+        app:layout_constraintBottom_toTopOf="@+id/version_code">
 
         <LinearLayout
-            android:id="@+id/report_email_container"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/whos_player_8dp"
-            android:orientation="horizontal"
-            android:textAlignment="center"
-            android:clickable="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/report_text">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/report_email"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/report_card_container"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/whos_player_report_screen_email"
-                android:textColor="@color/whos_player_link"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/whos_player_2dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/report_text" />
+                android:layout_margin="@dimen/whos_player_24dp"
+                android:background="@drawable/dark_gray_rounded"
+                android:padding="@dimen/whos_player_24dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/whos_player_8dp"
-                android:src="@drawable/ic_copy_email" />
+                <TextView
+                    android:id="@+id/developed_by"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/whos_player_report_screen_developed_by"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/archivo"
+                    android:textSize="@dimen/whos_player_16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/developers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/whos_player_report_screen_developers"
+                    android:textAlignment="center"
+                    android:textColor="@color/whos_player_dark_gray"
+                    android:textSize="@dimen/whos_player_28sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/developed_by" />
+
+                <TextView
+                    android:id="@+id/report_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/whos_player_24dp"
+                    android:text="@string/whos_player_report_screen_text"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/archivo"
+                    android:textSize="@dimen/whos_player_16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/developers" />
+
+                <LinearLayout
+                    android:id="@+id/report_email_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/whos_player_8dp"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/report_text">
+
+                    <TextView
+                        android:id="@+id/report_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/whos_player_2dp"
+                        android:text="@string/whos_player_report_screen_email"
+                        android:textColor="@color/whos_player_link"
+                        android:textSize="@dimen/whos_player_20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/report_text" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/whos_player_8dp"
+                        android:src="@drawable/ic_copy_email" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
+    </ScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/version_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/whos_player_32dp"
+        android:text="@string/whos_player_report_screen_version_code"
+        android:textAlignment="center"
+        android:fontFamily="@font/aleo"
+        android:textColor="@color/white"
+        android:textSize="@dimen/whos_player_20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
