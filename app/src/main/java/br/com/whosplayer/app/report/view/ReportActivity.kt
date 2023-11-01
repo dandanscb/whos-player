@@ -1,14 +1,13 @@
 package br.com.whosplayer.app.report.view
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
-import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import br.com.whosplayer.R
 import br.com.whosplayer.databinding.ActivityWhosPlayerReportBinding
 
 class ReportActivity : AppCompatActivity() {
@@ -27,24 +26,21 @@ class ReportActivity : AppCompatActivity() {
             finish()
         }
 
-        val spannableString = SpannableString(binding.whosPlayerEmail.text)
+        binding.reportEmailContainer.setOnClickListener {
+            val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clipData = ClipData.newPlainText(
+                "Texto Copiado",
+                getString(R.string.whos_player_report_screen_email)
+            )
+            clipboardManager.setPrimaryClip(clipData)
 
-        spannableString.setSpan(
-            object : ClickableSpan() {
-                override fun onClick(textView: View) {
-                    // ToDo
-                }
-            }, START_INDEX, binding.whosPlayerEmail.text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-
-        binding.whosPlayerEmail.text = spannableString
-        binding.whosPlayerEmail.movementMethod = LinkMovementMethod.getInstance()
+            Toast.makeText(this, "Texto copiado para a área de transferência", Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 
 
     companion object {
-
-        private const val START_INDEX = 0
 
         @JvmStatic
         fun newInstance(context: Context): Intent = Intent(context, ReportActivity::class.java)
