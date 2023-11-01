@@ -9,6 +9,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import br.com.whosplayer.BuildConfig
 import br.com.whosplayer.R
 import br.com.whosplayer.databinding.ActivityWhosPlayerReportBinding
 
@@ -25,6 +26,9 @@ class ReportActivity : AppCompatActivity() {
     private fun init() {
         binding = ActivityWhosPlayerReportBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.versionCode.text =
+            getString(R.string.whos_player_report_screen_version_code, BuildConfig.VERSION_NAME)
 
         binding.closeButton.setOnClickListener {
             finish()
@@ -48,6 +52,7 @@ class ReportActivity : AppCompatActivity() {
                     MotionEvent.ACTION_DOWN -> {
                         startY = event.y
                     }
+
                     MotionEvent.ACTION_MOVE -> {
                         val deltaY = event.y - startY
                         val newTopMargin = (view.top + deltaY).toInt()
