@@ -72,16 +72,11 @@
     <string name="whos_player_onboarding_fun_text">Desejamos que você aproveite ao máximo o jogo. Se você gostar ou tiver alguma sugestão, ficaríamos gratos se você pudesse deixar sua avaliação no Google Play e compartilhar sugestões de novos jogadores para serem considerados em futuras atualizações. Seu feedback é valioso para nós!</string>
 
 
-
     <!-- ADMOB -->
     <string name="whos_player_banner_ad_test">ca-app-pub-6036183629578343~5450720964</string>
     <string name="whos_player_interstitial_ad_test">ca-app-pub-3940256099942544/1033173712</string>
-
     <string name="whos_player_banner_ad">ca-app-pub-6036183629578343/7502169231</string>
     <string name="whos_player_calendar_ad">ca-app-pub-6036183629578343/9216923195</string>
     <string name="whos_player_level_ad">ca-app-pub-6036183629578343/6417152427</string>
-
-
-
 
 </resources>
