@@ -113,7 +113,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
         adView.setAdSize(AdSize.BANNER)
 
-        // TODO AD
+//        adView.adUnitId = this.getString(R.string.whos_player_banner_ad)
         adView.adUnitId = this.getString(R.string.whos_player_banner_ad_test)
 
         loadInterstitialAds()
@@ -433,9 +433,9 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     private fun loadInterstitialAds() {
         val adRequest = AdRequest.Builder().build()
 
-        // TODO AD
         InterstitialAd.load(
             this,
+//            getString(R.string.whos_player_level_ad),
             getString(R.string.whos_player_interstitial_ad_test),
             adRequest,
             object : InterstitialAdLoadCallback() {
@@ -450,9 +450,9 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                 }
             })
 
-        // TODO AD
         InterstitialAd.load(
             this,
+            //getString(R.string.whos_player_calendar_ad),
             getString(R.string.whos_player_interstitial_ad_test),
             adRequest,
             object : InterstitialAdLoadCallback() {

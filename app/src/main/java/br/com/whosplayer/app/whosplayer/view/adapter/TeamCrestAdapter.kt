@@ -69,6 +69,7 @@ class TeamCrestAdapter(private val context: Context, private val items: List<Tea
     private fun displayImage(url: String, imageView: ImageView) {
         val requestOptions = RequestOptions()
             .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+            .placeholder(R.drawable.loading_animation)
 
         Glide.with(context)
             .load(url)
@@ -84,6 +85,7 @@ class TeamCrestAdapter(private val context: Context, private val items: List<Tea
                     options
                 )
             }.error(R.drawable.ic_error)
+                .placeholder(R.drawable.loading_animation)
         }
     }
 }
