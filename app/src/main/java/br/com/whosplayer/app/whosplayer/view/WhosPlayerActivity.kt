@@ -4,44 +4,44 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.app.ActionBar.LayoutParams
-import android.os.Bundle
-import android.view.Gravity
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.LinearLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.size
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import br.com.whosplayer.R
-import br.com.whosplayer.app.help.view.HelpActivity
-import br.com.whosplayer.app.whosplayer.view.adapter.NameLetterByLetterAdapter
-import br.com.whosplayer.app.whosplayer.view.adapter.TeamCrestAdapter
-import br.com.whosplayer.app.whosplayer.view.utils.NonScrollableGridLayoutManager
-import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
+import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
+import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageButton
+import androidx.core.view.size
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import br.com.whosplayer.R
+import br.com.whosplayer.app.help.view.HelpActivity
 import br.com.whosplayer.app.report.view.ReportActivity
 import br.com.whosplayer.app.whosplayer.repository.model.SoccerPlayerModel
 import br.com.whosplayer.app.whosplayer.repository.model.TeamModel
 import br.com.whosplayer.app.whosplayer.repository.model.TipsModel
+import br.com.whosplayer.app.whosplayer.view.adapter.NameLetterByLetterAdapter
+import br.com.whosplayer.app.whosplayer.view.adapter.TeamCrestAdapter
+import br.com.whosplayer.app.whosplayer.view.utils.NonScrollableGridLayoutManager
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModel
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewModelFactory
 import br.com.whosplayer.app.whosplayer.viewmodel.WhosPlayerViewState
 import br.com.whosplayer.commons.database.getAndroidID
 import br.com.whosplayer.commons.view.CustomSplashScreen
 import br.com.whosplayer.commons.view.CustomTipsTextView
+import br.com.whosplayer.databinding.ActivityWhosPlayerBinding
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
@@ -49,6 +49,7 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import nl.dionsegijn.konfetti.core.BuildConfig
 import nl.dionsegijn.konfetti.core.Party
 import nl.dionsegijn.konfetti.core.Position
 import nl.dionsegijn.konfetti.core.emitter.Emitter
@@ -72,6 +73,13 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
     private var dateInterstitialAd: InterstitialAd? = null
     private var byLevelInterstitialAd: InterstitialAd? = null
+
+    private val bannerAdValue: String
+        get() = if (BuildConfig.DEBUG) AD_BANNER_TEST else AD_BANNER
+    private val calendarAdValue: String
+        get() = if (BuildConfig.DEBUG) AD_INTERSTITIAL_TEST else AD_INTERSTITIAL_CALENDAR
+    private val byLevelAdValue: String
+        get() = if (BuildConfig.DEBUG) AD_INTERSTITIAL_TEST else AD_INTERSTITIAL_BY_LEVEL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,8 +121,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
         adView.setAdSize(AdSize.BANNER)
 
-//        adView.adUnitId = this.getString(R.string.whos_player_banner_ad)
-        adView.adUnitId = this.getString(R.string.whos_player_banner_ad_test)
+        adView.adUnitId = bannerAdValue
 
         loadInterstitialAds()
     }
@@ -188,11 +195,11 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     private fun showSoccerPlayerInformation(level: Int, soccerPlayer: SoccerPlayerModel) {
         currentLevel = level
 
-
         currentLevel?.let {
             if (it % 10 == 0) {
                 if (byLevelInterstitialAd != null) {
                     byLevelInterstitialAd?.show(this)
+                    loadByLevelInterstitialAds()
                 } else {
                     Log.d(TAG, "The interstitial ad wasn't ready yet.")
                 }
@@ -438,6 +445,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
             if (dateInterstitialAd != null) {
                 dateInterstitialAd?.show(this)
+                loadCalendarInterstitialAds()
             } else {
                 Log.d(TAG, "The interstitial ad wasn't ready yet.")
             }
@@ -449,13 +457,30 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     }
 
     private fun loadInterstitialAds() {
-        val adRequest = AdRequest.Builder().build()
+        val calendarAdRequest = AdRequest.Builder().build()
 
         InterstitialAd.load(
             this,
-//            getString(R.string.whos_player_level_ad),
-            getString(R.string.whos_player_interstitial_ad_test),
-            adRequest,
+            calendarAdValue,
+            calendarAdRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    Log.d(TAG, adError.toString())
+                    dateInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    Log.d(TAG, "Ad was loaded.")
+                    dateInterstitialAd = interstitialAd
+                }
+            })
+
+        val byLevelAdRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(
+            this,
+            byLevelAdValue,
+            byLevelAdRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
                     Log.d(TAG, adError.toString())
@@ -467,11 +492,14 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                     byLevelInterstitialAd = interstitialAd
                 }
             })
+    }
+
+    private fun loadCalendarInterstitialAds() {
+        val adRequest = AdRequest.Builder().build()
 
         InterstitialAd.load(
             this,
-//            getString(R.string.whos_player_calendar_ad),
-            getString(R.string.whos_player_interstitial_ad_test),
+            calendarAdValue,
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
@@ -482,6 +510,26 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                 override fun onAdLoaded(interstitialAd: InterstitialAd) {
                     Log.d(TAG, "Ad was loaded.")
                     dateInterstitialAd = interstitialAd
+                }
+            })
+    }
+
+    private fun loadByLevelInterstitialAds() {
+        val adRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(
+            this,
+            byLevelAdValue,
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    Log.d(TAG, adError.toString())
+                    byLevelInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    Log.d(TAG, "Ad was loaded.")
+                    byLevelInterstitialAd = interstitialAd
                 }
             })
     }
@@ -535,7 +583,6 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                 layoutManager.findViewByPosition(FIRST_INDEX)
                     ?.findViewById<AppCompatEditText>(R.id.letterEditText)
                     ?.requestFocus()
-
             }
         }
     }
@@ -605,6 +652,14 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         private const val FIRST_INDEX = 0
         private const val NUMBER_ONE = 1
         private const val NEGATIVE_NUMBER_ONE = -1
+
+        private const val AD_BANNER_TEST = "ca-app-pub-6036183629578343/8569764354"
+        private const val AD_BANNER = "ca-app-pub-6036183629578343~3393459294"
+
+        private const val AD_INTERSTITIAL_TEST = "ca-app-pub-3940256099942544/1033173712"
+
+        private const val AD_INTERSTITIAL_CALENDAR = "ca-app-pub-6036183629578343/7098816306"
+        private const val AD_INTERSTITIAL_BY_LEVEL = "ca-app-pub-6036183629578343/5943601011"
 
         const val LEVEL_STATE = "LEVEL_STATE"
 
