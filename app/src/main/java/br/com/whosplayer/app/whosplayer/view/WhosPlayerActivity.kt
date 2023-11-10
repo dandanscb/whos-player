@@ -283,7 +283,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         }
     }
 
-    override fun onLetterTyped(recyclerViewPosition: Int, position: Int) {
+    override fun onLetterTyped(recyclerViewPosition: Int, position: Int, isDelete: Boolean) {
         if (position < nameLetterByLetterAdapter[recyclerViewPosition].itemCount) {
             if (position == NEGATIVE_NUMBER_ONE) {
                 if (recyclerViewPosition - NUMBER_ONE >= FIRST_INDEX) {
@@ -292,13 +292,25 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                     layoutManager.findViewByPosition(
                         recyclerViewReference[recyclerViewPosition - NUMBER_ONE].size - NUMBER_ONE
                     )
-                        ?.findViewById<AppCompatEditText>(R.id.letterEditText)?.requestFocus()
+                        ?.requestFocus()
+
+                    if (isDelete) {
+                        layoutManager.findViewByPosition(
+                            recyclerViewReference[recyclerViewPosition - NUMBER_ONE].size - NUMBER_ONE
+                        )
+                            ?.findViewById<AppCompatEditText>(R.id.letterEditText)?.setText("")
+                    }
                 }
             } else {
                 val layoutManager =
                     recyclerViewReference[recyclerViewPosition].layoutManager as LinearLayoutManager
                 layoutManager.findViewByPosition(position)
                     ?.findViewById<AppCompatEditText>(R.id.letterEditText)?.requestFocus()
+
+                if (isDelete) {
+                    layoutManager.findViewByPosition(position)
+                        ?.findViewById<AppCompatEditText>(R.id.letterEditText)?.setText("")
+                }
             }
         } else {
             if (recyclerViewPosition + NUMBER_ONE < recyclerViewReference.size) {
@@ -307,6 +319,12 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
                 layoutManager.findViewByPosition(FIRST_INDEX)
                     ?.findViewById<AppCompatEditText>(R.id.letterEditText)
                     ?.requestFocus()
+
+                if (isDelete) {
+                    layoutManager.findViewByPosition(FIRST_INDEX)
+                        ?.findViewById<AppCompatEditText>(R.id.letterEditText)
+                        ?.setText("")
+                }
             }
         }
     }
@@ -452,7 +470,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
         InterstitialAd.load(
             this,
-            //getString(R.string.whos_player_calendar_ad),
+//            getString(R.string.whos_player_calendar_ad),
             getString(R.string.whos_player_interstitial_ad_test),
             adRequest,
             object : InterstitialAdLoadCallback() {

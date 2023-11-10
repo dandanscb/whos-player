@@ -73,10 +73,10 @@
 
 
     <!-- ADMOB -->
-    <string name="whos_player_banner_ad_test">ca-app-pub-6036183629578343~5450720964</string>
+    <string name="whos_player_banner_ad_test">ca-app-pub-6036183629578343~3393459294</string>
     <string name="whos_player_interstitial_ad_test">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="whos_player_banner_ad">ca-app-pub-6036183629578343/7502169231</string>
-    <string name="whos_player_calendar_ad">ca-app-pub-6036183629578343/9216923195</string>
-    <string name="whos_player_level_ad">ca-app-pub-6036183629578343/6417152427</string>
+    <string name="whos_player_banner_ad">ca-app-pub-6036183629578343/8569764354</string>
+    <string name="whos_player_calendar_ad">ca-app-pub-6036183629578343/7098816306</string>
+    <string name="whos_player_level_ad">ca-app-pub-6036183629578343/5943601011</string>
 
 </resources>

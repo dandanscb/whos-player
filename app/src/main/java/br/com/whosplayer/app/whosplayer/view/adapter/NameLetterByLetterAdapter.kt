@@ -12,7 +12,10 @@ import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
 import br.com.whosplayer.R
 
-class NameLetterByLetterAdapter(private val recyclerViewPosition: Int, private val items: List<Char>) :
+class NameLetterByLetterAdapter(
+    private val recyclerViewPosition: Int,
+    private val items: List<Char>
+) :
     RecyclerView.Adapter<NameLetterByLetterAdapter.ItemViewHolder>() {
     private val itemHolders: MutableList<ItemViewHolder> = mutableListOf()
     var editTextFocusListener: EditTextFocusListener? = null
@@ -33,7 +36,7 @@ class NameLetterByLetterAdapter(private val recyclerViewPosition: Int, private v
         return items.size
     }
 
-    fun getItem() : String {
+    fun getItem(): String {
         var value = ""
         for (itemHolder in itemHolders) {
             val inputText = itemHolder.editText
@@ -76,7 +79,11 @@ class NameLetterByLetterAdapter(private val recyclerViewPosition: Int, private v
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     if (!s.isNullOrEmpty() && s[0].isLetter()) {
-                        editTextFocusListener?.onLetterTyped(recyclerViewPosition, adapterPosition + 1)
+                        editTextFocusListener?.onLetterTyped(
+                            recyclerViewPosition,
+                            adapterPosition + 1,
+                            false
+                        )
                     }
                 }
 
@@ -93,7 +100,11 @@ class NameLetterByLetterAdapter(private val recyclerViewPosition: Int, private v
             editText.setOnKeyListener { v, keyCode, event ->
                 if (keyCode == KeyEvent.KEYCODE_DEL) {
                     if (editText.text.toString().isNullOrEmpty()) {
-                        editTextFocusListener?.onLetterTyped(recyclerViewPosition, adapterPosition - 1)
+                        editTextFocusListener?.onLetterTyped(
+                            recyclerViewPosition,
+                            adapterPosition - 1,
+                            true
+                        )
                     }
                 }
                 false
@@ -102,7 +113,7 @@ class NameLetterByLetterAdapter(private val recyclerViewPosition: Int, private v
     }
 
     interface EditTextFocusListener {
-        fun onLetterTyped(recyclerViewPosition: Int, position: Int)
+        fun onLetterTyped(recyclerViewPosition: Int, position: Int, isDelete: Boolean)
         fun checkIfAllLettersAreFilledIn()
     }
 }
