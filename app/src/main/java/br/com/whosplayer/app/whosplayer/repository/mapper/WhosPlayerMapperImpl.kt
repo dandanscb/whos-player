@@ -9,7 +9,8 @@ import br.com.whosplayer.app.whosplayer.repository.response.TeamResponse
 class WhosPlayerMapperImpl : WhosPlayerMapper {
 
     override fun convertSoccerPlayerResponseToModel(
-        soccerPlayerResponse: SoccerPlayerResponse
+        soccerPlayerResponse: SoccerPlayerResponse,
+        numberOfColumns: Int
     ): SoccerPlayerModel {
         return SoccerPlayerModel(
             name = soccerPlayerResponse.name,
@@ -19,7 +20,15 @@ class WhosPlayerMapperImpl : WhosPlayerMapper {
                 nationality = soccerPlayerResponse.tips.nationality,
                 dateOfBirth = soccerPlayerResponse.tips.dateOfBirth
             ),
-            teams = convertTeamsResponseToModel(soccerPlayerResponse.teams),
+            teams = convertTeamsResponseToModel(
+                if (numberOfColumns == 3) {
+                    soccerPlayerResponse.teams
+                } else {
+                    getListWithTwoTeamsResponse(
+                        convertListListIntoJustAList(soccerPlayerResponse.teams)
+                    )
+                }
+            ),
             picture = soccerPlayerResponse.picture
         )
     }
@@ -58,5 +67,32 @@ class WhosPlayerMapperImpl : WhosPlayerMapper {
         }
 
         return result
+    }
+
+    private fun convertListListIntoJustAList(response: List<List<TeamResponse>>) =
+        response.flatten().toList()
+
+
+    private fun getListWithTwoTeamsResponse(
+        response: List<TeamResponse>
+    ): List<List<TeamResponse>> {
+        response.last().lastTeam = true
+        val list = mutableListOf<List<TeamResponse>>()
+        val subListSize = 2
+        var currentIndex = 0
+
+        while (currentIndex < response.size) {
+            val endIndex =
+                if (currentIndex + subListSize > response.size) {
+                    response.size
+                } else {
+                    currentIndex + subListSize
+                }
+            val sublist = response.subList(currentIndex, endIndex)
+            list.add(sublist)
+            currentIndex += subListSize
+        }
+
+        return list
     }
 }

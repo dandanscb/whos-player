@@ -5,5 +5,8 @@ import br.com.whosplayer.app.whosplayer.repository.response.SoccerPlayerResponse
 
 interface WhosPlayerMapper {
 
-    fun convertSoccerPlayerResponseToModel(soccerPlayerResponse: SoccerPlayerResponse): SoccerPlayerModel
+    fun convertSoccerPlayerResponseToModel(
+        soccerPlayerResponse: SoccerPlayerResponse,
+        numberOfColumns: Int
+    ): SoccerPlayerModel
 }

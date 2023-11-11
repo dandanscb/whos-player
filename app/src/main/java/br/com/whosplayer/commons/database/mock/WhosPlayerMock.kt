@@ -147,7 +147,7 @@ object WhosPlayerMock {
                     nationality = "Brasileiro",
                     dateOfBirth = "5 de fevereiro de 1992"
                 ),
-                teams = getListWithFourTeamsResponse(
+                teams = getListWithThreeTeamsResponse(
                     listOf(
                         TeamResponse(
                             name = "Santos",
@@ -183,7 +183,7 @@ object WhosPlayerMock {
                     nationality = "Argentino",
                     dateOfBirth = "24 de junho de 1987"
                 ),
-                teams = getListWithFourTeamsResponse(
+                teams = getListWithThreeTeamsResponse(
                     listOf(
                         TeamResponse(
                             name = "Newell's Old Boys",
@@ -219,7 +219,7 @@ object WhosPlayerMock {
                     nationality = "Portugues",
                     dateOfBirth = "5 de fevereiro de 1985"
                 ),
-                teams = getListWithFourTeamsResponse(
+                teams = getListWithThreeTeamsResponse(
                     listOf(
                         TeamResponse(
                             name = "Sporting",
@@ -268,7 +268,7 @@ object WhosPlayerMock {
                     nationality = "Norueguês",
                     dateOfBirth = "21 de julho de 2000"
                 ),
-                teams = getListWithFourTeamsResponse(
+                teams = getListWithThreeTeamsResponse(
                     listOf(
                         TeamResponse(
                             name = "Bryne",
@@ -302,7 +302,7 @@ object WhosPlayerMock {
         )
     }
 
-    private fun getListWithFourTeamsResponse(response: List<TeamResponse>): List<List<TeamResponse>> {
+    private fun getListWithThreeTeamsResponse(response: List<TeamResponse>): List<List<TeamResponse>> {
         response.last().lastTeam = true
         val list = mutableListOf<List<TeamResponse>>()
         val subListSize = 3

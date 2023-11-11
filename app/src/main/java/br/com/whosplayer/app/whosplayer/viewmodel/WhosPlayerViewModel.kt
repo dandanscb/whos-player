@@ -24,11 +24,11 @@ class WhosPlayerViewModel(
     val saveLevelViewState: LiveData<WhosPlayerViewState.WhosPlayerSaveLevelViewState> =
         mutableSaveLevelViewState
 
-    fun getSoccerPlayer(currentLevel: Int?) {
+    fun getSoccerPlayer(currentLevel: Int?, numberOfColumns: Int) {
         mutableViewState.value = WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.ShowLoading
         viewModelScope.launch {
             currentLevel?.let {
-                handleGetSoccerPlayerState(it, useCase.getSoccerPlayer(it))
+                handleGetSoccerPlayerState(it, useCase.getSoccerPlayer(it, numberOfColumns))
             } ?: run {
                 mutableViewState.value =
                     WhosPlayerViewState.WhosPlayerSoccerPlayerViewState.GenericError

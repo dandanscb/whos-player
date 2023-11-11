@@ -130,7 +130,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         val factory = WhosPlayerViewModelFactory()
         viewModel = ViewModelProvider(this, factory)[WhosPlayerViewModel::class.java]
 
-        viewModel?.getSoccerPlayer(currentLevel)
+        viewModel?.getSoccerPlayer(currentLevel, calculateNumberOfColumns())
     }
 
     private fun initObservable() {
@@ -170,7 +170,7 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
 
                     binding.cardViewContainer.removeAllViews()
                     binding.fieldLettersContainer.removeAllViews()
-                    viewModel?.getSoccerPlayer(currentLevel)
+                    viewModel?.getSoccerPlayer(currentLevel, calculateNumberOfColumns())
                 }
 
                 is WhosPlayerViewState.WhosPlayerSaveLevelViewState.ShowLoading -> {

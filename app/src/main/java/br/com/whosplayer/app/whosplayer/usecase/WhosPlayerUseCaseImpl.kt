@@ -12,9 +12,9 @@ class WhosPlayerUseCaseImpl(
     private val mapper: WhosPlayerMapper
 ) : WhosPlayerUseCase {
 
-    override suspend fun getSoccerPlayer(level: Int) =
+    override suspend fun getSoccerPlayer(level: Int, numberOfColumns: Int) =
         try {
-            handleGetSoccerPlayerRepositoryState(repository.getSoccerPlayer(level))
+            handleGetSoccerPlayerRepositoryState(repository.getSoccerPlayer(level), numberOfColumns)
         } catch (e: Exception) {
             WhosPlayerUseCaseState.GetSoccerPlayerUseCaseState.Error
         }
@@ -34,10 +34,13 @@ class WhosPlayerUseCaseImpl(
         WhosPlayerUseCaseState.SavePlayerLevelUseCaseState.Error
     }
 
-    private fun handleGetSoccerPlayerRepositoryState(result: WhosPlayerRepositoryState.SoccerPlayerRepositoryState) =
+    private fun handleGetSoccerPlayerRepositoryState(
+        result: WhosPlayerRepositoryState.SoccerPlayerRepositoryState,
+        numberOfColumns: Int
+    ) =
         when (result) {
             is WhosPlayerRepositoryState.SoccerPlayerRepositoryState.GetSoccerPlayer -> {
-                handleGetSoccerPlayerDatabaseResponse(result.soccerPlayerModel)
+                handleGetSoccerPlayerDatabaseResponse(result.soccerPlayerModel, numberOfColumns)
             }
 
             is WhosPlayerRepositoryState.SoccerPlayerRepositoryState.NotFound -> {
@@ -49,14 +52,14 @@ class WhosPlayerUseCaseImpl(
             }
         }
 
-    private fun handleGetSoccerPlayerDatabaseResponse(data: Map<String, Any>?) =
+    private fun handleGetSoccerPlayerDatabaseResponse(data: Map<String, Any>?, numberOfColumns: Int) =
         data?.let {
             val firestoreDataJson = it["stages"]
             val soccerPlayerResponse =
                 Json.decodeFromString<SoccerPlayerResponse>(firestoreDataJson as String)
             soccerPlayerResponse.let { response ->
                 WhosPlayerUseCaseState.GetSoccerPlayerUseCaseState.GetSoccerPlayer(
-                    mapper.convertSoccerPlayerResponseToModel(response)
+                    mapper.convertSoccerPlayerResponseToModel(response, numberOfColumns)
                 )
             }
         } ?: run {
