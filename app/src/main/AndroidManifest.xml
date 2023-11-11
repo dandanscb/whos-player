@@ -26,6 +26,7 @@
 
         <activity
             android:name=".app.onboarding.view.OnboardingActivity"
+            android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
@@ -36,16 +37,20 @@
         </activity>
         <activity
             android:name=".app.whosplayer.view.WhosPlayerActivity"
-            android:exported="true">
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:exported="false">
         </activity>
         <activity
             android:name=".app.help.view.HelpActivity"
+            android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".app.report.view.ReportActivity"
+            android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:exported="true" />
+            android:exported="false" />
 
 
     </application>

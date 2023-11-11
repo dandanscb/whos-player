@@ -94,12 +94,22 @@ class NameLetterByLetterAdapter(
                             it.delete(1, it.length)
                         }
                     }
+
+                    if (!s.isNullOrEmpty() && s[s.length - 1] == '\b') {
+                        if (editText.text.toString().isEmpty()) {
+                            editTextFocusListener?.onLetterTyped(
+                                recyclerViewPosition,
+                                adapterPosition - 1,
+                                true
+                            )
+                        }
+                    }
                 }
             })
 
             editText.setOnKeyListener { v, keyCode, event ->
-                if (keyCode == KeyEvent.KEYCODE_DEL) {
-                    if (editText.text.toString().isNullOrEmpty()) {
+                if (keyCode == KeyEvent.KEYCODE_DEL && event.action == KeyEvent.ACTION_DOWN) {
+                    if (editText.text.toString().isEmpty()) {
                         editTextFocusListener?.onLetterTyped(
                             recyclerViewPosition,
                             adapterPosition - 1,

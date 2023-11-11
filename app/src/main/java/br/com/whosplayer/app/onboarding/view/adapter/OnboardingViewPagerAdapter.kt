@@ -3,11 +3,11 @@ package br.com.whosplayer.app.onboarding.view.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import br.com.whosplayer.app.onboarding.view.OnboardingFunFragment
-import br.com.whosplayer.app.onboarding.view.OnboardingInitialFragment
-import br.com.whosplayer.app.onboarding.view.OnboardingNicknameFragment
-import br.com.whosplayer.app.onboarding.view.OnboardingTipsFragment
-import br.com.whosplayer.app.onboarding.view.OnboardingWelcomeFragment
+import br.com.whosplayer.app.onboarding.view.fragment.OnboardingFunFragment
+import br.com.whosplayer.app.onboarding.view.fragment.OnboardingInitialFragment
+import br.com.whosplayer.app.onboarding.view.fragment.OnboardingNicknameFragment
+import br.com.whosplayer.app.onboarding.view.fragment.OnboardingTipsFragment
+import br.com.whosplayer.app.onboarding.view.fragment.OnboardingWelcomeFragment
 
 class OnboardingViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
 

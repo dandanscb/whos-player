@@ -1,4 +1,4 @@
-package br.com.whosplayer.app.onboarding.view
+package br.com.whosplayer.app.onboarding.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import br.com.whosplayer.R
+import br.com.whosplayer.app.onboarding.view.OnboardingActivity
 import br.com.whosplayer.databinding.FragmentWhosPlayerOnboardingInitialBinding
 
 class OnboardingInitialFragment : Fragment() {

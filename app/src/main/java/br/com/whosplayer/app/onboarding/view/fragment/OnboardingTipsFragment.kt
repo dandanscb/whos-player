@@ -1,16 +1,16 @@
-package br.com.whosplayer.app.onboarding.view
+package br.com.whosplayer.app.onboarding.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import br.com.whosplayer.app.whosplayer.view.WhosPlayerActivity
-import br.com.whosplayer.databinding.FragmentWhosPlayerOnboardingFunBinding
+import br.com.whosplayer.app.onboarding.view.OnboardingActivity
+import br.com.whosplayer.databinding.FragmentWhosPlayerOnboardingTipsBinding
 
-class OnboardingFunFragment : Fragment() {
+class OnboardingTipsFragment : Fragment() {
 
-    private lateinit var binding: FragmentWhosPlayerOnboardingFunBinding
+    private lateinit var binding: FragmentWhosPlayerOnboardingTipsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,10 +21,10 @@ class OnboardingFunFragment : Fragment() {
     }
 
     private fun setupBindingLayout(fragmentLocalInflater: LayoutInflater): View {
-        return FragmentWhosPlayerOnboardingFunBinding.inflate(
+        return FragmentWhosPlayerOnboardingTipsBinding.inflate(
             fragmentLocalInflater
         ).root.also {
-            binding = FragmentWhosPlayerOnboardingFunBinding.bind(it)
+            binding = FragmentWhosPlayerOnboardingTipsBinding.bind(it)
         }
     }
 
@@ -35,17 +35,9 @@ class OnboardingFunFragment : Fragment() {
     }
 
     private fun init() {
-        binding.closeButton.setOnClickListener {
-            val intent = WhosPlayerActivity.newInstance(requireContext(),
-                FIRST_INDEX
-            )
-            startActivity(intent)
-            requireActivity().finish()
+        binding.skipButton.setOnClickListener {
+            val parentActivity = activity as OnboardingActivity
+            parentActivity.goToNextFragment()
         }
-
-    }
-
-    companion object {
-        private const val FIRST_INDEX = 1
     }
 }

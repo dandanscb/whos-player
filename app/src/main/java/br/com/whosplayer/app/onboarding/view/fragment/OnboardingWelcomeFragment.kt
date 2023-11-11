@@ -1,10 +1,11 @@
-package br.com.whosplayer.app.onboarding.view
+package br.com.whosplayer.app.onboarding.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import br.com.whosplayer.app.onboarding.view.OnboardingActivity
 import br.com.whosplayer.databinding.FragmentWhosPlayerOnboardingWelcomeBinding
 
 class OnboardingWelcomeFragment : Fragment() {

@@ -222,11 +222,11 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         teams.forEach {
             val recyclerView = RecyclerView(this)
 
-            val layoutManager = NonScrollableGridLayoutManager(this, SPAN_COUNT)
+            val layoutManager = NonScrollableGridLayoutManager(this, calculateNumberOfColumns())
             val screenWidth = resources.displayMetrics.widthPixels
             val desiredColumnWidth = resources.getDimensionPixelSize(R.dimen.whos_player_80dp)
             val columns = screenWidth / desiredColumnWidth
-            layoutManager.spanCount = columns.coerceAtMost(SPAN_COUNT)
+            layoutManager.spanCount = columns.coerceAtMost(calculateNumberOfColumns())
 
             recyclerView.layoutManager = layoutManager
 
@@ -236,6 +236,17 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
             binding.cardViewContainer.addView(recyclerView)
             recyclerView.layoutParams.width = RecyclerView.LayoutParams.WRAP_CONTENT
             teamCrestAdapter.add(adapter)
+        }
+    }
+
+    private fun calculateNumberOfColumns(): Int {
+        val displayMetrics = this.resources.displayMetrics
+        val screenWidth = displayMetrics.widthPixels
+
+        return if (screenWidth < 1080) {
+            2
+        } else {
+            3
         }
     }
 
@@ -648,7 +659,6 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
     }
 
     companion object {
-        private const val SPAN_COUNT = 3
         private const val FIRST_INDEX = 0
         private const val NUMBER_ONE = 1
         private const val NEGATIVE_NUMBER_ONE = -1
