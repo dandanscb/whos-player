@@ -83,7 +83,7 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             ads:adSize="BANNER"
-            ads:adUnitId="@string/whos_player_banner_ad_test"
+            ads:adUnitId="@string/whos_player_banner_ad"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tipsContainer">

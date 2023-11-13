@@ -108,12 +108,22 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         configDateButtons()
         configConfirmationButton()
 
-        loadInterstitialAds()
+        startAds()
 
 //        val pair = WhosPlayerMock.getSoccerPlayerResponse()
 //        if (pair.first.isNotEmpty()) {
 //            importDataFromJson(pair.first, pair.second)
 //        }
+    }
+
+    private fun startAds() {
+        val adView = AdView(this)
+
+        adView.setAdSize(AdSize.BANNER)
+
+        adView.adUnitId = bannerAdValue
+
+        loadInterstitialAds()
     }
 
     private fun initViewModel() {
@@ -607,7 +617,6 @@ class WhosPlayerActivity : AppCompatActivity(), NameLetterByLetterAdapter.EditTe
         val tipsContainer = dialog.findViewById<LinearLayout>(R.id.tipsContainer)
 
         val mAdView = dialog.findViewById<AdView>(R.id.adView)
-        mAdView.adUnitId = bannerAdValue
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
 

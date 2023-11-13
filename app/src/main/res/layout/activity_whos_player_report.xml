@@ -97,7 +97,7 @@
                         android:layout_marginTop="@dimen/whos_player_2dp"
                         android:text="@string/whos_player_report_screen_email"
                         android:textColor="@color/whos_player_link"
-                        android:textSize="@dimen/whos_player_20sp"
+                        android:textSize="@dimen/whos_player_16sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
